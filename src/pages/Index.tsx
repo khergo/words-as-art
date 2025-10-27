@@ -2,6 +2,7 @@ import Navigation from "@/components/Navigation";
 import Hero from "@/components/Hero";
 import WorkPreview from "@/components/WorkPreview";
 import Footer from "@/components/Footer";
+import ShoelaceDecor from "@/components/ShoelaceDecor";
 
 const Index = () => {
   return (
@@ -10,6 +11,7 @@ const Index = () => {
       <Hero />
       <WorkPreview />
       <Footer />
+      <ShoelaceDecor />
     </div>
   );
 };
