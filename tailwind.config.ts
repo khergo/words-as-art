@@ -16,6 +16,7 @@ export default {
       fontFamily: {
         serif: ['Playfair Display', 'serif'],
         sans: ['Inter', 'sans-serif'],
+        handwritten: ['Caveat', 'cursive'],
       },
       colors: {
         border: "hsl(var(--border))",
