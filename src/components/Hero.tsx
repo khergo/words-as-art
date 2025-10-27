@@ -16,8 +16,8 @@ const Hero = () => {
       />
 
       {/* 3D Beer Animation */}
-      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-        <div className="w-full max-w-md h-[600px] opacity-30">
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-[5]">
+        <div className="w-full max-w-md h-[600px] opacity-70">
           <BeerAnimation />
         </div>
       </div>
