@@ -1,5 +1,6 @@
 import { ArrowDown } from "lucide-react";
 import heroImage from "@/assets/hero-shoelaces.jpg";
+import BeerAnimation from "./BeerAnimation";
 
 const Hero = () => {
   const scrollToWork = () => {
@@ -13,6 +14,13 @@ const Hero = () => {
         className="absolute inset-0 bg-cover bg-center opacity-20"
         style={{ backgroundImage: `url(${heroImage})` }}
       />
+
+      {/* 3D Beer Animation */}
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+        <div className="w-full max-w-md h-[600px] opacity-30">
+          <BeerAnimation />
+        </div>
+      </div>
 
       <div className="container mx-auto px-6 relative z-10">
         <div className="max-w-5xl mx-auto text-center">
