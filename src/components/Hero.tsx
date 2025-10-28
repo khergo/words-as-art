@@ -1,4 +1,7 @@
 import { ArrowDown } from "lucide-react";
+import doodleBeer from "@/assets/doodle-beer.png";
+import doodleSneakers from "@/assets/doodle-sneakers.png";
+import doodleShoelaces from "@/assets/doodle-shoelaces.png";
 
 const Hero = () => {
   const scrollToWork = () => {
@@ -21,22 +24,39 @@ const Hero = () => {
       {/* Red vertical margin line */}
       <div className="absolute left-[80px] top-0 bottom-0 w-[2px] bg-[#dc3545] opacity-60" />
 
+      {/* Hand-drawn doodles */}
+      <img 
+        src={doodleBeer} 
+        alt="" 
+        className="absolute top-20 right-12 w-32 opacity-20 transform rotate-12 pointer-events-none"
+      />
+      <img 
+        src={doodleSneakers} 
+        alt="" 
+        className="absolute bottom-32 left-24 w-40 opacity-15 transform -rotate-6 pointer-events-none"
+      />
+      <img 
+        src={doodleShoelaces} 
+        alt="" 
+        className="absolute top-1/2 right-32 w-28 opacity-20 transform rotate-45 pointer-events-none"
+      />
+      <img 
+        src={doodleBeer} 
+        alt="" 
+        className="absolute bottom-20 right-40 w-24 opacity-15 transform -rotate-12 pointer-events-none"
+      />
+
       <div className="container mx-auto px-6 relative z-10">
         <div className="max-w-5xl mx-auto text-left pl-12">
-          <h1 className="font-handwritten font-bold text-5xl md:text-7xl lg:text-8xl mb-6 animate-fade-in leading-relaxed text-[#1a1a1a] transform -rotate-1">
-            Words that make brands{" "}
+          <h1 className="font-handwritten font-bold text-5xl md:text-7xl lg:text-8xl mb-12 animate-fade-in leading-relaxed text-[#1a1a1a] transform -rotate-1">
             <span className="text-[#dc3545] inline-block transform rotate-2 relative">
-              impossible to ignore.
+              Creative copywriter
               <svg className="absolute -bottom-2 left-0 w-full" height="8" viewBox="0 0 100 8" preserveAspectRatio="none">
                 <path d="M0,4 Q25,0 50,4 T100,4" stroke="#dc3545" strokeWidth="2" fill="none" />
               </svg>
-            </span>
+            </span>{" "}
+            selling dope shoelaces to buy a beer.
           </h1>
-
-          <p className="font-handwritten text-2xl md:text-3xl text-[#333] mb-12 animate-fade-in-delay max-w-3xl transform rotate-1 leading-relaxed">
-            Creative strategist & copywriter crafting ideas that win hearts — and
-            awards.
-          </p>
 
           <button
             onClick={scrollToWork}
