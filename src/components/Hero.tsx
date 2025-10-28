@@ -28,34 +28,36 @@ const Hero = () => {
       <img 
         src={doodleBeer} 
         alt="" 
-        className="absolute top-20 right-12 w-32 opacity-20 transform rotate-12 pointer-events-none"
+        className="absolute top-20 right-12 w-32 opacity-60 transform rotate-12 pointer-events-none mix-blend-multiply"
       />
       <img 
         src={doodleSneakers} 
         alt="" 
-        className="absolute bottom-32 left-24 w-40 opacity-15 transform -rotate-6 pointer-events-none"
+        className="absolute bottom-32 left-24 w-40 opacity-50 transform -rotate-6 pointer-events-none mix-blend-multiply"
       />
       <img 
         src={doodleShoelaces} 
         alt="" 
-        className="absolute top-1/2 right-32 w-28 opacity-20 transform rotate-45 pointer-events-none"
+        className="absolute top-1/2 right-32 w-28 opacity-60 transform rotate-45 pointer-events-none mix-blend-multiply"
       />
       <img 
         src={doodleBeer} 
         alt="" 
-        className="absolute bottom-20 right-40 w-24 opacity-15 transform -rotate-12 pointer-events-none"
+        className="absolute bottom-20 right-40 w-24 opacity-50 transform -rotate-12 pointer-events-none mix-blend-multiply"
       />
 
       <div className="container mx-auto px-6 relative z-10">
         <div className="max-w-5xl mx-auto text-left pl-12">
-          <h1 className="font-handwritten font-bold text-5xl md:text-7xl lg:text-8xl mb-12 animate-fade-in leading-relaxed text-[#1a1a1a] transform -rotate-1">
-            <span className="text-[#dc3545] inline-block transform rotate-2 relative">
+          <h1 className="font-handwritten font-bold text-5xl md:text-7xl lg:text-8xl mb-12 animate-fade-in leading-relaxed text-[#1a1a1a]">
+            <span className="block text-[#dc3545] transform -rotate-1 relative mb-4">
               Creative copywriter
               <svg className="absolute -bottom-2 left-0 w-full" height="8" viewBox="0 0 100 8" preserveAspectRatio="none">
                 <path d="M0,4 Q25,0 50,4 T100,4" stroke="#dc3545" strokeWidth="2" fill="none" />
               </svg>
-            </span>{" "}
-            selling dope shoelaces to buy a beer.
+            </span>
+            <span className="block transform rotate-1">
+              selling dope shoelaces to buy a beer.
+            </span>
           </h1>
 
           <button
