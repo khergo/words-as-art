@@ -1,6 +1,4 @@
 import { ArrowDown } from "lucide-react";
-import heroImage from "@/assets/hero-shoelaces.jpg";
-import BeerAnimation from "./BeerAnimation";
 
 const Hero = () => {
   const scrollToWork = () => {
@@ -23,15 +21,8 @@ const Hero = () => {
       {/* Red vertical margin line */}
       <div className="absolute left-[80px] top-0 bottom-0 w-[2px] bg-[#dc3545] opacity-60" />
 
-      {/* 3D Beer Animation */}
-      <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-[5]">
-        <div className="w-full max-w-md h-[600px] opacity-40">
-          <BeerAnimation />
-        </div>
-      </div>
-
       <div className="container mx-auto px-6 relative z-10">
-        <div className="max-w-5xl mx-auto text-left ml-24">
+        <div className="max-w-5xl mx-auto text-left pl-12">
           <h1 className="font-handwritten font-bold text-5xl md:text-7xl lg:text-8xl mb-6 animate-fade-in leading-relaxed text-[#1a1a1a] transform -rotate-1">
             Words that make brands{" "}
             <span className="text-[#dc3545] inline-block transform rotate-2 relative">

@@ -48,17 +48,17 @@ const Work = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen relative">
       <Navigation />
 
-      <main className="pt-24">
-        <section className="py-16 bg-secondary">
+      <main className="pt-24 relative z-10">
+        <section className="py-16">
           <div className="container mx-auto px-6">
-            <div className="max-w-6xl mx-auto">
-              <h1 className="font-serif text-5xl md:text-7xl font-bold mb-6 animate-fade-in">
+            <div className="max-w-6xl mx-auto pl-6">
+              <h1 className="font-handwritten text-6xl md:text-8xl font-bold mb-6 animate-fade-in text-[#1a1a1a] transform -rotate-2">
                 Selected Work
               </h1>
-              <p className="text-xl text-muted-foreground max-w-2xl animate-fade-in-delay">
+              <p className="text-2xl font-handwritten text-[#333] max-w-2xl animate-fade-in-delay transform rotate-1">
                 A collection of campaigns, brand stories, and ideas that made
                 people stop, think, and feel something.
               </p>
@@ -68,7 +68,7 @@ const Work = () => {
 
         <section className="py-24">
           <div className="container mx-auto px-6">
-            <div className="max-w-6xl mx-auto">
+            <div className="max-w-6xl mx-auto pl-6">
               <div className="grid md:grid-cols-2 gap-12">
                 {projects.map((project, index) => (
                   <div
@@ -78,19 +78,19 @@ const Work = () => {
                       animation: `fade-in 0.6s ease-out ${index * 0.1}s both`,
                     }}
                   >
-                    <div className="aspect-[16/10] bg-muted mb-6 transition-transform group-hover:scale-[1.02]" />
+                    <div className="aspect-[16/10] bg-[#e8c5a0]/30 mb-6 transition-transform group-hover:scale-[1.02] border-2 border-[#d4a574]" />
                     <div className="flex items-center justify-between mb-3">
-                      <p className="text-xs font-medium text-accent uppercase tracking-wider">
+                      <p className="text-sm font-handwritten font-medium text-[#dc3545] uppercase tracking-wider transform -rotate-1">
                         {project.category}
                       </p>
-                      <p className="text-xs text-muted-foreground">
+                      <p className="text-sm font-handwritten text-[#666] transform rotate-1">
                         {project.year}
                       </p>
                     </div>
-                    <h3 className="font-serif text-3xl font-semibold mb-3 group-hover:text-accent transition-colors">
+                    <h3 className="font-handwritten text-4xl font-semibold mb-3 text-[#1a1a1a] group-hover:text-[#dc3545] transition-colors transform rotate-1">
                       {project.title}
                     </h3>
-                    <p className="text-muted-foreground">
+                    <p className="text-lg font-handwritten text-[#666] transform -rotate-1">
                       {project.description}
                     </p>
                   </div>

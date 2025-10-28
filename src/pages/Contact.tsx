@@ -26,17 +26,17 @@ const Contact = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen relative">
       <Navigation />
 
-      <main className="pt-24">
-        <section className="py-16 bg-secondary">
+      <main className="pt-24 relative z-10">
+        <section className="py-16">
           <div className="container mx-auto px-6">
             <div className="max-w-4xl mx-auto text-center">
-              <h1 className="font-serif text-5xl md:text-7xl font-bold mb-6 animate-fade-in">
+              <h1 className="font-handwritten text-5xl md:text-7xl font-bold mb-6 animate-fade-in text-[#1a1a1a] transform -rotate-1">
                 Let's make something worth talking about.
               </h1>
-              <p className="text-xl text-muted-foreground animate-fade-in-delay">
+              <p className="text-2xl font-handwritten text-[#333] animate-fade-in-delay transform rotate-1">
                 Have a project in mind? Let's chat.
               </p>
             </div>
@@ -45,12 +45,12 @@ const Contact = () => {
 
         <section className="py-24">
           <div className="container mx-auto px-6">
-            <div className="max-w-2xl mx-auto">
+            <div className="max-w-2xl mx-auto pl-6">
               <form onSubmit={handleSubmit} className="space-y-8 animate-slide-up">
                 <div>
                   <label
                     htmlFor="name"
-                    className="block text-sm font-medium mb-2"
+                    className="block text-lg font-handwritten font-medium mb-2 text-[#1a1a1a] transform -rotate-1"
                   >
                     Name
                   </label>
@@ -61,14 +61,14 @@ const Contact = () => {
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 bg-secondary border border-border focus:border-accent focus:outline-none transition-colors"
+                    className="w-full px-4 py-3 bg-[#f5e6d3] border-2 border-[#d4a574] focus:border-[#dc3545] focus:outline-none transition-colors font-handwritten text-lg"
                   />
                 </div>
 
                 <div>
                   <label
                     htmlFor="email"
-                    className="block text-sm font-medium mb-2"
+                    className="block text-lg font-handwritten font-medium mb-2 text-[#1a1a1a] transform rotate-1"
                   >
                     Email
                   </label>
@@ -79,14 +79,14 @@ const Contact = () => {
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 bg-secondary border border-border focus:border-accent focus:outline-none transition-colors"
+                    className="w-full px-4 py-3 bg-[#f5e6d3] border-2 border-[#d4a574] focus:border-[#dc3545] focus:outline-none transition-colors font-handwritten text-lg"
                   />
                 </div>
 
                 <div>
                   <label
                     htmlFor="message"
-                    className="block text-sm font-medium mb-2"
+                    className="block text-lg font-handwritten font-medium mb-2 text-[#1a1a1a] transform -rotate-1"
                   >
                     Message
                   </label>
@@ -97,25 +97,25 @@ const Contact = () => {
                     onChange={handleChange}
                     required
                     rows={6}
-                    className="w-full px-4 py-3 bg-secondary border border-border focus:border-accent focus:outline-none transition-colors resize-none"
+                    className="w-full px-4 py-3 bg-[#f5e6d3] border-2 border-[#d4a574] focus:border-[#dc3545] focus:outline-none transition-colors resize-none font-handwritten text-lg"
                   />
                 </div>
 
                 <button
                   type="submit"
-                  className="w-full py-4 bg-accent text-accent-foreground font-medium hover:scale-[1.02] transition-transform"
+                  className="w-full py-4 bg-[#dc3545] text-white font-handwritten text-xl font-medium hover:scale-[1.02] transition-transform transform -rotate-1 shadow-lg"
                 >
                   Send Message
                 </button>
               </form>
 
               <div className="mt-16 text-center">
-                <p className="text-sm text-muted-foreground mb-2">
+                <p className="text-base font-handwritten text-[#666] mb-2 transform rotate-1">
                   Or reach me directly at
                 </p>
                 <a
                   href="mailto:hello@giorgikhergiani.com"
-                  className="text-lg font-medium text-accent hover:underline"
+                  className="text-xl font-handwritten font-medium text-[#dc3545] hover:underline transform -rotate-1 inline-block"
                 >
                   hello@giorgikhergiani.com
                 </a>
