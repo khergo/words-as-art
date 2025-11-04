@@ -85,7 +85,7 @@ const Work = () => {
                 {projects.map((project, index) => (
                   <div
                     key={project.id}
-                    className="group cursor-pointer"
+                    className="group cursor-pointer text-center"
                     style={{
                       animation: `fade-in 0.6s ease-out ${index * 0.1}s both`,
                     }}
@@ -97,20 +97,23 @@ const Work = () => {
                         className="w-40 h-40 object-contain mix-blend-multiply opacity-80 group-hover:opacity-100 transition-opacity"
                       />
                     </div>
-                    <div className="flex items-center justify-between mb-3">
-                      <p className="text-sm font-handwritten font-medium text-[#dc3545] uppercase tracking-wider transform -rotate-1">
-                        {project.category}
-                      </p>
-                      <p className="text-sm font-handwritten text-[#666] transform rotate-1">
-                        {project.year}
+                    <div className="flex flex-col items-center gap-3">
+                      <div className="flex items-center justify-center gap-3">
+                        <p className="text-sm font-handwritten font-medium text-[#dc3545] uppercase tracking-wider">
+                          {project.category}
+                        </p>
+                        <span className="text-sm font-handwritten text-[#666]">•</span>
+                        <p className="text-sm font-handwritten text-[#666]">
+                          {project.year}
+                        </p>
+                      </div>
+                      <h3 className="font-handwritten text-4xl font-semibold text-[#1a1a1a] group-hover:text-[#dc3545] transition-colors">
+                        {project.title}
+                      </h3>
+                      <p className="text-lg font-handwritten text-[#666]">
+                        {project.description}
                       </p>
                     </div>
-                    <h3 className="font-handwritten text-4xl font-semibold mb-3 text-[#1a1a1a] group-hover:text-[#dc3545] transition-colors transform rotate-1">
-                      {project.title}
-                    </h3>
-                    <p className="text-lg font-handwritten text-[#666] transform -rotate-1">
-                      {project.description}
-                    </p>
                   </div>
                 ))}
               </div>
