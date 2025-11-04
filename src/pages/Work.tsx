@@ -1,5 +1,11 @@
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import iconLightbulb from "@/assets/icon-lightbulb.png";
+import iconRocket from "@/assets/icon-rocket.png";
+import iconStar from "@/assets/icon-star.png";
+import iconPencil from "@/assets/icon-pencil.png";
+import iconHeart from "@/assets/icon-heart.png";
+import iconMegaphone from "@/assets/icon-megaphone.png";
 
 const Work = () => {
   const projects = [
@@ -9,6 +15,7 @@ const Work = () => {
       category: "Campaign Strategy",
       description: "Redefining street culture through bold storytelling",
       year: "2024",
+      icon: iconLightbulb,
     },
     {
       id: 2,
@@ -16,6 +23,7 @@ const Work = () => {
       category: "Brand Voice",
       description: "Emotional connection through music narratives",
       year: "2023",
+      icon: iconRocket,
     },
     {
       id: 3,
@@ -23,6 +31,7 @@ const Work = () => {
       category: "Environmental Campaign",
       description: "Stories that inspire action for the planet",
       year: "2023",
+      icon: iconStar,
     },
     {
       id: 4,
@@ -30,6 +39,7 @@ const Work = () => {
       category: "Content Strategy",
       description: "Celebrating hidden gems and local hosts",
       year: "2024",
+      icon: iconPencil,
     },
     {
       id: 5,
@@ -37,6 +47,7 @@ const Work = () => {
       category: "Product Launch",
       description: "Future of spatial computing, human-first",
       year: "2024",
+      icon: iconHeart,
     },
     {
       id: 6,
@@ -44,6 +55,7 @@ const Work = () => {
       category: "Brand Heritage",
       description: "Every thread tells a story worth keeping",
       year: "2023",
+      icon: iconMegaphone,
     },
   ];
 
@@ -78,7 +90,13 @@ const Work = () => {
                       animation: `fade-in 0.6s ease-out ${index * 0.1}s both`,
                     }}
                   >
-                    <div className="aspect-[16/10] bg-[#e8c5a0]/30 mb-6 transition-transform group-hover:scale-[1.02] border-2 border-[#d4a574]" />
+                    <div className="aspect-[16/10] mb-6 flex items-center justify-center transition-transform group-hover:scale-110 group-hover:rotate-3">
+                      <img 
+                        src={project.icon} 
+                        alt={project.title}
+                        className="w-40 h-40 object-contain mix-blend-multiply opacity-80 group-hover:opacity-100 transition-opacity"
+                      />
+                    </div>
                     <div className="flex items-center justify-between mb-3">
                       <p className="text-sm font-handwritten font-medium text-[#dc3545] uppercase tracking-wider transform -rotate-1">
                         {project.category}
