@@ -1,5 +1,8 @@
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
+import iconLightbulb from "@/assets/icon-lightbulb.png";
+import iconRocket from "@/assets/icon-rocket.png";
+import iconStar from "@/assets/icon-star.png";
 
 const WorkPreview = () => {
   const featuredProjects = [
@@ -8,18 +11,21 @@ const WorkPreview = () => {
       title: "Nike Air Rebellion",
       category: "Campaign Strategy",
       description: "Redefining street culture through bold storytelling",
+      icon: iconLightbulb,
     },
     {
       id: 2,
       title: "Spotify Mood Waves",
       category: "Brand Voice",
       description: "Emotional connection through music narratives",
+      icon: iconRocket,
     },
     {
       id: 3,
       title: "Patagonia Wild Souls",
       category: "Environmental Campaign",
       description: "Stories that inspire action for the planet",
+      icon: iconStar,
     },
   ];
 
@@ -45,14 +51,21 @@ const WorkPreview = () => {
 
           <div className="grid md:grid-cols-3 gap-8">
             {featuredProjects.map((project, index) => (
-              <div
+              <Link
                 key={project.id}
-                className="group cursor-pointer"
+                to="/work"
+                className="group cursor-pointer block"
                 style={{
                   animation: `fade-in 0.6s ease-out ${index * 0.1}s both`,
                 }}
               >
-                <div className="aspect-[4/5] bg-[#e8c5a0]/30 mb-4 transition-transform group-hover:scale-[1.02] border-2 border-[#d4a574]" />
+                <div className="aspect-square mb-4 flex items-center justify-center transition-transform group-hover:scale-110 group-hover:rotate-6">
+                  <img 
+                    src={project.icon} 
+                    alt={project.title}
+                    className="w-32 h-32 object-contain mix-blend-multiply opacity-80 group-hover:opacity-100 transition-opacity"
+                  />
+                </div>
                 <p className="text-sm font-handwritten font-medium text-[#dc3545] mb-2 uppercase tracking-wider transform -rotate-1">
                   {project.category}
                 </p>
@@ -62,7 +75,7 @@ const WorkPreview = () => {
                 <p className="text-base font-handwritten text-[#666] transform -rotate-1">
                   {project.description}
                 </p>
-              </div>
+              </Link>
             ))}
           </div>
 

@@ -1,7 +1,4 @@
 import { ArrowDown } from "lucide-react";
-import doodleBeer from "@/assets/doodle-beer.png";
-import doodleSneakers from "@/assets/doodle-sneakers.png";
-import doodleShoelaces from "@/assets/doodle-shoelaces.png";
 
 const Hero = () => {
   const scrollToWork = () => {
@@ -24,39 +21,29 @@ const Hero = () => {
       {/* Red vertical margin line */}
       <div className="absolute left-[80px] top-0 bottom-0 w-[2px] bg-[#dc3545] opacity-60" />
 
-      {/* Hand-drawn doodles */}
-      <img 
-        src={doodleBeer} 
-        alt="" 
-        className="absolute top-20 right-12 w-32 opacity-60 transform rotate-12 pointer-events-none mix-blend-multiply"
-      />
-      <img 
-        src={doodleSneakers} 
-        alt="" 
-        className="absolute bottom-32 left-24 w-40 opacity-50 transform -rotate-6 pointer-events-none mix-blend-multiply"
-      />
-      <img 
-        src={doodleShoelaces} 
-        alt="" 
-        className="absolute top-1/2 right-32 w-28 opacity-60 transform rotate-45 pointer-events-none mix-blend-multiply"
-      />
-      <img 
-        src={doodleBeer} 
-        alt="" 
-        className="absolute bottom-20 right-40 w-24 opacity-50 transform -rotate-12 pointer-events-none mix-blend-multiply"
-      />
+      {/* Light sketches and scratches - used notebook feel */}
+      <div className="absolute inset-0 opacity-20 pointer-events-none">
+        <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+          <path d="M100,50 Q150,40 200,50" stroke="#666" strokeWidth="1" fill="none" opacity="0.3"/>
+          <path d="M300,100 L350,120 L340,110" stroke="#666" strokeWidth="1" fill="none" opacity="0.3"/>
+          <circle cx="500" cy="80" r="15" stroke="#666" strokeWidth="1" fill="none" opacity="0.3"/>
+          <path d="M700,150 Q750,140 800,150" stroke="#666" strokeWidth="1" fill="none" opacity="0.3"/>
+          <path d="M150,400 L170,420" stroke="#666" strokeWidth="1" fill="none" opacity="0.3"/>
+          <path d="M900,300 Q920,290 940,300" stroke="#666" strokeWidth="1" fill="none" opacity="0.3"/>
+        </svg>
+      </div>
 
       <div className="container mx-auto px-6 relative z-10">
         <div className="max-w-5xl mx-auto text-left pl-12">
           <h1 className="font-handwritten font-bold text-5xl md:text-7xl lg:text-8xl mb-12 animate-fade-in leading-relaxed text-[#1a1a1a]">
-            <span className="block text-[#dc3545] transform -rotate-1 relative mb-4">
-              Creative copywriter
+            <span className="block transform -rotate-1 relative mb-4">
+              The Copywriter
+            </span>
+            <span className="block text-[#dc3545] transform rotate-1 relative">
+              Selling dope shoelaces to buy a beer.
               <svg className="absolute -bottom-2 left-0 w-full" height="8" viewBox="0 0 100 8" preserveAspectRatio="none">
                 <path d="M0,4 Q25,0 50,4 T100,4" stroke="#dc3545" strokeWidth="2" fill="none" />
               </svg>
-            </span>
-            <span className="block transform rotate-1">
-              selling dope shoelaces to buy a beer.
             </span>
           </h1>
 
