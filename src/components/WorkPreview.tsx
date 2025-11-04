@@ -78,27 +78,29 @@ const WorkPreview = () => {
               <Link
                 key={project.id}
                 to="/work"
-                className="group cursor-pointer block"
+                className="group cursor-pointer block text-center"
                 style={{
                   animation: `fade-in 0.6s ease-out ${index * 0.1}s both`,
                 }}
               >
-                <div className="aspect-square mb-4 flex items-center justify-center transition-transform group-hover:scale-110 group-hover:rotate-6">
+                <div className="aspect-square mb-6 flex items-center justify-center transition-transform group-hover:scale-110 group-hover:rotate-6">
                   <img 
                     src={project.icon} 
                     alt={project.title}
                     className="w-32 h-32 object-contain mix-blend-multiply opacity-80 group-hover:opacity-100 transition-opacity"
                   />
                 </div>
-                <p className="text-sm font-handwritten font-medium text-[#dc3545] mb-2 uppercase tracking-wider transform -rotate-1">
-                  {project.category}
-                </p>
-                <h3 className="font-handwritten text-3xl font-semibold mb-2 text-[#1a1a1a] group-hover:text-[#dc3545] transition-colors transform rotate-1">
-                  {project.title}
-                </h3>
-                <p className="text-base font-handwritten text-[#666] transform -rotate-1">
-                  {project.description}
-                </p>
+                <div className="flex flex-col items-center gap-3">
+                  <p className="text-sm font-handwritten font-medium text-[#dc3545] uppercase tracking-wider">
+                    {project.category}
+                  </p>
+                  <h3 className="font-handwritten text-3xl font-semibold text-[#1a1a1a] group-hover:text-[#dc3545] transition-colors">
+                    {project.title}
+                  </h3>
+                  <p className="text-base font-handwritten text-[#666]">
+                    {project.description}
+                  </p>
+                </div>
               </Link>
             ))}
           </div>
