@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import iconLightbulb from "@/assets/icon-lightbulb.png";
@@ -83,9 +84,10 @@ const Work = () => {
             <div className="max-w-6xl mx-auto pl-6">
               <div className="grid md:grid-cols-2 gap-12">
                 {projects.map((project, index) => (
-                  <div
+                  <Link
                     key={project.id}
-                    className="group cursor-pointer text-center"
+                    to={`/work/${project.id}`}
+                    className="group cursor-pointer text-center block"
                     style={{
                       animation: `fade-in 0.6s ease-out ${index * 0.1}s both`,
                     }}
@@ -114,7 +116,7 @@ const Work = () => {
                         {project.description}
                       </p>
                     </div>
-                  </div>
+                  </Link>
                 ))}
               </div>
             </div>

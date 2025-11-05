@@ -77,7 +77,7 @@ const WorkPreview = () => {
             {featuredProjects.map((project, index) => (
               <Link
                 key={project.id}
-                to="/work"
+                to={`/work/${project.id}`}
                 className="group cursor-pointer block text-center"
                 style={{
                   animation: `fade-in 0.6s ease-out ${index * 0.1}s both`,
