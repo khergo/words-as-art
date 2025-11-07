@@ -1,8 +1,8 @@
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useSearchParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
-import { ArrowLeft, Upload, X } from "lucide-react";
+import { ArrowLeft, Upload, X, Edit3 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { supabase } from "@/integrations/supabase/client";
@@ -44,13 +44,25 @@ const getEmbedUrl = (url: string): string | null => {
 
 const ProjectDetail = () => {
   const { projectId } = useParams();
+  const [searchParams, setSearchParams] = useSearchParams();
   const { toast } = useToast();
+  const [editMode, setEditMode] = useState(searchParams.get('edit') === 'true');
   const [videoUrl, setVideoUrl] = useState("");
   const [embedUrl, setEmbedUrl] = useState<string | null>(null);
   const [photoUrls, setPhotoUrls] = useState<string[]>([]);
   const [notes, setNotes] = useState("");
   const [uploading, setUploading] = useState(false);
   const [loading, setLoading] = useState(true);
+
+  const toggleEditMode = () => {
+    const newEditMode = !editMode;
+    setEditMode(newEditMode);
+    if (newEditMode) {
+      setSearchParams({ edit: 'true' });
+    } else {
+      setSearchParams({});
+    }
+  };
 
   const projects = [
     {
@@ -270,13 +282,24 @@ const ProjectDetail = () => {
 
         <div className="container mx-auto px-6 relative z-10">
           <div className="max-w-4xl mx-auto pl-6">
-            <Link
-              to="/work"
-              className="inline-flex items-center gap-2 text-lg font-handwritten text-[#666] hover:text-[#1a1a1a] transition-colors mb-8 group"
-            >
-              <ArrowLeft size={20} className="transition-transform group-hover:-translate-x-1" />
-              Back to Work
-            </Link>
+            <div className="flex items-center justify-between mb-8">
+              <Link
+                to="/work"
+                className="inline-flex items-center gap-2 text-lg font-handwritten text-[#666] hover:text-[#1a1a1a] transition-colors group"
+              >
+                <ArrowLeft size={20} className="transition-transform group-hover:-translate-x-1" />
+                Back to Work
+              </Link>
+              
+              <Button
+                onClick={toggleEditMode}
+                variant={editMode ? "default" : "outline"}
+                className="font-handwritten border-2 border-[#1a1a1a] shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:shadow-none transition-all"
+              >
+                <Edit3 size={16} className="mr-2" />
+                {editMode ? "Exit Editor" : "Edit Mode"}
+              </Button>
+            </div>
 
             <div className="text-center mb-12">
               <div className="flex items-center justify-center mb-8">
@@ -320,29 +343,31 @@ const ProjectDetail = () => {
                 Project Media
               </h2>
               
-              {/* Video Embed Section */}
-              <div className="mb-6">
-                <label className="font-handwritten text-lg font-medium text-[#1a1a1a] mb-2 block">
-                  Embed Video (YouTube, Vimeo, or Google Drive)
-                </label>
-                <div className="flex gap-2">
-                  <Input
-                    type="text"
-                    value={videoUrl}
-                    onChange={(e) => setVideoUrl(e.target.value)}
-                    placeholder="Paste video URL here..."
-                    className="font-handwritten border-2 border-[#1a1a1a] bg-white focus:border-[#dc3545]"
-                  />
-                  <Button
-                    onClick={handleVideoUrlSubmit}
-                    className="font-handwritten bg-[#dc3545] hover:bg-[#c82333] text-white border-2 border-[#1a1a1a] shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:shadow-none transition-all whitespace-nowrap"
-                  >
-                    Embed Video
-                  </Button>
+              {/* Video Editor Section - Only visible in edit mode */}
+              {editMode && (
+                <div className="mb-6 p-4 bg-yellow-50 border-2 border-yellow-300 rounded-lg">
+                  <label className="font-handwritten text-lg font-medium text-[#1a1a1a] mb-2 block">
+                    Embed Video (YouTube, Vimeo, or Google Drive)
+                  </label>
+                  <div className="flex gap-2">
+                    <Input
+                      type="text"
+                      value={videoUrl}
+                      onChange={(e) => setVideoUrl(e.target.value)}
+                      placeholder="Paste video URL here..."
+                      className="font-handwritten border-2 border-[#1a1a1a] bg-white focus:border-[#dc3545]"
+                    />
+                    <Button
+                      onClick={handleVideoUrlSubmit}
+                      className="font-handwritten bg-[#dc3545] hover:bg-[#c82333] text-white border-2 border-[#1a1a1a] shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:shadow-none transition-all whitespace-nowrap"
+                    >
+                      Embed Video
+                    </Button>
+                  </div>
                 </div>
-              </div>
+              )}
 
-              {/* Embedded Video Display */}
+              {/* Embedded Video Display - Always visible if exists */}
               {embedUrl && (
                 <div className="mb-6">
                   <div className="relative w-full pt-[56.25%] border-2 border-[#1a1a1a] rounded-lg overflow-hidden">
@@ -351,44 +376,47 @@ const ProjectDetail = () => {
                       className="absolute top-0 left-0 w-full h-full"
                       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                       allowFullScreen
+                      title="Project video"
                     />
                   </div>
                 </div>
               )}
 
-              {/* Photo Upload Section */}
-              <div className="mb-6">
-                <label className="font-handwritten text-lg font-medium text-[#1a1a1a] mb-2 block">
-                  Upload Photos
-                </label>
-                <div className="border-2 border-dashed border-[#666] rounded-lg p-8 text-center">
-                  <Upload className="w-12 h-12 mx-auto mb-3 text-[#666]" />
-                  <p className="font-handwritten text-base text-[#666] mb-3">
-                    {uploading ? "Uploading..." : "Click to upload photos"}
-                  </p>
-                  <Input
-                    type="file"
-                    accept="image/*"
-                    multiple
-                    onChange={handlePhotoUpload}
-                    disabled={uploading}
-                    className="hidden"
-                    id="photo-upload"
-                  />
-                  <label htmlFor="photo-upload">
-                    <Button
-                      variant="outline"
-                      className="font-handwritten border-2 border-[#1a1a1a] bg-white hover:bg-[#dc3545] hover:text-white hover:border-[#dc3545] transition-all shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:shadow-none"
-                      disabled={uploading}
-                      asChild
-                    >
-                      <span className="cursor-pointer">Choose Photos</span>
-                    </Button>
+              {/* Photo Upload Section - Only visible in edit mode */}
+              {editMode && (
+                <div className="mb-6 p-4 bg-yellow-50 border-2 border-yellow-300 rounded-lg">
+                  <label className="font-handwritten text-lg font-medium text-[#1a1a1a] mb-2 block">
+                    Upload Photos
                   </label>
+                  <div className="border-2 border-dashed border-[#666] rounded-lg p-8 text-center bg-white">
+                    <Upload className="w-12 h-12 mx-auto mb-3 text-[#666]" />
+                    <p className="font-handwritten text-base text-[#666] mb-3">
+                      {uploading ? "Uploading..." : "Click to upload photos"}
+                    </p>
+                    <Input
+                      type="file"
+                      accept="image/*"
+                      multiple
+                      onChange={handlePhotoUpload}
+                      disabled={uploading}
+                      className="hidden"
+                      id="photo-upload"
+                    />
+                    <label htmlFor="photo-upload">
+                      <Button
+                        variant="outline"
+                        className="font-handwritten border-2 border-[#1a1a1a] bg-white hover:bg-[#dc3545] hover:text-white hover:border-[#dc3545] transition-all shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:shadow-none"
+                        disabled={uploading}
+                        asChild
+                      >
+                        <span className="cursor-pointer">Choose Photos</span>
+                      </Button>
+                    </label>
+                  </div>
                 </div>
-              </div>
+              )}
 
-              {/* Uploaded Photos Display */}
+              {/* Uploaded Photos Display - Always visible if exists */}
               {photoUrls.length > 0 && (
                 <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
                   {photoUrls.map((url, index) => (
@@ -398,35 +426,46 @@ const ProjectDetail = () => {
                         alt={`Project photo ${index + 1}`}
                         className="w-full h-40 object-cover rounded-lg border-2 border-[#1a1a1a]"
                       />
-                      <button
-                        onClick={() => removePhoto(url)}
-                        className="absolute top-2 right-2 bg-[#dc3545] text-white p-1 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"
-                      >
-                        <X size={16} />
-                      </button>
+                      {editMode && (
+                        <button
+                          onClick={() => removePhoto(url)}
+                          className="absolute top-2 right-2 bg-[#dc3545] text-white p-1 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"
+                          aria-label="Remove photo"
+                        >
+                          <X size={16} />
+                        </button>
+                      )}
                     </div>
                   ))}
                 </div>
               )}
+
+              {!editMode && !embedUrl && photoUrls.length === 0 && (
+                <p className="font-handwritten text-lg text-[#666] text-center py-8">
+                  No media available for this project yet.
+                </p>
+              )}
             </div>
 
-            <div className="bg-white/60 backdrop-blur-sm rounded-lg p-8 border-2 border-[#1a1a1a] shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transform -rotate-1">
-              <h2 className="font-handwritten text-3xl font-bold mb-6 text-[#1a1a1a]">
-                Additional Notes
-              </h2>
-              <textarea
-                value={notes}
-                onChange={(e) => setNotes(e.target.value)}
-                className="w-full min-h-[200px] p-4 font-handwritten text-lg border-2 border-[#666] rounded-lg bg-white/80 focus:outline-none focus:border-[#dc3545] transition-colors resize-none"
-                placeholder="Add your project notes, insights, or additional details here..."
-              />
-              <Button
-                onClick={saveProjectMedia}
-                className="mt-4 font-handwritten bg-[#dc3545] hover:bg-[#c82333] text-white border-2 border-[#1a1a1a] shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:shadow-none transition-all"
-              >
-                Save Notes
-              </Button>
-            </div>
+            {editMode && (
+              <div className="bg-white/60 backdrop-blur-sm rounded-lg p-8 border-2 border-[#1a1a1a] shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transform -rotate-1">
+                <h2 className="font-handwritten text-3xl font-bold mb-6 text-[#1a1a1a]">
+                  Additional Notes (Editor Only)
+                </h2>
+                <textarea
+                  value={notes}
+                  onChange={(e) => setNotes(e.target.value)}
+                  className="w-full min-h-[200px] p-4 font-handwritten text-lg border-2 border-[#666] rounded-lg bg-white/80 focus:outline-none focus:border-[#dc3545] transition-colors resize-none"
+                  placeholder="Add your project notes, insights, or additional details here..."
+                />
+                <Button
+                  onClick={saveProjectMedia}
+                  className="mt-4 font-handwritten bg-[#dc3545] hover:bg-[#c82333] text-white border-2 border-[#1a1a1a] shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:shadow-none transition-all"
+                >
+                  Save Notes
+                </Button>
+              </div>
+            )}
           </div>
         </div>
       </main>
