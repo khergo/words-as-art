@@ -1,18 +1,15 @@
-import { useParams, Link, useSearchParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
-import { ArrowLeft, Upload, X, Edit3 } from "lucide-react";
+import { ArrowLeft, Upload, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
-import iconLightbulb from "@/assets/icon-lightbulb.png";
-import iconRocket from "@/assets/icon-rocket.png";
-import iconStar from "@/assets/icon-star.png";
-import iconPencil from "@/assets/icon-pencil.png";
-import iconHeart from "@/assets/icon-heart.png";
-import iconMegaphone from "@/assets/icon-megaphone.png";
+import { EditableText } from "@/components/EditableText";
+import { EditableImage } from "@/components/EditableImage";
+import { useEdit } from "@/contexts/EditContext";
 
 // Helper function to convert video URLs to embeddable format
 const getEmbedUrl = (url: string): string | null => {
@@ -42,11 +39,21 @@ const getEmbedUrl = (url: string): string | null => {
   return url;
 };
 
+interface Project {
+  id: number;
+  title: string;
+  category: string;
+  description: string;
+  year: string;
+  icon_url: string;
+  full_description: string;
+}
+
 const ProjectDetail = () => {
   const { projectId } = useParams();
-  const [searchParams, setSearchParams] = useSearchParams();
   const { toast } = useToast();
-  const [editMode, setEditMode] = useState(searchParams.get('edit') === 'true');
+  const { editMode } = useEdit();
+  const [project, setProject] = useState<Project | null>(null);
   const [videoUrl, setVideoUrl] = useState("");
   const [embedUrl, setEmbedUrl] = useState<string | null>(null);
   const [photoUrls, setPhotoUrls] = useState<string[]>([]);
@@ -54,74 +61,26 @@ const ProjectDetail = () => {
   const [uploading, setUploading] = useState(false);
   const [loading, setLoading] = useState(true);
 
-  const toggleEditMode = () => {
-    const newEditMode = !editMode;
-    setEditMode(newEditMode);
-    if (newEditMode) {
-      setSearchParams({ edit: 'true' });
-    } else {
-      setSearchParams({});
-    }
-  };
+  // Load project data
+  useEffect(() => {
+    const loadProject = async () => {
+      if (!projectId) return;
 
-  const projects = [
-    {
-      id: 1,
-      title: "Nike Air Rebellion",
-      category: "Campaign Strategy",
-      description: "Redefining street culture through bold storytelling",
-      year: "2024",
-      icon: iconLightbulb,
-      fullDescription: "A comprehensive campaign that redefined how Nike connects with urban youth culture. Through authentic storytelling and community engagement, we created a movement that resonated across social platforms.",
-    },
-    {
-      id: 2,
-      title: "Spotify Mood Waves",
-      category: "Brand Voice",
-      description: "Emotional connection through music narratives",
-      year: "2023",
-      icon: iconRocket,
-      fullDescription: "Developed a brand voice strategy that transformed how Spotify communicates with listeners. By focusing on emotional connections and personal music journeys, we deepened user engagement.",
-    },
-    {
-      id: 3,
-      title: "Patagonia Wild Souls",
-      category: "Environmental Campaign",
-      description: "Stories that inspire action for the planet",
-      year: "2023",
-      icon: iconStar,
-      fullDescription: "An environmental campaign that inspired thousands to take action. Through powerful storytelling and grassroots engagement, we amplified Patagonia's mission to protect our planet.",
-    },
-    {
-      id: 4,
-      title: "Airbnb Local Legends",
-      category: "Content Strategy",
-      description: "Celebrating hidden gems and local hosts",
-      year: "2024",
-      icon: iconPencil,
-      fullDescription: "A content strategy that highlighted the unique stories of Airbnb hosts around the world. We celebrated local culture and created authentic connections between travelers and communities.",
-    },
-    {
-      id: 5,
-      title: "Apple Vision Dreams",
-      category: "Product Launch",
-      description: "Future of spatial computing, human-first",
-      year: "2024",
-      icon: iconHeart,
-      fullDescription: "Led the product launch narrative for Apple's revolutionary spatial computing device. We focused on human-centered stories that made futuristic technology feel accessible and inspiring.",
-    },
-    {
-      id: 6,
-      title: "Levi's Worn Stories",
-      category: "Brand Heritage",
-      description: "Every thread tells a story worth keeping",
-      year: "2023",
-      icon: iconMegaphone,
-      fullDescription: "Celebrated Levi's rich heritage through personal stories of beloved worn denim. Each piece became a chapter in a larger narrative about sustainability, memory, and timeless style.",
-    },
-  ];
+      const { data, error } = await supabase
+        .from('projects')
+        .select('*')
+        .eq('id', Number(projectId))
+        .maybeSingle();
 
-  const project = projects.find((p) => p.id === Number(projectId));
+      if (error) {
+        console.error('Error loading project:', error);
+      } else if (data) {
+        setProject(data);
+      }
+    };
+
+    loadProject();
+  }, [projectId]);
 
   // Load project media from database
   useEffect(() => {
@@ -241,6 +200,30 @@ const ProjectDetail = () => {
     setTimeout(saveProjectMedia, 100);
   };
 
+  // Update project field
+  const updateProject = async (field: string, value: string) => {
+    if (!projectId || !project) return;
+
+    const { error } = await supabase
+      .from('projects')
+      .update({ [field]: value })
+      .eq('id', Number(projectId));
+
+    if (!error) {
+      setProject({ ...project, [field]: value });
+      toast({
+        title: "Saved!",
+        description: "Project updated successfully.",
+      });
+    } else {
+      toast({
+        title: "Error",
+        description: "Could not update project.",
+        variant: "destructive",
+      });
+    }
+  };
+
   if (!project) {
     return (
       <div className="min-h-screen relative">
@@ -282,7 +265,7 @@ const ProjectDetail = () => {
 
         <div className="container mx-auto px-6 relative z-10">
           <div className="max-w-4xl mx-auto pl-6">
-            <div className="flex items-center justify-between mb-8">
+            <div className="mb-8">
               <Link
                 to="/work"
                 className="inline-flex items-center gap-2 text-lg font-handwritten text-[#666] hover:text-[#1a1a1a] transition-colors group"
@@ -290,52 +273,61 @@ const ProjectDetail = () => {
                 <ArrowLeft size={20} className="transition-transform group-hover:-translate-x-1" />
                 Back to Work
               </Link>
-              
-              <Button
-                onClick={toggleEditMode}
-                variant={editMode ? "default" : "outline"}
-                className="font-handwritten border-2 border-[#1a1a1a] shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:shadow-none transition-all"
-              >
-                <Edit3 size={16} className="mr-2" />
-                {editMode ? "Exit Editor" : "Edit Mode"}
-              </Button>
             </div>
 
             <div className="text-center mb-12">
               <div className="flex items-center justify-center mb-8">
-                <img
-                  src={project.icon}
+                <EditableImage
+                  src={project.icon_url}
                   alt={project.title}
+                  onSave={(url) => updateProject('icon_url', url)}
                   className="w-48 h-48 object-contain mix-blend-multiply opacity-80"
+                  folder={`project-${projectId}`}
                 />
               </div>
 
               <div className="flex items-center justify-center gap-3 mb-4">
-                <p className="text-sm font-handwritten font-medium text-[#dc3545] uppercase tracking-wider">
-                  {project.category}
-                </p>
+                <EditableText
+                  value={project.category}
+                  onSave={(value) => updateProject('category', value)}
+                  className="text-sm font-handwritten font-medium text-[#dc3545] uppercase tracking-wider"
+                  as="p"
+                />
                 <span className="text-sm font-handwritten text-[#666]">•</span>
-                <p className="text-sm font-handwritten text-[#666]">
-                  {project.year}
-                </p>
+                <EditableText
+                  value={project.year}
+                  onSave={(value) => updateProject('year', value)}
+                  className="text-sm font-handwritten text-[#666]"
+                  as="p"
+                />
               </div>
 
-              <h1 className="font-handwritten text-5xl md:text-7xl font-bold mb-6 text-[#1a1a1a] transform -rotate-1">
-                {project.title}
-              </h1>
+              <EditableText
+                value={project.title}
+                onSave={(value) => updateProject('title', value)}
+                className="font-handwritten text-5xl md:text-7xl font-bold mb-6 text-[#1a1a1a] transform -rotate-1"
+                as="h1"
+              />
 
-              <p className="text-xl font-handwritten text-[#666] mb-8 transform rotate-1">
-                {project.description}
-              </p>
+              <EditableText
+                value={project.description}
+                onSave={(value) => updateProject('description', value)}
+                className="text-xl font-handwritten text-[#666] mb-8 transform rotate-1"
+                as="p"
+              />
             </div>
 
             <div className="bg-white/60 backdrop-blur-sm rounded-lg p-8 mb-8 border-2 border-[#1a1a1a] shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transform -rotate-1">
               <h2 className="font-handwritten text-3xl font-bold mb-4 text-[#1a1a1a]">
                 About This Project
               </h2>
-              <p className="font-handwritten text-lg text-[#333] leading-relaxed">
-                {project.fullDescription}
-              </p>
+              <EditableText
+                value={project.full_description}
+                onSave={(value) => updateProject('full_description', value)}
+                className="font-handwritten text-lg text-[#333] leading-relaxed"
+                as="p"
+                multiline
+              />
             </div>
 
             <div className="bg-white/60 backdrop-blur-sm rounded-lg p-8 mb-8 border-2 border-[#1a1a1a] shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transform rotate-1">

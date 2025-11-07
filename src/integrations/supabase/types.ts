@@ -14,6 +14,36 @@ export type Database = {
   }
   public: {
     Tables: {
+      page_content: {
+        Row: {
+          content_type: string
+          content_value: string
+          created_at: string | null
+          id: string
+          page_name: string
+          section_key: string
+          updated_at: string | null
+        }
+        Insert: {
+          content_type: string
+          content_value: string
+          created_at?: string | null
+          id?: string
+          page_name: string
+          section_key: string
+          updated_at?: string | null
+        }
+        Update: {
+          content_type?: string
+          content_value?: string
+          created_at?: string | null
+          id?: string
+          page_name?: string
+          section_key?: string
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
       project_media: {
         Row: {
           created_at: string
@@ -41,6 +71,42 @@ export type Database = {
           project_id?: number
           updated_at?: string
           video_url?: string | null
+        }
+        Relationships: []
+      }
+      projects: {
+        Row: {
+          category: string
+          created_at: string | null
+          description: string
+          full_description: string
+          icon_url: string
+          id: number
+          title: string
+          updated_at: string | null
+          year: string
+        }
+        Insert: {
+          category: string
+          created_at?: string | null
+          description: string
+          full_description: string
+          icon_url: string
+          id: number
+          title: string
+          updated_at?: string | null
+          year: string
+        }
+        Update: {
+          category?: string
+          created_at?: string | null
+          description?: string
+          full_description?: string
+          icon_url?: string
+          id?: number
+          title?: string
+          updated_at?: string | null
+          year?: string
         }
         Relationships: []
       }

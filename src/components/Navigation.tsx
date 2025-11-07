@@ -1,6 +1,7 @@
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
+import { EditModeToggle } from "./EditModeToggle";
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -38,6 +39,7 @@ const Navigation = () => {
                 {link.name}
               </Link>
             ))}
+            <EditModeToggle />
           </div>
 
           {/* Mobile Menu Button */}
@@ -66,6 +68,9 @@ const Navigation = () => {
                 {link.name}
               </Link>
             ))}
+            <div className="pt-3">
+              <EditModeToggle />
+            </div>
           </div>
         )}
       </div>
