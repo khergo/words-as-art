@@ -410,21 +410,22 @@ const ProjectDetail = () => {
 
               {/* Uploaded Photos Display - Always visible if exists */}
               {photoUrls.length > 0 && (
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="space-y-6">
                   {photoUrls.map((url, index) => (
-                    <div key={index} className="relative group">
+                    <div key={index} className="relative group flex justify-center">
                       <img
                         src={url}
                         alt={`Project photo ${index + 1}`}
-                        className="w-full object-contain rounded-lg border-2 border-[#1a1a1a]"
+                        className="max-w-full h-auto object-contain rounded-lg border-2 border-[#1a1a1a] shadow-md"
+                        loading="lazy"
                       />
                       {editMode && (
                         <button
                           onClick={() => removePhoto(url)}
-                          className="absolute top-2 right-2 bg-[#dc3545] text-white p-1 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"
+                          className="absolute top-2 right-2 bg-[#dc3545] text-white p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity shadow-lg hover:bg-[#c82333]"
                           aria-label="Remove photo"
                         >
-                          <X size={16} />
+                          <X size={20} />
                         </button>
                       )}
                     </div>
