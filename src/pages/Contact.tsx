@@ -2,6 +2,9 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { useState } from "react";
 import { toast } from "sonner";
+import { useQuery } from "@tanstack/react-query";
+import { supabase } from "@/integrations/supabase/client";
+import { EditableText } from "@/components/EditableText";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -9,6 +12,34 @@ const Contact = () => {
     email: "",
     message: "",
   });
+
+  const { data: pageContent } = useQuery({
+    queryKey: ['page-content', 'contact'],
+    queryFn: async () => {
+      const { data, error } = await supabase
+        .from('page_content')
+        .select('*')
+        .eq('page_name', 'contact');
+      if (error) throw error;
+      return data;
+    },
+  });
+
+  const getContent = (sectionKey: string) => {
+    return pageContent?.find(item => item.section_key === sectionKey)?.content_value || '';
+  };
+
+  const updateContent = async (sectionKey: string, value: string) => {
+    const content = pageContent?.find(item => item.section_key === sectionKey);
+    if (!content) return;
+
+    const { error } = await supabase
+      .from('page_content')
+      .update({ content_value: value })
+      .eq('id', content.id);
+    
+    if (error) throw error;
+  };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -33,12 +64,18 @@ const Contact = () => {
         <section className="py-16">
           <div className="container mx-auto px-6">
             <div className="max-w-4xl mx-auto text-center">
-              <h1 className="font-handwritten text-5xl md:text-7xl font-bold mb-6 animate-fade-in text-[#1a1a1a] transform -rotate-1">
-                Let's make something worth talking about.
-              </h1>
-              <p className="text-2xl font-handwritten text-[#333] animate-fade-in-delay transform rotate-1">
-                Have a project in mind? Let's chat.
-              </p>
+              <EditableText
+                value={getContent('title')}
+                onSave={(value) => updateContent('title', value)}
+                as="h1"
+                className="font-handwritten text-5xl md:text-7xl font-bold mb-6 animate-fade-in text-[#1a1a1a] transform -rotate-1"
+              />
+              <EditableText
+                value={getContent('subtitle')}
+                onSave={(value) => updateContent('subtitle', value)}
+                as="p"
+                className="text-2xl font-handwritten text-[#333] animate-fade-in-delay transform rotate-1"
+              />
             </div>
           </div>
         </section>
@@ -110,14 +147,22 @@ const Contact = () => {
               </form>
 
               <div className="mt-16 text-center">
-                <p className="text-base font-handwritten text-[#666] mb-2 transform rotate-1">
-                  Or reach me directly at
-                </p>
+                <EditableText
+                  value={getContent('direct_contact_text')}
+                  onSave={(value) => updateContent('direct_contact_text', value)}
+                  as="p"
+                  className="text-base font-handwritten text-[#666] mb-2 transform rotate-1"
+                />
                 <a
-                  href="mailto:hello@giorgikhergiani.com"
+                  href={`mailto:${getContent('email')}`}
                   className="text-xl font-handwritten font-medium text-[#dc3545] hover:underline transform -rotate-1 inline-block"
                 >
-                  hello@giorgikhergiani.com
+                  <EditableText
+                    value={getContent('email')}
+                    onSave={(value) => updateContent('email', value)}
+                    as="span"
+                    className="text-xl font-handwritten font-medium text-[#dc3545]"
+                  />
                 </a>
               </div>
             </div>

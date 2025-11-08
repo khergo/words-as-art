@@ -1,8 +1,43 @@
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Award } from "lucide-react";
+import { useQuery } from "@tanstack/react-query";
+import { supabase } from "@/integrations/supabase/client";
+import { EditableText } from "@/components/EditableText";
+import { EditableImage } from "@/components/EditableImage";
+import { useEdit } from "@/contexts/EditContext";
 
 const About = () => {
+  const { editMode } = useEdit();
+  
+  const { data: pageContent } = useQuery({
+    queryKey: ['page-content', 'about'],
+    queryFn: async () => {
+      const { data, error } = await supabase
+        .from('page_content')
+        .select('*')
+        .eq('page_name', 'about');
+      if (error) throw error;
+      return data;
+    },
+  });
+
+  const getContent = (sectionKey: string) => {
+    return pageContent?.find(item => item.section_key === sectionKey)?.content_value || '';
+  };
+
+  const updateContent = async (sectionKey: string, value: string) => {
+    const content = pageContent?.find(item => item.section_key === sectionKey);
+    if (!content) return;
+
+    const { error } = await supabase
+      .from('page_content')
+      .update({ content_value: value })
+      .eq('id', content.id);
+    
+    if (error) throw error;
+  };
+
   const awards = [
     { year: "2024", title: "Cannes Lions Gold", category: "Creative Strategy" },
     { year: "2023", title: "D&AD Pencil", category: "Copywriting" },
@@ -19,9 +54,12 @@ const About = () => {
         <section className="py-16">
           <div className="container mx-auto px-6">
             <div className="max-w-4xl mx-auto pl-6">
-              <h1 className="font-handwritten text-6xl md:text-8xl font-bold mb-8 animate-fade-in text-[#1a1a1a] transform -rotate-2">
-                About Me
-              </h1>
+              <EditableText
+                value={getContent('title')}
+                onSave={(value) => updateContent('title', value)}
+                as="h1"
+                className="font-handwritten text-6xl md:text-8xl font-bold mb-8 animate-fade-in text-[#1a1a1a] transform -rotate-2"
+              />
             </div>
           </div>
         </section>
@@ -31,43 +69,98 @@ const About = () => {
             <div className="max-w-4xl mx-auto pl-6">
               <div className="grid md:grid-cols-5 gap-12 mb-20">
                 <div className="md:col-span-2">
-                  <div className="aspect-[3/4] bg-[#e8c5a0]/30 animate-fade-in border-2 border-[#d4a574]" />
+                  {getContent('profile_image') ? (
+                    <EditableImage
+                      src={getContent('profile_image')}
+                      alt="Profile photo"
+                      onSave={(url) => updateContent('profile_image', url)}
+                      className="w-full aspect-[3/4] object-contain animate-fade-in border-2 border-[#d4a574] rounded-lg"
+                      bucketName="project-photos"
+                      folder="about"
+                    />
+                  ) : (
+                    <div 
+                      className={`aspect-[3/4] bg-[#e8c5a0]/30 animate-fade-in border-2 border-[#d4a574] flex items-center justify-center ${editMode ? 'cursor-pointer hover:bg-[#e8c5a0]/50' : ''}`}
+                      onClick={() => editMode && document.getElementById('profile-upload')?.click()}
+                    >
+                      {editMode && (
+                        <>
+                          <span className="font-handwritten text-lg text-[#666]">Click to upload image or GIF</span>
+                          <input
+                            id="profile-upload"
+                            type="file"
+                            accept="image/*"
+                            className="hidden"
+                            onChange={async (e) => {
+                              const file = e.target.files?.[0];
+                              if (!file) return;
+                              
+                              const fileExt = file.name.split('.').pop();
+                              const fileName = `about/${Date.now()}_${Math.random()}.${fileExt}`;
+                              
+                              const { error: uploadError } = await supabase.storage
+                                .from('project-photos')
+                                .upload(fileName, file);
+                              
+                              if (uploadError) throw uploadError;
+                              
+                              const { data: { publicUrl } } = supabase.storage
+                                .from('project-photos')
+                                .getPublicUrl(fileName);
+                              
+                              await updateContent('profile_image', publicUrl);
+                            }}
+                          />
+                        </>
+                      )}
+                    </div>
+                  )}
                 </div>
 
                 <div className="md:col-span-3 space-y-6 animate-fade-in-delay">
-                  <p className="text-2xl font-handwritten leading-relaxed text-[#1a1a1a] transform -rotate-1">
-                    I'm a creative copywriter and strategist who believes great
-                    words can change how people see the world — and themselves.
-                  </p>
+                  <EditableText
+                    value={getContent('intro')}
+                    onSave={(value) => updateContent('intro', value)}
+                    as="p"
+                    className="text-2xl font-handwritten leading-relaxed text-[#1a1a1a] transform -rotate-1"
+                    multiline
+                  />
 
-                  <p className="text-xl font-handwritten leading-relaxed text-[#666] transform rotate-1">
-                    Over the past decade, I've worked with brands like Nike,
-                    Spotify, Apple, and Patagonia to create campaigns that don't
-                    just sell products — they tell stories, spark movements, and
-                    win awards.
-                  </p>
+                  <EditableText
+                    value={getContent('paragraph_1')}
+                    onSave={(value) => updateContent('paragraph_1', value)}
+                    as="p"
+                    className="text-xl font-handwritten leading-relaxed text-[#666] transform rotate-1"
+                    multiline
+                  />
 
-                  <p className="text-xl font-handwritten leading-relaxed text-[#666] transform -rotate-1">
-                    My approach is simple: understand the human truth, find the
-                    unexpected angle, and craft words that feel like they were
-                    meant to be said. Whether it's a 15-second film script or a
-                    brand manifesto, I write to make people feel something real.
-                  </p>
+                  <EditableText
+                    value={getContent('paragraph_2')}
+                    onSave={(value) => updateContent('paragraph_2', value)}
+                    as="p"
+                    className="text-xl font-handwritten leading-relaxed text-[#666] transform -rotate-1"
+                    multiline
+                  />
 
-                  <p className="text-xl font-handwritten leading-relaxed text-[#666] transform rotate-1">
-                    When I'm not writing campaigns, you'll find me reading
-                    fiction, collecting vintage posters, or arguing that the best
-                    ads are the ones you remember without trying.
-                  </p>
+                  <EditableText
+                    value={getContent('paragraph_3')}
+                    onSave={(value) => updateContent('paragraph_3', value)}
+                    as="p"
+                    className="text-xl font-handwritten leading-relaxed text-[#666] transform rotate-1"
+                    multiline
+                  />
                 </div>
               </div>
 
               <div className="border-t-2 border-[#d4a574] pt-16 animate-slide-up">
                 <div className="flex items-center gap-3 mb-12">
                   <Award className="text-[#dc3545]" size={32} />
-                  <h2 className="font-handwritten text-5xl font-bold text-[#1a1a1a] transform -rotate-1">
-                    Awards & Recognition
-                  </h2>
+                  <EditableText
+                    value={getContent('awards_title')}
+                    onSave={(value) => updateContent('awards_title', value)}
+                    as="h2"
+                    className="font-handwritten text-5xl font-bold text-[#1a1a1a] transform -rotate-1"
+                  />
                 </div>
 
                 <div className="space-y-6">
