@@ -63,8 +63,8 @@ export const EditableImage = ({
   };
 
   return (
-    <div className={`relative group ${className}`}>
-      <img src={src} alt={alt} className="w-full h-full object-cover" />
+    <div className="relative group">
+      <img src={src} alt={alt} className={className} />
       
       {editMode && (
         <>

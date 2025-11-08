@@ -281,7 +281,7 @@ const ProjectDetail = () => {
                   src={project.icon_url}
                   alt={project.title}
                   onSave={(url) => updateProject('icon_url', url)}
-                  className="w-48 h-48 object-contain mix-blend-multiply opacity-80"
+                  className="w-full max-w-sm object-contain mix-blend-multiply opacity-80"
                   folder={`project-${projectId}`}
                 />
               </div>
@@ -410,13 +410,13 @@ const ProjectDetail = () => {
 
               {/* Uploaded Photos Display - Always visible if exists */}
               {photoUrls.length > 0 && (
-                <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   {photoUrls.map((url, index) => (
                     <div key={index} className="relative group">
                       <img
                         src={url}
                         alt={`Project photo ${index + 1}`}
-                        className="w-full h-40 object-cover rounded-lg border-2 border-[#1a1a1a]"
+                        className="w-full object-contain rounded-lg border-2 border-[#1a1a1a]"
                       />
                       {editMode && (
                         <button
