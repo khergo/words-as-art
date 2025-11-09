@@ -1,33 +1,46 @@
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
-import iconLightbulb from "@/assets/icon-lightbulb.png";
-import iconRocket from "@/assets/icon-rocket.png";
-import iconStar from "@/assets/icon-star.png";
+import { useEffect, useState } from "react";
+import { supabase } from "@/integrations/supabase/client";
+
+interface Project {
+  id: number;
+  title: string;
+  category: string;
+  description: string;
+  icon_url: string;
+}
 
 const WorkPreview = () => {
-  const featuredProjects = [
-    {
-      id: 1,
-      title: "Nike Air Rebellion",
-      category: "Campaign Strategy",
-      description: "Redefining street culture through bold storytelling",
-      icon: iconLightbulb,
-    },
-    {
-      id: 2,
-      title: "Spotify Mood Waves",
-      category: "Brand Voice",
-      description: "Emotional connection through music narratives",
-      icon: iconRocket,
-    },
-    {
-      id: 3,
-      title: "Patagonia Wild Souls",
-      category: "Environmental Campaign",
-      description: "Stories that inspire action for the planet",
-      icon: iconStar,
-    },
-  ];
+  const [featuredProjects, setFeaturedProjects] = useState<Project[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    loadProjects();
+  }, []);
+
+  const loadProjects = async () => {
+    const { data, error } = await supabase
+      .from('projects')
+      .select('id, title, category, description, icon_url')
+      .order('id')
+      .limit(3);
+
+    if (!error && data) {
+      setFeaturedProjects(data);
+    }
+    setLoading(false);
+  };
+
+  if (loading) {
+    return (
+      <section id="work-preview" className="py-24 relative bg-[#f5e6d3] overflow-hidden">
+        <div className="container mx-auto px-6 text-center">
+          <p className="font-handwritten text-xl">Loading...</p>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section id="work-preview" className="py-24 relative bg-[#f5e6d3] overflow-hidden">
@@ -85,7 +98,7 @@ const WorkPreview = () => {
               >
                 <div className="aspect-square mb-6 flex items-center justify-center transition-transform group-hover:scale-110 group-hover:rotate-6">
                   <img 
-                    src={project.icon} 
+                    src={project.icon_url} 
                     alt={project.title}
                     className="w-32 h-32 object-contain mix-blend-multiply opacity-80 group-hover:opacity-100 transition-opacity"
                   />
