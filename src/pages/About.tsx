@@ -193,13 +193,13 @@ const About = () => {
                           value={award.title}
                           onSave={(value) => updateAward(award.id, 'title', value)}
                           as="h3"
-                          className="text-2xl font-handwritten font-semibold mb-1 text-[#1a1a1a] transform -rotate-1"
+                          className="text-3xl font-handwritten font-bold mb-2 text-[#1a1a1a] transform -rotate-1"
                         />
                         <EditableText
                           value={award.category}
                           onSave={(value) => updateAward(award.id, 'category', value)}
                           as="p"
-                          className="text-lg font-handwritten text-[#666] transform rotate-1"
+                          className="text-xl font-handwritten font-semibold text-[#333] transform rotate-1"
                         />
                       </div>
                     </div>
