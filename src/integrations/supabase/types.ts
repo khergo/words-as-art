@@ -14,6 +14,36 @@ export type Database = {
   }
   public: {
     Tables: {
+      awards: {
+        Row: {
+          category: string
+          created_at: string
+          display_order: number
+          id: string
+          title: string
+          updated_at: string
+          year: string
+        }
+        Insert: {
+          category: string
+          created_at?: string
+          display_order?: number
+          id?: string
+          title: string
+          updated_at?: string
+          year: string
+        }
+        Update: {
+          category?: string
+          created_at?: string
+          display_order?: number
+          id?: string
+          title?: string
+          updated_at?: string
+          year?: string
+        }
+        Relationships: []
+      }
       page_content: {
         Row: {
           content_type: string

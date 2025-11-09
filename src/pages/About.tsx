@@ -22,6 +22,18 @@ const About = () => {
     },
   });
 
+  const { data: awards } = useQuery({
+    queryKey: ['awards'],
+    queryFn: async () => {
+      const { data, error } = await supabase
+        .from('awards')
+        .select('*')
+        .order('display_order', { ascending: true });
+      if (error) throw error;
+      return data;
+    },
+  });
+
   const getContent = (sectionKey: string) => {
     return pageContent?.find(item => item.section_key === sectionKey)?.content_value || '';
   };
@@ -38,13 +50,14 @@ const About = () => {
     if (error) throw error;
   };
 
-  const awards = [
-    { year: "2024", title: "Cannes Lions Gold", category: "Creative Strategy" },
-    { year: "2023", title: "D&AD Pencil", category: "Copywriting" },
-    { year: "2023", title: "One Show Gold", category: "Brand Voice" },
-    { year: "2022", title: "Webby Award", category: "Best Writing" },
-    { year: "2022", title: "Clio Award Silver", category: "Integrated Campaign" },
-  ];
+  const updateAward = async (awardId: string, field: 'year' | 'title' | 'category', value: string) => {
+    const { error } = await supabase
+      .from('awards')
+      .update({ [field]: value })
+      .eq('id', awardId);
+    
+    if (error) throw error;
+  };
 
   return (
     <div className="min-h-screen relative">
@@ -72,9 +85,9 @@ const About = () => {
                   {getContent('profile_image') ? (
                     <EditableImage
                       src={getContent('profile_image')}
-                      alt="Profile photo"
+                      alt="Profile photo or GIF"
                       onSave={(url) => updateContent('profile_image', url)}
-                      className="w-full aspect-[3/4] object-contain animate-fade-in border-2 border-[#d4a574] rounded-lg"
+                      className="w-full h-auto object-contain animate-fade-in border-2 border-[#d4a574] rounded-lg"
                       bucketName="project-photos"
                       folder="about"
                     />
@@ -164,19 +177,30 @@ const About = () => {
                 </div>
 
                 <div className="space-y-6">
-                  {awards.map((award, index) => (
+                  {awards?.map((award) => (
                     <div
-                      key={index}
+                      key={award.id}
                       className="flex items-start gap-6 pb-6 border-b-2 border-[#d4a574] last:border-0"
                     >
-                      <span className="text-base font-handwritten font-medium text-[#dc3545] min-w-[60px] transform rotate-1">
-                        {award.year}
-                      </span>
+                      <EditableText
+                        value={award.year}
+                        onSave={(value) => updateAward(award.id, 'year', value)}
+                        as="span"
+                        className="text-base font-handwritten font-medium text-[#dc3545] min-w-[60px] transform rotate-1"
+                      />
                       <div className="flex-1">
-                        <h3 className="text-2xl font-handwritten font-semibold mb-1 text-[#1a1a1a] transform -rotate-1">
-                          {award.title}
-                        </h3>
-                        <p className="text-lg font-handwritten text-[#666] transform rotate-1">{award.category}</p>
+                        <EditableText
+                          value={award.title}
+                          onSave={(value) => updateAward(award.id, 'title', value)}
+                          as="h3"
+                          className="text-2xl font-handwritten font-semibold mb-1 text-[#1a1a1a] transform -rotate-1"
+                        />
+                        <EditableText
+                          value={award.category}
+                          onSave={(value) => updateAward(award.id, 'category', value)}
+                          as="p"
+                          className="text-lg font-handwritten text-[#666] transform rotate-1"
+                        />
                       </div>
                     </div>
                   ))}
