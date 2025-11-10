@@ -4,7 +4,9 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { EditProvider } from "./contexts/EditContext";
+import { AuthProvider } from "./contexts/AuthContext";
 import Index from "./pages/Index";
+import Auth from "./pages/Auth";
 import Work from "./pages/Work";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
@@ -19,17 +21,20 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
-        <EditProvider>
-          <Routes>
-            <Route path="/" element={<Index />} />
-            <Route path="/work" element={<Work />} />
-            <Route path="/work/:projectId" element={<ProjectDetail />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/contact" element={<Contact />} />
-            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </EditProvider>
+        <AuthProvider>
+          <EditProvider>
+            <Routes>
+              <Route path="/" element={<Index />} />
+              <Route path="/work" element={<Work />} />
+              <Route path="/work/:projectId" element={<ProjectDetail />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/contact" element={<Contact />} />
+              <Route path="/auth" element={<Auth />} />
+              {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </EditProvider>
+        </AuthProvider>
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>

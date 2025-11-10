@@ -1,11 +1,14 @@
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X } from "lucide-react";
+import { Menu, X, LogOut } from "lucide-react";
 import { useState } from "react";
 import { EditModeToggle } from "./EditModeToggle";
+import { useAuth } from "@/contexts/AuthContext";
+import { Button } from "@/components/ui/button";
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
+  const { isAdmin, signOut } = useAuth();
 
   const links = [
     { name: "Home", path: "/" },
@@ -39,7 +42,20 @@ const Navigation = () => {
                 {link.name}
               </Link>
             ))}
-            <EditModeToggle />
+            {isAdmin && (
+              <>
+                <EditModeToggle />
+                <Button
+                  onClick={signOut}
+                  variant="outline"
+                  size="sm"
+                  className="font-handwritten border-2 border-[#1a1a1a] shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:shadow-none transition-all"
+                >
+                  <LogOut size={16} className="mr-2" />
+                  Logout
+                </Button>
+              </>
+            )}
           </div>
 
           {/* Mobile Menu Button */}
@@ -68,9 +84,20 @@ const Navigation = () => {
                 {link.name}
               </Link>
             ))}
-            <div className="pt-3">
-              <EditModeToggle />
-            </div>
+            {isAdmin && (
+              <div className="pt-3 space-y-3">
+                <EditModeToggle />
+                <Button
+                  onClick={signOut}
+                  variant="outline"
+                  size="sm"
+                  className="w-full font-handwritten border-2 border-[#1a1a1a] shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:shadow-none transition-all"
+                >
+                  <LogOut size={16} className="mr-2" />
+                  Logout
+                </Button>
+              </div>
+            )}
           </div>
         )}
       </div>
