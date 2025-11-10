@@ -5,6 +5,13 @@ import { toast } from "sonner";
 import { useQuery } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
 import { EditableText } from "@/components/EditableText";
+import { z } from "zod";
+
+const contactSchema = z.object({
+  name: z.string().trim().min(1, "Name is required").max(100, "Name must be less than 100 characters"),
+  email: z.string().trim().email("Invalid email address").max(255, "Email must be less than 255 characters"),
+  message: z.string().trim().min(1, "Message is required").max(1000, "Message must be less than 1000 characters"),
+});
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -41,10 +48,30 @@ const Contact = () => {
     if (error) throw error;
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    toast.success("Message sent! I'll get back to you soon.");
-    setFormData({ name: "", email: "", message: "" });
+    
+    try {
+      // Validate form data
+      const validatedData = contactSchema.parse(formData);
+      
+      // Send email via edge function
+      const { error } = await supabase.functions.invoke('send-contact-email', {
+        body: validatedData,
+      });
+      
+      if (error) throw error;
+      
+      toast.success("Message sent! I'll get back to you soon.");
+      setFormData({ name: "", email: "", message: "" });
+    } catch (error) {
+      if (error instanceof z.ZodError) {
+        toast.error(error.errors[0].message);
+      } else {
+        console.error("Error sending message:", error);
+        toast.error("Failed to send message. Please try again.");
+      }
+    }
   };
 
   const handleChange = (
