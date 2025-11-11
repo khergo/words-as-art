@@ -42,9 +42,12 @@ const Hero = () => {
                 href="https://www.nairnairi.ge/" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="underline decoration-black hover:opacity-80 transition-opacity"
+                className="relative inline-block hover:opacity-80 transition-opacity"
               >
                 shoelaces
+                <svg className="absolute -bottom-1 left-0 w-full" height="4" viewBox="0 0 100 4" preserveAspectRatio="none">
+                  <path d="M0,2 Q25,0 50,2 T100,2" stroke="#000000" strokeWidth="1.5" fill="none" />
+                </svg>
               </a>
               <br />
               to buy a beer.
