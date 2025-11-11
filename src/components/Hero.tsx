@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const Hero = () => {
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#fffbf4]">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#f6f6f6]">
       {/* Notebook paper texture and lines */}
       <div className="absolute inset-0 opacity-40" style={{
         backgroundImage: `

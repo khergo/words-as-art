@@ -278,7 +278,7 @@ const ProjectDetail = () => {
   }
 
   return (
-    <div className="min-h-screen relative bg-[#fffbf4]">
+    <div className="min-h-screen relative bg-[#f6f6f6]">
       <Navigation />
 
       <main className="pt-24 pb-16 relative z-10">

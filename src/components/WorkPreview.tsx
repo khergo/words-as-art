@@ -34,7 +34,7 @@ const WorkPreview = () => {
 
   if (loading) {
     return (
-      <section id="work-preview" className="py-24 relative bg-[#fffbf4] overflow-hidden">
+      <section id="work-preview" className="py-24 relative bg-[#f6f6f6] overflow-hidden">
         <div className="container mx-auto px-6 text-center">
           <p className="font-handwritten text-xl">Loading...</p>
         </div>
@@ -43,7 +43,7 @@ const WorkPreview = () => {
   }
 
   return (
-    <section id="work-preview" className="py-24 relative bg-[#fffbf4] overflow-hidden">
+    <section id="work-preview" className="py-24 relative bg-[#f6f6f6] overflow-hidden">
       {/* Notebook paper texture and lines */}
       <div className="absolute inset-0 opacity-40" style={{
         backgroundImage: `
