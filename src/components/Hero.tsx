@@ -1,10 +1,7 @@
 import { ArrowDown } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Hero = () => {
-  const scrollToWork = () => {
-    const workSection = document.getElementById("work-preview");
-    workSection?.scrollIntoView({ behavior: "smooth" });
-  };
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#f5e6d3]">
@@ -37,26 +34,32 @@ const Hero = () => {
         <div className="max-w-5xl mx-auto text-left pl-12">
           <h1 className="font-handwritten font-bold text-5xl md:text-7xl lg:text-8xl mb-12 animate-fade-in leading-relaxed text-[#1a1a1a]">
             <span className="block transform -rotate-1 relative mb-4">
-              The Copywriter
+              The copywriter
             </span>
             <span className="block text-[#dc3545] transform rotate-1 relative">
-              Selling dope shoelaces to buy a beer.
+              selling dope{" "}
+              <a 
+                href="https://www.nairnairi.ge/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="underline hover:opacity-80 transition-opacity"
+              >
+                shoelaces
+              </a>
+              <br />
+              to buy a beer.
               <svg className="absolute -bottom-2 left-0 w-full" height="8" viewBox="0 0 100 8" preserveAspectRatio="none">
                 <path d="M0,4 Q25,0 50,4 T100,4" stroke="#dc3545" strokeWidth="2" fill="none" />
               </svg>
             </span>
           </h1>
 
-          <button
-            onClick={scrollToWork}
-            className="group inline-flex items-center gap-2 px-8 py-4 bg-[#dc3545] text-white font-handwritten text-xl font-medium transition-all hover:scale-105 animate-slide-up transform -rotate-1 shadow-lg hover:shadow-xl"
+          <Link
+            to="/work"
+            className="inline-block px-8 py-4 bg-[#dc3545] text-white font-handwritten text-xl font-medium transition-all hover:scale-105 animate-slide-up transform -rotate-1 shadow-lg hover:shadow-xl"
           >
             My Work
-            <ArrowDown
-              size={20}
-              className="transition-transform group-hover:translate-y-1"
-            />
-          </button>
+          </Link>
         </div>
       </div>
 
