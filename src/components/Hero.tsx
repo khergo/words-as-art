@@ -42,7 +42,7 @@ const Hero = () => {
                 href="https://www.nairnairi.ge/" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="underline hover:opacity-80 transition-opacity"
+                className="underline decoration-black hover:opacity-80 transition-opacity"
               >
                 shoelaces
               </a>
