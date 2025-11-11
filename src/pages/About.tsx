@@ -1,15 +1,18 @@
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
-import { Award, FileDown } from "lucide-react";
+import { Award, FileDown, Upload } from "lucide-react";
 import { useQuery } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
 import { EditableText } from "@/components/EditableText";
 import { EditableImage } from "@/components/EditableImage";
 import { useEdit } from "@/contexts/EditContext";
 import { Button } from "@/components/ui/button";
+import { toast } from "@/hooks/use-toast";
+import { useState } from "react";
 
 const About = () => {
   const { editMode } = useEdit();
+  const [cvUploading, setCVUploading] = useState(false);
   
   const { data: pageContent } = useQuery({
     queryKey: ['page-content', 'about'],
@@ -58,6 +61,68 @@ const About = () => {
       .eq('id', awardId);
     
     if (error) throw error;
+  };
+
+  const handleCVUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    // Validate file type
+    if (file.type !== 'application/pdf') {
+      toast({
+        title: "Invalid file type",
+        description: "Please upload a PDF file",
+        variant: "destructive"
+      });
+      return;
+    }
+
+    // Validate file size (10MB)
+    if (file.size > 10485760) {
+      toast({
+        title: "File too large",
+        description: "File size must be less than 10MB",
+        variant: "destructive"
+      });
+      return;
+    }
+
+    setCVUploading(true);
+
+    try {
+      // Upload to Supabase storage
+      const fileName = `cv/cv_${Date.now()}.pdf`;
+      const { error: uploadError } = await supabase.storage
+        .from('documents')
+        .upload(fileName, file, {
+          cacheControl: '3600',
+          upsert: false
+        });
+
+      if (uploadError) throw uploadError;
+
+      // Get public URL
+      const { data: { publicUrl } } = supabase.storage
+        .from('documents')
+        .getPublicUrl(fileName);
+
+      // Update database
+      await updateContent('cv_url', publicUrl);
+
+      toast({
+        title: "Success",
+        description: "CV uploaded successfully!"
+      });
+    } catch (error) {
+      console.error('CV upload error:', error);
+      toast({
+        title: "Upload failed",
+        description: "Failed to upload CV. Please try again.",
+        variant: "destructive"
+      });
+    } finally {
+      setCVUploading(false);
+    }
   };
 
   return (
@@ -133,13 +198,41 @@ const About = () => {
 
                 <div className="md:col-span-3 space-y-6 animate-fade-in-delay">
                   <div className="mb-6">
-                    <Button 
-                      onClick={() => window.open('/cv.pdf', '_blank')}
-                      className="bg-[#dc3545] hover:bg-[#c82333] text-white font-handwritten text-lg px-6 py-3 rounded-full shadow-lg hover:shadow-xl transition-all transform hover:scale-105"
-                    >
-                      <FileDown className="mr-2" size={20} />
-                      Download CV
-                    </Button>
+          <div className="flex gap-3 items-center">
+            {getContent('cv_url') ? (
+              <Button 
+                onClick={() => window.open(getContent('cv_url'), '_blank')}
+                className="bg-[#dc3545] hover:bg-[#c82333] text-white font-handwritten text-lg px-6 py-3 rounded-full shadow-lg hover:shadow-xl transition-all transform hover:scale-105"
+              >
+                <FileDown className="mr-2" size={20} />
+                Download CV
+              </Button>
+            ) : (
+              !editMode && (
+                <p className="text-[#666] font-handwritten text-lg">No CV available</p>
+              )
+            )}
+            
+            {editMode && (
+              <>
+                <Button
+                  onClick={() => document.getElementById('cv-upload')?.click()}
+                  disabled={cvUploading}
+                  className="bg-[#28a745] hover:bg-[#218838] text-white font-handwritten text-lg px-6 py-3 rounded-full shadow-lg hover:shadow-xl transition-all transform hover:scale-105 disabled:opacity-50"
+                >
+                  <Upload className="mr-2" size={20} />
+                  {cvUploading ? 'Uploading...' : getContent('cv_url') ? 'Replace CV' : 'Upload CV'}
+                </Button>
+                <input
+                  id="cv-upload"
+                  type="file"
+                  accept=".pdf,application/pdf"
+                  className="hidden"
+                  onChange={handleCVUpload}
+                />
+              </>
+            )}
+          </div>
                   </div>
 
                   <EditableText
