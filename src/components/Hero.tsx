@@ -45,8 +45,13 @@ const Hero = () => {
                 className="relative inline-block hover:opacity-80 transition-opacity"
               >
                 shoelaces
-                <svg className="absolute -bottom-1 left-0 w-full" height="8" viewBox="0 0 100 8" preserveAspectRatio="none">
-                  <path d="M0,4 Q12.5,1 25,4 T50,4 T75,4 T100,4" stroke="#000000" strokeWidth="3" fill="none" strokeLinecap="round" />
+                <svg className="absolute -bottom-2 left-0 w-full" height="10" viewBox="0 0 200 10" preserveAspectRatio="none">
+                  <path d="M0,5 Q10,2 20,5 Q30,8 40,5 Q50,2 60,5 Q70,8 80,5 Q90,2 100,5 Q110,8 120,5 Q130,2 140,5 Q150,8 160,5 Q170,2 180,5 Q190,8 200,5" 
+                    stroke="#000000" 
+                    strokeWidth="3.5" 
+                    fill="none" 
+                    strokeLinecap="round" 
+                    strokeLinejoin="round" />
                 </svg>
               </a>
               <br />
