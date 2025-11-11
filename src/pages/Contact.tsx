@@ -125,7 +125,7 @@ const Contact = () => {
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 bg-[#f5e6d3] border-2 border-[#d4a574] focus:border-[#dc3545] focus:outline-none transition-colors font-handwritten text-lg"
+                    className="w-full px-4 py-3 bg-[#fffbf4] border-2 border-[#d4a574] focus:border-[#dc3545] focus:outline-none transition-colors font-handwritten text-lg"
                   />
                 </div>
 
@@ -143,7 +143,7 @@ const Contact = () => {
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 bg-[#f5e6d3] border-2 border-[#d4a574] focus:border-[#dc3545] focus:outline-none transition-colors font-handwritten text-lg"
+                    className="w-full px-4 py-3 bg-[#fffbf4] border-2 border-[#d4a574] focus:border-[#dc3545] focus:outline-none transition-colors font-handwritten text-lg"
                   />
                 </div>
 
@@ -161,7 +161,7 @@ const Contact = () => {
                     onChange={handleChange}
                     required
                     rows={6}
-                    className="w-full px-4 py-3 bg-[#f5e6d3] border-2 border-[#d4a574] focus:border-[#dc3545] focus:outline-none transition-colors resize-none font-handwritten text-lg"
+                    className="w-full px-4 py-3 bg-[#fffbf4] border-2 border-[#d4a574] focus:border-[#dc3545] focus:outline-none transition-colors resize-none font-handwritten text-lg"
                   />
                 </div>
 

@@ -100,7 +100,7 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-[#f5e6d3] text-foreground;
+    @apply bg-[#fffbf4] text-foreground;
     background-image: 
       linear-gradient(transparent 0px, transparent 39px, #d4a574 39px, #d4a574 40px),
       linear-gradient(90deg, #e8c5a0 1px, transparent 1px);
