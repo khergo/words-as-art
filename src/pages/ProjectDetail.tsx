@@ -1,8 +1,8 @@
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
-import { ArrowLeft, Upload, X } from "lucide-react";
+import { ArrowLeft, Upload, X, ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { supabase } from "@/integrations/supabase/client";
@@ -10,6 +10,7 @@ import { useToast } from "@/hooks/use-toast";
 import { EditableText } from "@/components/EditableText";
 import { EditableImage } from "@/components/EditableImage";
 import { useEdit } from "@/contexts/EditContext";
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 
 // Helper function to convert video URLs to embeddable format
 const getEmbedUrl = (url: string): string | null => {
@@ -51,6 +52,7 @@ interface Project {
 
 const ProjectDetail = () => {
   const { projectId } = useParams();
+  const navigate = useNavigate();
   const { toast } = useToast();
   const { editMode } = useEdit();
   const [project, setProject] = useState<Project | null>(null);
@@ -60,8 +62,29 @@ const ProjectDetail = () => {
   const [notes, setNotes] = useState("");
   const [uploading, setUploading] = useState(false);
   const [loading, setLoading] = useState(true);
+  const [allProjects, setAllProjects] = useState<Project[]>([]);
+  const [prevProjectId, setPrevProjectId] = useState<number | null>(null);
+  const [nextProjectId, setNextProjectId] = useState<number | null>(null);
 
-  // Load project data
+  // Load all projects for navigation
+  useEffect(() => {
+    const loadAllProjects = async () => {
+      const { data, error } = await supabase
+        .from('projects')
+        .select('*')
+        .order('id');
+
+      if (error) {
+        console.error('Error loading projects:', error);
+      } else if (data) {
+        setAllProjects(data);
+      }
+    };
+
+    loadAllProjects();
+  }, []);
+
+  // Load project data and determine navigation
   useEffect(() => {
     const loadProject = async () => {
       if (!projectId) return;
@@ -76,11 +99,20 @@ const ProjectDetail = () => {
         console.error('Error loading project:', error);
       } else if (data) {
         setProject(data);
+        
+        // Find prev and next project IDs
+        const currentIndex = allProjects.findIndex(p => p.id === data.id);
+        if (currentIndex !== -1) {
+          setPrevProjectId(currentIndex > 0 ? allProjects[currentIndex - 1].id : null);
+          setNextProjectId(currentIndex < allProjects.length - 1 ? allProjects[currentIndex + 1].id : null);
+        }
       }
     };
 
-    loadProject();
-  }, [projectId]);
+    if (allProjects.length > 0) {
+      loadProject();
+    }
+  }, [projectId, allProjects]);
 
   // Load project media from database
   useEffect(() => {
@@ -264,6 +296,41 @@ const ProjectDetail = () => {
         <div className="absolute left-[80px] top-0 bottom-0 w-[2px] bg-[#dc3545] opacity-60" />
 
         <div className="container mx-auto px-6 relative z-10">
+          {/* Project Navigation Arrows */}
+          {prevProjectId && (
+            <button
+              onClick={() => navigate(`/work/${prevProjectId}`)}
+              className="fixed left-4 top-1/2 -translate-y-1/2 z-20 group"
+              aria-label="Previous project"
+            >
+              <ChevronLeft 
+                size={48} 
+                className="text-[#1a1a1a] opacity-60 hover:opacity-100 transition-all transform hover:scale-110 hover:-translate-x-1 stroke-[3] filter drop-shadow-[2px_2px_0px_rgba(220,53,69,0.3)]"
+                style={{ 
+                  strokeLinecap: 'round',
+                  strokeLinejoin: 'round'
+                }}
+              />
+            </button>
+          )}
+          
+          {nextProjectId && (
+            <button
+              onClick={() => navigate(`/work/${nextProjectId}`)}
+              className="fixed right-4 top-1/2 -translate-y-1/2 z-20 group"
+              aria-label="Next project"
+            >
+              <ChevronRight 
+                size={48} 
+                className="text-[#1a1a1a] opacity-60 hover:opacity-100 transition-all transform hover:scale-110 hover:translate-x-1 stroke-[3] filter drop-shadow-[2px_2px_0px_rgba(220,53,69,0.3)]"
+                style={{ 
+                  strokeLinecap: 'round',
+                  strokeLinejoin: 'round'
+                }}
+              />
+            </button>
+          )}
+
           <div className="max-w-4xl mx-auto pl-6">
             <div className="mb-8">
               <Link
@@ -408,28 +475,36 @@ const ProjectDetail = () => {
                 </div>
               )}
 
-              {/* Uploaded Photos Display - Always visible if exists */}
+              {/* Uploaded Photos Carousel - Always visible if exists */}
               {photoUrls.length > 0 && (
-                <div className="space-y-6">
-                  {photoUrls.map((url, index) => (
-                    <div key={index} className="relative group flex justify-center">
-                      <img
-                        src={url}
-                        alt={`Project photo ${index + 1}`}
-                        className="max-w-full h-auto object-contain rounded-lg border-2 border-[#1a1a1a] shadow-md"
-                        loading="lazy"
-                      />
-                      {editMode && (
-                        <button
-                          onClick={() => removePhoto(url)}
-                          className="absolute top-2 right-2 bg-[#dc3545] text-white p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity shadow-lg hover:bg-[#c82333]"
-                          aria-label="Remove photo"
-                        >
-                          <X size={20} />
-                        </button>
-                      )}
-                    </div>
-                  ))}
+                <div className="relative px-12">
+                  <Carousel className="w-full">
+                    <CarouselContent>
+                      {photoUrls.map((url, index) => (
+                        <CarouselItem key={index}>
+                          <div className="relative group flex justify-center">
+                            <img
+                              src={url}
+                              alt={`Project photo ${index + 1}`}
+                              className="max-w-full h-auto object-contain rounded-lg border-2 border-[#1a1a1a] shadow-md"
+                              loading="lazy"
+                            />
+                            {editMode && (
+                              <button
+                                onClick={() => removePhoto(url)}
+                                className="absolute top-2 right-2 bg-[#dc3545] text-white p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity shadow-lg hover:bg-[#c82333]"
+                                aria-label="Remove photo"
+                              >
+                                <X size={20} />
+                              </button>
+                            )}
+                          </div>
+                        </CarouselItem>
+                      ))}
+                    </CarouselContent>
+                    <CarouselPrevious className="font-handwritten border-2 border-[#1a1a1a] bg-white hover:bg-[#dc3545] hover:text-white shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] -left-2" />
+                    <CarouselNext className="font-handwritten border-2 border-[#1a1a1a] bg-white hover:bg-[#dc3545] hover:text-white shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] -right-2" />
+                  </Carousel>
                 </div>
               )}
 
