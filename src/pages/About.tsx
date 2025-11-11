@@ -1,11 +1,12 @@
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
-import { Award } from "lucide-react";
+import { Award, FileDown } from "lucide-react";
 import { useQuery } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
 import { EditableText } from "@/components/EditableText";
 import { EditableImage } from "@/components/EditableImage";
 import { useEdit } from "@/contexts/EditContext";
+import { Button } from "@/components/ui/button";
 
 const About = () => {
   const { editMode } = useEdit();
@@ -131,11 +132,21 @@ const About = () => {
                 </div>
 
                 <div className="md:col-span-3 space-y-6 animate-fade-in-delay">
+                  <div className="mb-6">
+                    <Button 
+                      onClick={() => window.open('/cv.pdf', '_blank')}
+                      className="bg-[#dc3545] hover:bg-[#c82333] text-white font-handwritten text-lg px-6 py-3 rounded-full shadow-lg hover:shadow-xl transition-all transform hover:scale-105"
+                    >
+                      <FileDown className="mr-2" size={20} />
+                      Download CV
+                    </Button>
+                  </div>
+
                   <EditableText
                     value={getContent('intro')}
                     onSave={(value) => updateContent('intro', value)}
                     as="p"
-                    className="text-2xl font-handwritten leading-relaxed text-[#1a1a1a] transform -rotate-1"
+                    className="text-2xl font-handwritten leading-relaxed text-[#1a1a1a] transform -rotate-1 whitespace-pre-line"
                     multiline
                   />
 
@@ -143,7 +154,7 @@ const About = () => {
                     value={getContent('paragraph_1')}
                     onSave={(value) => updateContent('paragraph_1', value)}
                     as="p"
-                    className="text-xl font-handwritten leading-relaxed text-[#666] transform rotate-1"
+                    className="text-xl font-handwritten leading-relaxed text-[#666] transform rotate-1 whitespace-pre-line"
                     multiline
                   />
 
@@ -151,7 +162,7 @@ const About = () => {
                     value={getContent('paragraph_2')}
                     onSave={(value) => updateContent('paragraph_2', value)}
                     as="p"
-                    className="text-xl font-handwritten leading-relaxed text-[#666] transform -rotate-1"
+                    className="text-xl font-handwritten leading-relaxed text-[#666] transform -rotate-1 whitespace-pre-line"
                     multiline
                   />
 
@@ -159,7 +170,7 @@ const About = () => {
                     value={getContent('paragraph_3')}
                     onSave={(value) => updateContent('paragraph_3', value)}
                     as="p"
-                    className="text-xl font-handwritten leading-relaxed text-[#666] transform rotate-1"
+                    className="text-xl font-handwritten leading-relaxed text-[#666] transform rotate-1 whitespace-pre-line"
                     multiline
                   />
                 </div>
