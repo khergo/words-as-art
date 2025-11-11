@@ -18,18 +18,6 @@ const Hero = () => {
       {/* Red vertical margin line */}
       <div className="absolute left-[80px] top-0 bottom-0 w-[2px] bg-[#dc3545] opacity-60" />
 
-      {/* Light sketches and scratches - used notebook feel */}
-      <div className="absolute inset-0 opacity-20 pointer-events-none">
-        <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
-          <path d="M100,50 Q150,40 200,50" stroke="#666" strokeWidth="1" fill="none" opacity="0.3"/>
-          <path d="M300,100 L350,120 L340,110" stroke="#666" strokeWidth="1" fill="none" opacity="0.3"/>
-          <circle cx="500" cy="80" r="15" stroke="#666" strokeWidth="1" fill="none" opacity="0.3"/>
-          <path d="M700,150 Q750,140 800,150" stroke="#666" strokeWidth="1" fill="none" opacity="0.3"/>
-          <path d="M150,400 L170,420" stroke="#666" strokeWidth="1" fill="none" opacity="0.3"/>
-          <path d="M900,300 Q920,290 940,300" stroke="#666" strokeWidth="1" fill="none" opacity="0.3"/>
-        </svg>
-      </div>
-
       <div className="container mx-auto px-6 relative z-10">
         <div className="max-w-5xl mx-auto text-left pl-12">
           <h1 className="font-handwritten font-bold text-5xl md:text-7xl lg:text-8xl mb-12 animate-fade-in leading-relaxed text-[#1a1a1a]">
