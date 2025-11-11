@@ -247,7 +247,7 @@ const About = () => {
                     value={getContent('paragraph_1')}
                     onSave={(value) => updateContent('paragraph_1', value)}
                     as="p"
-                    className="text-xl font-handwritten leading-relaxed text-[#666] transform rotate-1 whitespace-pre-line"
+                    className="text-xl font-handwritten leading-relaxed text-[#1a1a1a] transform rotate-1 whitespace-pre-line"
                     multiline
                   />
 
@@ -255,7 +255,7 @@ const About = () => {
                     value={getContent('paragraph_2')}
                     onSave={(value) => updateContent('paragraph_2', value)}
                     as="p"
-                    className="text-xl font-handwritten leading-relaxed text-[#666] transform -rotate-1 whitespace-pre-line"
+                    className="text-xl font-handwritten leading-relaxed text-[#1a1a1a] transform -rotate-1 whitespace-pre-line"
                     multiline
                   />
 
@@ -263,7 +263,7 @@ const About = () => {
                     value={getContent('paragraph_3')}
                     onSave={(value) => updateContent('paragraph_3', value)}
                     as="p"
-                    className="text-xl font-handwritten leading-relaxed text-[#666] transform rotate-1 whitespace-pre-line"
+                    className="text-xl font-handwritten leading-relaxed text-[#1a1a1a] transform rotate-1 whitespace-pre-line"
                     multiline
                   />
                 </div>
