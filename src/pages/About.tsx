@@ -196,52 +196,60 @@ const About = () => {
                   )}
                 </div>
 
-                <div className="md:col-span-3 space-y-6 animate-fade-in-delay">
-                  <div className="mb-6">
-          <div className="flex gap-3 items-center">
-            {getContent('cv_url') ? (
-              <Button 
-                onClick={() => window.open(getContent('cv_url'), '_blank')}
-                className="bg-[#dc3545] hover:bg-[#c82333] text-white font-handwritten text-lg px-6 py-3 rounded-full shadow-lg hover:shadow-xl transition-all transform hover:scale-105"
-              >
-                <FileDown className="mr-2" size={20} />
-                Download CV
-              </Button>
-            ) : (
-              !editMode && (
-                <p className="text-[#666] font-handwritten text-lg">No CV available</p>
-              )
-            )}
-            
-            {editMode && (
-              <>
-                <Button
-                  onClick={() => document.getElementById('cv-upload')?.click()}
-                  disabled={cvUploading}
-                  className="bg-[#28a745] hover:bg-[#218838] text-white font-handwritten text-lg px-6 py-3 rounded-full shadow-lg hover:shadow-xl transition-all transform hover:scale-105 disabled:opacity-50"
-                >
-                  <Upload className="mr-2" size={20} />
-                  {cvUploading ? 'Uploading...' : getContent('cv_url') ? 'Replace CV' : 'Upload CV'}
-                </Button>
-                <input
-                  id="cv-upload"
-                  type="file"
-                  accept=".pdf,application/pdf"
-                  className="hidden"
-                  onChange={handleCVUpload}
-                />
-              </>
-            )}
-          </div>
+                <div className="md:col-span-3 space-y-6">
+                  <div className="flex gap-3 items-start mb-3">
+                    <div className="flex-1">
+                      <EditableText
+                        value={getContent('intro')}
+                        onSave={(value) => updateContent('intro', value)}
+                        as="p"
+                        className="text-2xl font-handwritten leading-relaxed text-[#1a1a1a] transform -rotate-1 whitespace-pre-line"
+                        multiline
+                      />
+                    </div>
+                    
+                    <div className="flex-shrink-0 mt-1">
+                      {getContent('cv_url') ? (
+                        <button 
+                          onClick={() => window.open(getContent('cv_url'), '_blank')}
+                          className="relative font-handwritten text-xl font-bold text-[#dc3545] transform -rotate-1 hover:scale-105 transition-transform cursor-pointer"
+                          style={{
+                            textShadow: '0 1px 0 #000, 0 2px 0 #000'
+                          }}
+                        >
+                          <span className="relative inline-block">
+                            Download CV
+                            <span className="absolute left-0 right-0 bottom-[-4px] h-[2px] bg-black"></span>
+                            <span className="absolute left-0 right-0 bottom-[-7px] h-[2px] bg-black"></span>
+                          </span>
+                        </button>
+                      ) : (
+                        !editMode && (
+                          <p className="text-[#666] font-handwritten text-lg transform -rotate-1">No CV available</p>
+                        )
+                      )}
+                      
+                      {editMode && (
+                        <>
+                          <Button
+                            onClick={() => document.getElementById('cv-upload')?.click()}
+                            disabled={cvUploading}
+                            className="bg-[#28a745] hover:bg-[#218838] text-white font-handwritten text-lg px-6 py-3 rounded-full shadow-lg hover:shadow-xl transition-all transform hover:scale-105 disabled:opacity-50"
+                          >
+                            <Upload className="mr-2" size={20} />
+                            {cvUploading ? 'Uploading...' : getContent('cv_url') ? 'Replace CV' : 'Upload CV'}
+                          </Button>
+                          <input
+                            id="cv-upload"
+                            type="file"
+                            accept=".pdf,application/pdf"
+                            className="hidden"
+                            onChange={handleCVUpload}
+                          />
+                        </>
+                      )}
+                    </div>
                   </div>
-
-                  <EditableText
-                    value={getContent('intro')}
-                    onSave={(value) => updateContent('intro', value)}
-                    as="p"
-                    className="text-2xl font-handwritten leading-relaxed text-[#1a1a1a] transform -rotate-1 whitespace-pre-line"
-                    multiline
-                  />
 
                   <EditableText
                     value={getContent('paragraph_1')}
