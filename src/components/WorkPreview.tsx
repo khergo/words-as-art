@@ -55,7 +55,7 @@ const WorkPreview = () => {
       }} />
 
       {/* Red vertical margin line */}
-      <div className="absolute left-[80px] top-0 bottom-0 w-[2px] bg-[#dc3545] opacity-60" />
+      <div className="absolute left-[40px] md:left-[80px] top-0 bottom-0 w-[2px] bg-[#dc3545] opacity-60" />
 
       {/* Light sketches and scratches - used notebook feel */}
       <div className="absolute inset-0 opacity-20 pointer-events-none">
@@ -68,8 +68,8 @@ const WorkPreview = () => {
         </svg>
       </div>
 
-      <div className="container mx-auto px-6 relative z-10">
-        <div className="max-w-6xl mx-auto pl-6">
+      <div className="container mx-auto px-4 md:px-6 relative z-10">
+        <div className="max-w-6xl mx-auto pl-8 md:pl-6">
           <div className="flex items-end justify-between mb-16">
             <h2 className="font-handwritten text-6xl md:text-7xl font-bold text-[#1a1a1a] transform -rotate-1">
               Selected Work

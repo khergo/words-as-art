@@ -55,7 +55,7 @@ const Work = () => {
       <div className="min-h-screen relative">
         <Navigation />
         <main className="pt-24 pb-16">
-          <div className="container mx-auto px-6 text-center">
+          <div className="container mx-auto px-4 md:px-6 text-center">
             <p className="font-handwritten text-2xl">Loading...</p>
           </div>
         </main>
@@ -70,8 +70,8 @@ const Work = () => {
 
       <main className="pt-24 relative z-10">
         <section className="py-16">
-          <div className="container mx-auto px-6">
-            <div className="max-w-6xl mx-auto pl-6">
+          <div className="container mx-auto px-4 md:px-6">
+            <div className="max-w-6xl mx-auto pl-8 md:pl-6">
               <h1 className="font-handwritten text-6xl md:text-8xl font-bold mb-6 animate-fade-in text-[#1a1a1a] transform -rotate-2">
                 Selected Work
               </h1>
@@ -84,8 +84,8 @@ const Work = () => {
         </section>
 
         <section className="py-24">
-          <div className="container mx-auto px-6">
-            <div className="max-w-6xl mx-auto pl-6">
+          <div className="container mx-auto px-4 md:px-6">
+            <div className="max-w-6xl mx-auto pl-8 md:pl-6">
               <div className="grid md:grid-cols-2 gap-12">
                 {projects.map((project, index) => (
                   <Link
