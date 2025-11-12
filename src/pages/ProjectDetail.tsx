@@ -487,11 +487,11 @@ const ProjectDetail = () => {
                       {/* Photo Slides - shown first */}
                        {photoUrls.map((url, index) => (
                         <CarouselItem key={`photo-${index}`}>
-                          <div className="relative group flex justify-center items-center bg-white rounded-lg h-[75vh] overflow-hidden">
+                          <div className="relative group flex justify-center items-center bg-white rounded-lg min-h-[600px]">
                             <img
                               src={url}
                               alt={`Project photo ${index + 1}`}
-                              className="w-full h-full object-cover"
+                              className="w-full h-full max-h-[90vh] object-contain rounded-lg"
                               loading="lazy"
                             />
                             {editMode && (
@@ -510,10 +510,10 @@ const ProjectDetail = () => {
                       {/* Video Slide - shown last if video exists */}
                       {embedUrl && (
                         <CarouselItem>
-                          <div className="relative w-full h-[75vh] bg-black rounded-lg overflow-hidden">
+                          <div className="relative w-full h-[80vh] max-h-[900px] flex items-center justify-center bg-white rounded-lg overflow-hidden">
                             <iframe
                               src={embedUrl}
-                              className="w-full h-full border-0"
+                              className="w-full h-full"
                               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                               allowFullScreen
                               title="Project video"
