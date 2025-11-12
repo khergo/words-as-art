@@ -34,10 +34,6 @@ const Hero = () => {
               
             </span>
           </h1>
-
-          <Link to="/work" className="inline-block px-8 py-4 bg-[#dc3545] text-white font-handwritten text-2xl font-medium transition-all hover:scale-105 animate-slide-up transform -rotate-1 shadow-lg hover:shadow-xl">
-            My Work
-          </Link>
         </div>
       </div>
 
