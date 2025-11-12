@@ -502,8 +502,12 @@ const ProjectDetail = () => {
                         </CarouselItem>
                       )}
                     </CarouselContent>
-                    <CarouselPrevious className="font-handwritten border-2 border-[#1a1a1a] bg-white hover:bg-[#dc3545] hover:text-white shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] -left-2" />
-                    <CarouselNext className="font-handwritten border-2 border-[#1a1a1a] bg-white hover:bg-[#dc3545] hover:text-white shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] -right-2" />
+                    {(photoUrls.length + (embedUrl ? 1 : 0)) > 1 && (
+                      <>
+                        <CarouselPrevious className="font-handwritten border-2 border-[#1a1a1a] bg-white hover:bg-[#dc3545] hover:text-white shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] -left-2" />
+                        <CarouselNext className="font-handwritten border-2 border-[#1a1a1a] bg-white hover:bg-[#dc3545] hover:text-white shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] -right-2" />
+                      </>
+                    )}
                   </Carousel>
                 </div>
               )}
