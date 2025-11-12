@@ -17,23 +17,37 @@ const Hero = () => {
 
       <div className="container mx-auto px-4 md:px-6 relative z-10">
         <div className="max-w-5xl mx-auto text-left pl-8 md:pl-12">
-          <h1 className="font-handwritten font-bold text-4xl sm:text-5xl md:text-7xl lg:text-8xl mb-12 animate-fade-in leading-relaxed text-[#1a1a1a]">
-            <span className="block transform -rotate-1 relative mb-4">
-              The copywriter
-            </span>
-            <span className="block text-[#1a1a1a] transform rotate-1 relative">
-              selling dope{" "}
-              <a href="https://www.nairnairi.ge/" target="_blank" rel="noopener noreferrer" className="relative inline-block hover:opacity-80 transition-opacity">
-                shoelaces
-                <svg className="absolute -bottom-2 left-0 w-full" height="10" viewBox="0 0 200 10" preserveAspectRatio="none">
-                  <path d="M0,5 Q10,2 20,5 Q30,8 40,5 Q50,2 60,5 Q70,8 80,5 Q90,2 100,5 Q110,8 120,5 Q130,2 140,5 Q150,8 160,5 Q170,2 180,5 Q190,8 200,5" stroke="#dc3545" strokeWidth="3.5" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+          <div className="font-handwritten animate-fade-in text-[#1a1a1a]">
+            {/* Crossed out "typ" at the top */}
+            <div className="relative inline-block mb-2 ml-4">
+              <span className="text-3xl md:text-5xl opacity-70 relative">
+                typ
+                <svg className="absolute top-1/2 left-0 w-full" height="3" viewBox="0 0 100 3" preserveAspectRatio="none">
+                  <path d="M0,1.5 L100,1.5" stroke="#1a1a1a" strokeWidth="2" />
                 </svg>
-              </a>
-              <br />
-              to buy a beer.
-              
-            </span>
-          </h1>
+              </span>
+            </div>
+
+            {/* Main handwritten text */}
+            <div className="space-y-1 text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-relaxed">
+              <div className="transform -rotate-1 ml-2">
+                The copywriter
+              </div>
+              <div className="transform rotate-0.5 ml-6">
+                selling <span className="ml-3">dope</span> <span className="ml-3">
+                  <a href="https://www.nairnairi.ge/" target="_blank" rel="noopener noreferrer" className="relative inline-block hover:opacity-80 transition-opacity">
+                    shoelaces
+                    <svg className="absolute -bottom-2 left-0 w-full" height="10" viewBox="0 0 200 10" preserveAspectRatio="none">
+                      <path d="M0,5 Q10,2 20,5 Q30,8 40,5 Q50,2 60,5 Q70,8 80,5 Q90,2 100,5 Q110,8 120,5 Q130,2 140,5 Q150,8 160,5 Q170,2 180,5 Q190,8 200,5" stroke="#dc3545" strokeWidth="3.5" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                  </a>
+                </span>
+              </div>
+              <div className="transform -rotate-0.5 ml-4">
+                to <span className="ml-3">buy</span> <span className="ml-3">a</span> <span className="ml-3">beer</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
