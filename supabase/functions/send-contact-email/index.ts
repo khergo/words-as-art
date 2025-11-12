@@ -40,17 +40,18 @@ function escapeHtml(text: string): string {
   return text.replace(/[&<>"']/g, (m) => map[m]);
 }
 
+// Validation schema
+const contactSchema = z.object({
+  name: z.string().trim().min(1, "Name cannot be empty").max(100, "Name must be less than 100 characters"),
+  email: z.string().trim().email("Invalid email address").max(255, "Email must be less than 255 characters"),
+  message: z.string().trim().min(1, "Message cannot be empty").max(5000, "Message must be less than 5000 characters")
+});
+
 interface ContactEmailRequest {
   name: string;
   email: string;
   message: string;
 }
-
-const contactSchema = z.object({
-  name: z.string().trim().min(1, "Name is required").max(100, "Name must be less than 100 characters"),
-  email: z.string().trim().email("Invalid email address").max(255, "Email must be less than 255 characters"),
-  message: z.string().trim().min(1, "Message is required").max(5000, "Message must be less than 5000 characters")
-});
 
 const handler = async (req: Request): Promise<Response> => {
   // Handle CORS preflight requests

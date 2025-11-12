@@ -29,17 +29,10 @@ export const EditableImage = ({
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const handleUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (!isAdmin) return;
+    
     const file = e.target.files?.[0];
     if (!file) return;
-
-    if (!isAdmin) {
-      toast({
-        title: "Unauthorized",
-        description: "Admin privileges required.",
-        variant: "destructive",
-      });
-      return;
-    }
 
     setUploading(true);
     try {

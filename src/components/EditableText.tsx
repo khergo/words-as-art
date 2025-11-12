@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useEdit } from '@/contexts/EditContext';
 import { useAuth } from '@/contexts/AuthContext';
-import { supabase } from '@/integrations/supabase/client';
 import { useToast } from '@/hooks/use-toast';
 
 interface EditableTextProps {
@@ -32,17 +31,6 @@ export const EditableText = ({
 
   const handleSave = async () => {
     if (text === value) {
-      setIsEditing(false);
-      return;
-    }
-
-    if (!isAdmin) {
-      toast({
-        title: "Unauthorized",
-        description: "Admin privileges required.",
-        variant: "destructive",
-      });
-      setText(value);
       setIsEditing(false);
       return;
     }
