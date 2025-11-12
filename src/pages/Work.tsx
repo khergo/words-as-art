@@ -96,12 +96,12 @@ const Work = () => {
                       animation: `fade-in 0.6s ease-out ${index * 0.1}s both`,
                     }}
                   >
-                    <div className="mb-6 flex items-center justify-center transition-transform group-hover:scale-105 group-hover:rotate-1">
+                    <div className="mb-6 flex items-center justify-center transition-transform group-hover:scale-105 group-hover:rotate-1 h-64">
                       <EditableImage
                         src={project.icon_url}
                         alt={project.title}
                         onSave={(url) => updateProject(project.id, 'icon_url', url)}
-                        className="w-full max-w-md object-contain mix-blend-multiply opacity-80 group-hover:opacity-100 transition-opacity"
+                        className="h-64 w-64 object-contain mix-blend-multiply opacity-80 group-hover:opacity-100 transition-opacity"
                         folder={`project-${project.id}`}
                       />
                     </div>
