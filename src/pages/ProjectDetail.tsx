@@ -197,33 +197,56 @@ const ProjectDetail = () => {
     setUploading(true);
     const newPhotoUrls: string[] = [];
 
-    for (const file of Array.from(files)) {
-      const fileExt = file.name.split('.').pop();
-      const fileName = `${projectId}/${Date.now()}_${Math.random()}.${fileExt}`;
+    try {
+      for (const file of Array.from(files)) {
+        const fileExt = file.name.split('.').pop();
+        const fileName = `${projectId}/${Date.now()}_${Math.random()}.${fileExt}`;
 
-      const { error: uploadError, data } = await supabase.storage
-        .from('project-photos')
-        .upload(fileName, file);
+        console.log('Uploading file:', fileName);
 
-      if (uploadError) {
-        toast({
-          title: "Upload failed",
-          description: `Could not upload ${file.name}`,
-          variant: "destructive",
-        });
-      } else {
-        const { data: { publicUrl } } = supabase.storage
+        const { error: uploadError, data } = await supabase.storage
           .from('project-photos')
-          .getPublicUrl(fileName);
-        newPhotoUrls.push(publicUrl);
-      }
-    }
+          .upload(fileName, file);
 
-    if (newPhotoUrls.length > 0) {
-      setPhotoUrls([...photoUrls, ...newPhotoUrls]);
-      setTimeout(saveProjectMedia, 100);
+        if (uploadError) {
+          console.error('Upload error:', uploadError);
+          toast({
+            title: "Upload failed",
+            description: uploadError.message || `Could not upload ${file.name}`,
+            variant: "destructive",
+          });
+        } else {
+          console.log('Upload successful:', data);
+          const { data: { publicUrl } } = supabase.storage
+            .from('project-photos')
+            .getPublicUrl(fileName);
+          newPhotoUrls.push(publicUrl);
+        }
+      }
+
+      if (newPhotoUrls.length > 0) {
+        const updatedPhotoUrls = [...photoUrls, ...newPhotoUrls];
+        console.log('Setting photo URLs:', updatedPhotoUrls);
+        setPhotoUrls(updatedPhotoUrls);
+        
+        // Save to database immediately
+        await saveProjectMedia();
+        
+        toast({
+          title: "Success!",
+          description: `${newPhotoUrls.length} photo(s) uploaded successfully.`,
+        });
+      }
+    } catch (error) {
+      console.error('Unexpected error during upload:', error);
+      toast({
+        title: "Error",
+        description: "An unexpected error occurred during upload.",
+        variant: "destructive",
+      });
+    } finally {
+      setUploading(false);
     }
-    setUploading(false);
   };
 
   // Remove photo
