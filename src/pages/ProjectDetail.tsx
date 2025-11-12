@@ -464,22 +464,7 @@ const ProjectDetail = () => {
                 <div className="relative px-12">
                   <Carousel className="w-full">
                     <CarouselContent>
-                      {/* Video Slide - if video exists */}
-                      {embedUrl && (
-                        <CarouselItem>
-                          <div className="relative w-full pt-[56.25%] border-2 border-[#1a1a1a] rounded-lg overflow-hidden">
-                            <iframe
-                              src={embedUrl}
-                              className="absolute top-0 left-0 w-full h-full"
-                              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                              allowFullScreen
-                              title="Project video"
-                            />
-                          </div>
-                        </CarouselItem>
-                      )}
-                      
-                      {/* Photo Slides */}
+                      {/* Photo Slides - shown first */}
                       {photoUrls.map((url, index) => (
                         <CarouselItem key={`photo-${index}`}>
                           <div className="relative group flex justify-center">
@@ -501,6 +486,21 @@ const ProjectDetail = () => {
                           </div>
                         </CarouselItem>
                       ))}
+                      
+                      {/* Video Slide - shown last if video exists */}
+                      {embedUrl && (
+                        <CarouselItem>
+                          <div className="relative w-full pt-[56.25%] border-2 border-[#1a1a1a] rounded-lg overflow-hidden">
+                            <iframe
+                              src={embedUrl}
+                              className="absolute top-0 left-0 w-full h-full"
+                              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                              allowFullScreen
+                              title="Project video"
+                            />
+                          </div>
+                        </CarouselItem>
+                      )}
                     </CarouselContent>
                     <CarouselPrevious className="font-handwritten border-2 border-[#1a1a1a] bg-white hover:bg-[#dc3545] hover:text-white shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] -left-2" />
                     <CarouselNext className="font-handwritten border-2 border-[#1a1a1a] bg-white hover:bg-[#dc3545] hover:text-white shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] -right-2" />
