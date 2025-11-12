@@ -1,5 +1,6 @@
 import { useState, useRef } from 'react';
 import { useEdit } from '@/contexts/EditContext';
+import { useAuth } from '@/contexts/AuthContext';
 import { supabase } from '@/integrations/supabase/client';
 import { useToast } from '@/hooks/use-toast';
 import { Upload } from 'lucide-react';
@@ -22,6 +23,7 @@ export const EditableImage = ({
   folder = 'general'
 }: EditableImageProps) => {
   const { editMode } = useEdit();
+  const { isAdmin } = useAuth();
   const { toast } = useToast();
   const [uploading, setUploading] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -29,6 +31,15 @@ export const EditableImage = ({
   const handleUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
+
+    if (!isAdmin) {
+      toast({
+        title: "Unauthorized",
+        description: "Admin privileges required.",
+        variant: "destructive",
+      });
+      return;
+    }
 
     setUploading(true);
     try {
@@ -66,7 +77,7 @@ export const EditableImage = ({
     <div className="relative group">
       <img src={src} alt={alt} className={className} />
       
-      {editMode && (
+      {editMode && isAdmin && (
         <>
           <div 
             className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center cursor-pointer"

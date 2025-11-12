@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useEdit } from '@/contexts/EditContext';
+import { useAuth } from '@/contexts/AuthContext';
 import { supabase } from '@/integrations/supabase/client';
 import { useToast } from '@/hooks/use-toast';
 
@@ -19,6 +20,7 @@ export const EditableText = ({
   multiline = false 
 }: EditableTextProps) => {
   const { editMode } = useEdit();
+  const { isAdmin } = useAuth();
   const { toast } = useToast();
   const [text, setText] = useState(value);
   const [isEditing, setIsEditing] = useState(false);
@@ -30,6 +32,17 @@ export const EditableText = ({
 
   const handleSave = async () => {
     if (text === value) {
+      setIsEditing(false);
+      return;
+    }
+
+    if (!isAdmin) {
+      toast({
+        title: "Unauthorized",
+        description: "Admin privileges required.",
+        variant: "destructive",
+      });
+      setText(value);
       setIsEditing(false);
       return;
     }
@@ -65,11 +78,11 @@ export const EditableText = ({
     }
   };
 
-  if (!editMode || !isEditing) {
+  if (!editMode || !isAdmin || !isEditing) {
     return (
       <Component 
-        className={`${className} ${editMode ? 'cursor-pointer hover:outline hover:outline-2 hover:outline-yellow-400 hover:outline-dashed transition-all' : ''}`}
-        onClick={() => editMode && setIsEditing(true)}
+        className={`${className} ${editMode && isAdmin ? 'cursor-pointer hover:outline hover:outline-2 hover:outline-yellow-400 hover:outline-dashed transition-all' : ''}`}
+        onClick={() => editMode && isAdmin && setIsEditing(true)}
       >
         {text}
       </Component>
