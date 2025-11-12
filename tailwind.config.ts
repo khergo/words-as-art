@@ -15,8 +15,8 @@ export default {
     extend: {
       fontFamily: {
         serif: ['Playfair Display', 'serif'],
-        sans: ['Khergo', 'Inter', 'sans-serif'],
-        handwritten: ['Khergo', 'Inter', 'sans-serif'],
+        sans: ['Inter', 'sans-serif'],
+        handwritten: ['Caveat', 'cursive'],
       },
       colors: {
         border: "hsl(var(--border))",
