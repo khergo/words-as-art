@@ -140,7 +140,7 @@ const ProjectDetail = () => {
   }, [projectId]);
 
   // Save project media
-  const saveProjectMedia = async () => {
+  const saveProjectMedia = async (overrides?: Partial<{ video_url: string; photo_urls: string[]; notes: string }>) => {
     if (!projectId) return;
 
     const { data: existing } = await supabase
@@ -151,9 +151,9 @@ const ProjectDetail = () => {
 
     const mediaData = {
       project_id: Number(projectId),
-      video_url: videoUrl,
-      photo_urls: photoUrls,
-      notes: notes,
+      video_url: overrides?.video_url ?? videoUrl,
+      photo_urls: overrides?.photo_urls ?? photoUrls,
+      notes: overrides?.notes ?? notes,
     };
 
     let error;
@@ -171,7 +171,7 @@ const ProjectDetail = () => {
     if (error) {
       toast({
         title: "Error saving",
-        description: "Could not save project media. Please try again.",
+        description: error.message || "Could not save project media. Please try again.",
         variant: "destructive",
       });
     } else {
@@ -230,7 +230,7 @@ const ProjectDetail = () => {
         setPhotoUrls(updatedPhotoUrls);
         
         // Save to database immediately
-        await saveProjectMedia();
+        await saveProjectMedia({ photo_urls: updatedPhotoUrls });
         
         toast({
           title: "Success!",
@@ -251,8 +251,9 @@ const ProjectDetail = () => {
 
   // Remove photo
   const removePhoto = async (url: string) => {
-    setPhotoUrls(photoUrls.filter(p => p !== url));
-    setTimeout(saveProjectMedia, 100);
+    const updated = photoUrls.filter(p => p !== url);
+    setPhotoUrls(updated);
+    await saveProjectMedia({ photo_urls: updated });
   };
 
   // Update project field
@@ -554,7 +555,7 @@ const ProjectDetail = () => {
                   placeholder="Add your project notes, insights, or additional details here..."
                 />
                 <Button
-                  onClick={saveProjectMedia}
+                  onClick={() => saveProjectMedia()}
                   className="mt-4 font-handwritten bg-[#dc3545] hover:bg-[#c82333] text-white border-2 border-[#1a1a1a] shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:shadow-none transition-all"
                 >
                   Save Notes
