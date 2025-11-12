@@ -372,7 +372,7 @@ const ProjectDetail = () => {
                   src={project.icon_url}
                   alt={project.title}
                   onSave={(url) => updateProject('icon_url', url)}
-                  className="w-full max-w-6xl h-auto max-h-[85vh] object-contain rounded-lg shadow-xl"
+                  className="w-full max-w-5xl h-auto max-h-[90vh] object-contain rounded-lg shadow-xl"
                   folder={`project-${projectId}`}
                 />
               </div>
@@ -495,7 +495,7 @@ const ProjectDetail = () => {
                             <img
                               src={url}
                               alt={`Project photo ${index + 1}`}
-                              className="w-full max-w-6xl h-auto max-h-[80vh] object-contain rounded-lg shadow-xl border-2 border-[#1a1a1a]"
+                              className="w-full max-w-5xl h-auto max-h-[85vh] object-contain rounded-lg shadow-xl border-2 border-[#1a1a1a]"
                               loading="lazy"
                             />
                             {editMode && (
