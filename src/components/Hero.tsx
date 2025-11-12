@@ -16,11 +16,11 @@ const Hero = () => {
       }} />
 
       {/* Red vertical margin line */}
-      <div className="absolute left-[80px] top-0 bottom-0 w-[2px] bg-[#dc3545] opacity-60" />
+      <div className="absolute left-[40px] md:left-[80px] top-0 bottom-0 w-[2px] bg-[#dc3545] opacity-60" />
 
-      <div className="container mx-auto px-6 relative z-10">
-        <div className="max-w-5xl mx-auto text-left pl-12">
-          <h1 className="font-handwritten font-bold text-5xl md:text-7xl lg:text-8xl mb-12 animate-fade-in leading-relaxed text-[#1a1a1a]">
+      <div className="container mx-auto px-4 md:px-6 relative z-10">
+        <div className="max-w-5xl mx-auto text-left pl-8 md:pl-12">
+          <h1 className="font-handwritten font-bold text-4xl sm:text-5xl md:text-7xl lg:text-8xl mb-12 animate-fade-in leading-relaxed text-[#1a1a1a]">
             <span className="block transform -rotate-1 relative mb-4">
               The copywriter
             </span>
