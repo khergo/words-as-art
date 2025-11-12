@@ -1,4 +1,4 @@
-import { Mail, Linkedin, Instagram, Twitter } from "lucide-react";
+import { Mail, Linkedin, Instagram, Facebook } from "lucide-react";
 const Footer = () => {
   const currentYear = new Date().getFullYear();
   return <footer className="bg-[#1a1a1a] text-white py-12 relative z-10">
@@ -13,17 +13,17 @@ const Footer = () => {
             </div>
 
             <div className="flex items-center gap-6">
-              <a href="mailto:hello@giorgikhergiani.com" className="hover:text-[#dc3545] transition-colors" aria-label="Email">
+              <a href="mailto:giorgikhergiani@gmail.com" className="hover:text-[#dc3545] transition-colors" aria-label="Email">
                 <Mail size={20} />
               </a>
-              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="hover:text-[#dc3545] transition-colors" aria-label="LinkedIn">
+              <a href="https://www.linkedin.com/in/giorgikhergiani/" target="_blank" rel="noopener noreferrer" className="hover:text-[#dc3545] transition-colors" aria-label="LinkedIn">
                 <Linkedin size={20} />
               </a>
-              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="hover:text-[#dc3545] transition-colors" aria-label="Instagram">
+              <a href="https://www.instagram.com/thatglitchinthematrix/" target="_blank" rel="noopener noreferrer" className="hover:text-[#dc3545] transition-colors" aria-label="Instagram">
                 <Instagram size={20} />
               </a>
-              <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="hover:text-[#dc3545] transition-colors" aria-label="Twitter">
-                <Twitter size={20} />
+              <a href="https://www.facebook.com/seduceyoutwice" target="_blank" rel="noopener noreferrer" className="hover:text-[#dc3545] transition-colors" aria-label="Facebook">
+                <Facebook size={20} />
               </a>
             </div>
           </div>
