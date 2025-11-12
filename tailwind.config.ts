@@ -16,7 +16,7 @@ export default {
       fontFamily: {
         serif: ['Playfair Display', 'serif'],
         sans: ['Khergo', 'Inter', 'sans-serif'],
-        handwritten: ['Caveat', 'cursive'],
+        handwritten: ['Khergo', 'Inter', 'sans-serif'],
       },
       colors: {
         border: "hsl(var(--border))",
