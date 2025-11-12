@@ -9,7 +9,7 @@ const Footer = () => {
               <h3 className="font-handwritten text-4xl font-bold mb-2 transform -rotate-2">
                 Giorgi Khergiani
               </h3>
-              <p className="text-lg font-handwritten opacity-80 transform rotate-1">Copywriter, Entrepreneur & Senior Beer</p>
+              <p className="text-lg font-handwritten opacity-80 transform rotate-1">Copywriter, Entrepreneur & Senior Beer Specialist</p>
             </div>
 
             <div className="flex items-center gap-6">
