@@ -197,44 +197,6 @@ const About = () => {
                 </div>
 
                 <div className="md:col-span-3 space-y-6 animate-fade-in-delay">
-                  <div className="mb-6">
-          <div className="flex gap-3 items-center">
-            {getContent('cv_url') ? (
-              <Button 
-                onClick={() => window.open(getContent('cv_url'), '_blank')}
-                className="bg-[#dc3545] hover:bg-[#c82333] text-white font-handwritten text-lg px-6 py-3 rounded-full shadow-lg hover:shadow-xl transition-all transform hover:scale-105"
-              >
-                <FileDown className="mr-2" size={20} />
-                Download CV
-              </Button>
-            ) : (
-              !editMode && (
-                <p className="text-[#666] font-handwritten text-lg">No CV available</p>
-              )
-            )}
-            
-            {editMode && (
-              <>
-                <Button
-                  onClick={() => document.getElementById('cv-upload')?.click()}
-                  disabled={cvUploading}
-                  className="bg-[#28a745] hover:bg-[#218838] text-white font-handwritten text-lg px-6 py-3 rounded-full shadow-lg hover:shadow-xl transition-all transform hover:scale-105 disabled:opacity-50"
-                >
-                  <Upload className="mr-2" size={20} />
-                  {cvUploading ? 'Uploading...' : getContent('cv_url') ? 'Replace CV' : 'Upload CV'}
-                </Button>
-                <input
-                  id="cv-upload"
-                  type="file"
-                  accept=".pdf,application/pdf"
-                  className="hidden"
-                  onChange={handleCVUpload}
-                />
-              </>
-            )}
-          </div>
-                  </div>
-
                   <EditableText
                     value={getContent('intro')}
                     onSave={(value) => updateContent('intro', value)}
@@ -266,6 +228,44 @@ const About = () => {
                     className="text-2xl font-handwritten leading-relaxed text-[#1a1a1a] transform rotate-1 whitespace-pre-line"
                     multiline
                   />
+                </div>
+              </div>
+
+              <div className="mt-12 mb-16 flex justify-center animate-fade-in">
+                <div className="flex gap-3 items-center">
+                  {getContent('cv_url') ? (
+                    <Button 
+                      onClick={() => window.open(getContent('cv_url'), '_blank')}
+                      className="bg-[#dc3545] hover:bg-[#c82333] text-white font-handwritten text-lg px-6 py-3 rounded-full shadow-lg hover:shadow-xl transition-all transform hover:scale-105"
+                    >
+                      <FileDown className="mr-2" size={20} />
+                      Download CV
+                    </Button>
+                  ) : (
+                    !editMode && (
+                      <p className="text-[#666] font-handwritten text-lg">No CV available</p>
+                    )
+                  )}
+                  
+                  {editMode && (
+                    <>
+                      <Button
+                        onClick={() => document.getElementById('cv-upload')?.click()}
+                        disabled={cvUploading}
+                        className="bg-[#28a745] hover:bg-[#218838] text-white font-handwritten text-lg px-6 py-3 rounded-full shadow-lg hover:shadow-xl transition-all transform hover:scale-105 disabled:opacity-50"
+                      >
+                        <Upload className="mr-2" size={20} />
+                        {cvUploading ? 'Uploading...' : getContent('cv_url') ? 'Replace CV' : 'Upload CV'}
+                      </Button>
+                      <input
+                        id="cv-upload"
+                        type="file"
+                        accept=".pdf,application/pdf"
+                        className="hidden"
+                        onChange={handleCVUpload}
+                      />
+                    </>
+                  )}
                 </div>
               </div>
 
