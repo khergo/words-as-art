@@ -263,7 +263,7 @@ const ProjectDetail = () => {
         <main className="pt-24 pb-16">
           <div className="container mx-auto px-6">
             <div className="max-w-4xl mx-auto text-center">
-              <h1 className="font-handwritten text-4xl font-bold mb-4 text-[#1a1a1a]">
+              <h1 className="font-handwritten text-5xl font-bold mb-4 text-[#1a1a1a]">
                 Project Not Found
               </h1>
               <Link to="/work" className="text-[#dc3545] hover:underline font-handwritten">
@@ -335,7 +335,7 @@ const ProjectDetail = () => {
             <div className="mb-8">
               <Link
                 to="/work"
-                className="inline-flex items-center gap-2 text-lg font-handwritten text-[#666] hover:text-[#1a1a1a] transition-colors group"
+                className="inline-flex items-center gap-2 text-xl font-handwritten text-[#666] hover:text-[#1a1a1a] transition-colors group"
               >
                 <ArrowLeft size={20} className="transition-transform group-hover:-translate-x-1" />
                 Back to Work
@@ -509,7 +509,7 @@ const ProjectDetail = () => {
               )}
 
               {!editMode && !embedUrl && photoUrls.length === 0 && (
-                <p className="font-handwritten text-lg text-[#666] text-center py-8">
+                <p className="font-handwritten text-xl text-[#666] text-center py-8">
                   No media available for this project yet.
                 </p>
               )}
@@ -523,7 +523,7 @@ const ProjectDetail = () => {
                 <textarea
                   value={notes}
                   onChange={(e) => setNotes(e.target.value)}
-                  className="w-full min-h-[200px] p-4 font-handwritten text-lg border-2 border-[#666] rounded-lg bg-white/80 focus:outline-none focus:border-[#dc3545] transition-colors resize-none"
+                  className="w-full min-h-[200px] p-4 font-handwritten text-xl border-2 border-[#666] rounded-lg bg-white/80 focus:outline-none focus:border-[#dc3545] transition-colors resize-none"
                   placeholder="Add your project notes, insights, or additional details here..."
                 />
                 <Button

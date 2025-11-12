@@ -74,7 +74,7 @@ export const EditableImage = ({
           >
             <div className="bg-white rounded-lg p-4 flex flex-col items-center gap-2">
               <Upload className="w-8 h-8" />
-              <span className="font-handwritten text-sm">
+              <span className="font-handwritten text-base">
                 {uploading ? 'Uploading...' : 'Change Image'}
               </span>
             </div>

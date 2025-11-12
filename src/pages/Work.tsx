@@ -56,7 +56,7 @@ const Work = () => {
         <Navigation />
         <main className="pt-24 pb-16">
           <div className="container mx-auto px-6 text-center">
-            <p className="font-handwritten text-xl">Loading...</p>
+            <p className="font-handwritten text-2xl">Loading...</p>
           </div>
         </main>
         <Footer />

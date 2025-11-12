@@ -114,7 +114,7 @@ const Contact = () => {
                 <div>
                   <label
                     htmlFor="name"
-                    className="block text-lg font-handwritten font-medium mb-2 text-[#1a1a1a] transform -rotate-1"
+                    className="block text-xl font-handwritten font-medium mb-2 text-[#1a1a1a] transform -rotate-1"
                   >
                     Name
                   </label>
@@ -125,14 +125,14 @@ const Contact = () => {
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 bg-[#f6f6f6] border-2 border-[#d4a574] focus:border-[#dc3545] focus:outline-none transition-colors font-handwritten text-lg"
+                    className="w-full px-4 py-3 bg-[#f6f6f6] border-2 border-[#d4a574] focus:border-[#dc3545] focus:outline-none transition-colors font-handwritten text-xl"
                   />
                 </div>
 
                 <div>
                   <label
                     htmlFor="email"
-                    className="block text-lg font-handwritten font-medium mb-2 text-[#1a1a1a] transform rotate-1"
+                    className="block text-xl font-handwritten font-medium mb-2 text-[#1a1a1a] transform rotate-1"
                   >
                     Email
                   </label>
@@ -143,14 +143,14 @@ const Contact = () => {
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 bg-[#f6f6f6] border-2 border-[#d4a574] focus:border-[#dc3545] focus:outline-none transition-colors font-handwritten text-lg"
+                    className="w-full px-4 py-3 bg-[#f6f6f6] border-2 border-[#d4a574] focus:border-[#dc3545] focus:outline-none transition-colors font-handwritten text-xl"
                   />
                 </div>
 
                 <div>
                   <label
                     htmlFor="message"
-                    className="block text-lg font-handwritten font-medium mb-2 text-[#1a1a1a] transform -rotate-1"
+                    className="block text-xl font-handwritten font-medium mb-2 text-[#1a1a1a] transform -rotate-1"
                   >
                     Message
                   </label>
@@ -161,13 +161,13 @@ const Contact = () => {
                     onChange={handleChange}
                     required
                     rows={6}
-                    className="w-full px-4 py-3 bg-[#f6f6f6] border-2 border-[#d4a574] focus:border-[#dc3545] focus:outline-none transition-colors resize-none font-handwritten text-lg"
+                    className="w-full px-4 py-3 bg-[#f6f6f6] border-2 border-[#d4a574] focus:border-[#dc3545] focus:outline-none transition-colors resize-none font-handwritten text-xl"
                   />
                 </div>
 
                 <button
                   type="submit"
-                  className="w-full py-4 bg-[#dc3545] text-white font-handwritten text-xl font-medium hover:scale-[1.02] transition-transform transform -rotate-1 shadow-lg"
+                  className="w-full py-4 bg-[#dc3545] text-white font-handwritten text-2xl font-medium hover:scale-[1.02] transition-transform transform -rotate-1 shadow-lg"
                 >
                   Send Message
                 </button>

@@ -61,13 +61,13 @@ const Auth = () => {
     <div className="min-h-screen flex items-center justify-center bg-[#f6f6f6] px-6">
       <div className="w-full max-w-md">
         <div className="bg-white p-8 rounded-lg border-2 border-[#1a1a1a] shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
-          <h1 className="text-3xl font-handwritten font-bold text-[#1a1a1a] mb-6 text-center">
+          <h1 className="text-4xl font-handwritten font-bold text-[#1a1a1a] mb-6 text-center">
             {isLogin ? "Login" : "Sign Up"}
           </h1>
 
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
-              <label htmlFor="email" className="block text-sm font-handwritten mb-2 text-[#1a1a1a]">
+              <label htmlFor="email" className="block text-base font-handwritten mb-2 text-[#1a1a1a]">
                 Email
               </label>
               <Input
@@ -82,7 +82,7 @@ const Auth = () => {
             </div>
 
             <div>
-              <label htmlFor="password" className="block text-sm font-handwritten mb-2 text-[#1a1a1a]">
+              <label htmlFor="password" className="block text-base font-handwritten mb-2 text-[#1a1a1a]">
                 Password
               </label>
               <Input
@@ -108,7 +108,7 @@ const Auth = () => {
           <div className="mt-4 text-center">
             <button
               onClick={() => setIsLogin(!isLogin)}
-              className="text-sm font-handwritten text-[#666] hover:text-[#1a1a1a] transition-colors"
+              className="text-base font-handwritten text-[#666] hover:text-[#1a1a1a] transition-colors"
             >
               {isLogin ? "Need an account? Sign up" : "Already have an account? Login"}
             </button>
