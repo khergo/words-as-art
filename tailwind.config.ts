@@ -15,8 +15,8 @@ export default {
     extend: {
       fontFamily: {
         serif: ['Playfair Display', 'serif'],
-        sans: ['Inter', 'sans-serif'],
-        handwritten: ['Caveat', 'cursive'],
+        sans: ['Patrick Hand', 'Caveat', 'cursive'],
+        handwritten: ['Patrick Hand', 'Caveat', 'cursive'],
       },
       colors: {
         border: "hsl(var(--border))",

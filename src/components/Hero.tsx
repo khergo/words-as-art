@@ -18,10 +18,10 @@ const Hero = () => {
       <div className="container mx-auto px-4 md:px-6 relative z-10">
         <div className="max-w-5xl mx-auto text-left pl-8 md:pl-12">
           <div className="font-handwritten animate-fade-in text-[#1a1a1a]">
-            {/* Crossed out "typ" at the top */}
+            {/* Crossed out "the" at the top */}
             <div className="relative inline-block mb-2 ml-4">
               <span className="text-3xl md:text-5xl opacity-70 relative">
-                typ
+                the
                 <svg className="absolute top-1/2 left-0 w-full" height="3" viewBox="0 0 100 3" preserveAspectRatio="none">
                   <path d="M0,1.5 L100,1.5" stroke="#1a1a1a" strokeWidth="2" />
                 </svg>
