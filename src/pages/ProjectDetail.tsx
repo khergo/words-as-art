@@ -402,86 +402,86 @@ const ProjectDetail = () => {
                 Project Media
               </h2>
               
-              {/* Video Editor Section - Only visible in edit mode */}
+              {/* Video and Photo Upload Section - Only visible in edit mode */}
               {editMode && (
-                <div className="mb-6 p-4 bg-yellow-50 border-2 border-yellow-300 rounded-lg">
-                  <label className="font-handwritten text-xl font-medium text-[#1a1a1a] mb-2 block">
-                    Embed Video (YouTube, Vimeo, or Google Drive)
-                  </label>
-                  <div className="flex gap-2">
-                    <Input
-                      type="text"
-                      value={videoUrl}
-                      onChange={(e) => setVideoUrl(e.target.value)}
-                      placeholder="Paste video URL here..."
-                      className="font-handwritten border-2 border-[#1a1a1a] bg-white focus:border-[#dc3545]"
-                    />
-                    <Button
-                      onClick={handleVideoUrlSubmit}
-                      className="font-handwritten bg-[#dc3545] hover:bg-[#c82333] text-white border-2 border-[#1a1a1a] shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:shadow-none transition-all whitespace-nowrap"
-                    >
-                      Embed Video
-                    </Button>
-                  </div>
-                </div>
-              )}
-
-              {/* Embedded Video Display - Always visible if exists */}
-              {embedUrl && (
-                <div className="mb-6">
-                  <div className="relative w-full pt-[56.25%] border-2 border-[#1a1a1a] rounded-lg overflow-hidden">
-                    <iframe
-                      src={embedUrl}
-                      className="absolute top-0 left-0 w-full h-full"
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                      allowFullScreen
-                      title="Project video"
-                    />
-                  </div>
-                </div>
-              )}
-
-              {/* Photo Upload Section - Only visible in edit mode */}
-              {editMode && (
-                <div className="mb-6 p-4 bg-yellow-50 border-2 border-yellow-300 rounded-lg">
-                  <label className="font-handwritten text-xl font-medium text-[#1a1a1a] mb-2 block">
-                    Upload Photos
-                  </label>
-                  <div className="border-2 border-dashed border-[#666] rounded-lg p-8 text-center bg-white">
-                    <Upload className="w-12 h-12 mx-auto mb-3 text-[#666]" />
-                    <p className="font-handwritten text-lg text-[#666] mb-3">
-                      {uploading ? "Uploading..." : "Click to upload photos"}
-                    </p>
-                    <Input
-                      type="file"
-                      accept="image/*"
-                      multiple
-                      onChange={handlePhotoUpload}
-                      disabled={uploading}
-                      className="hidden"
-                      id="photo-upload"
-                    />
-                    <label htmlFor="photo-upload">
-                      <Button
-                        variant="outline"
-                        className="font-handwritten border-2 border-[#1a1a1a] bg-white hover:bg-[#dc3545] hover:text-white hover:border-[#dc3545] transition-all shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:shadow-none"
-                        disabled={uploading}
-                        asChild
-                      >
-                        <span className="cursor-pointer">Choose Photos</span>
-                      </Button>
+                <div className="space-y-6 mb-6">
+                  <div className="p-4 bg-yellow-50 border-2 border-yellow-300 rounded-lg">
+                    <label className="font-handwritten text-xl font-medium text-[#1a1a1a] mb-2 block">
+                      Embed Video (YouTube, Vimeo, or Google Drive)
                     </label>
+                    <div className="flex gap-2">
+                      <Input
+                        type="text"
+                        value={videoUrl}
+                        onChange={(e) => setVideoUrl(e.target.value)}
+                        placeholder="Paste video URL here..."
+                        className="font-handwritten border-2 border-[#1a1a1a] bg-white focus:border-[#dc3545]"
+                      />
+                      <Button
+                        onClick={handleVideoUrlSubmit}
+                        className="font-handwritten bg-[#dc3545] hover:bg-[#c82333] text-white border-2 border-[#1a1a1a] shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:shadow-none transition-all whitespace-nowrap"
+                      >
+                        Embed Video
+                      </Button>
+                    </div>
+                  </div>
+
+                  <div className="p-4 bg-yellow-50 border-2 border-yellow-300 rounded-lg">
+                    <label className="font-handwritten text-xl font-medium text-[#1a1a1a] mb-2 block">
+                      Upload Photos
+                    </label>
+                    <div className="border-2 border-dashed border-[#666] rounded-lg p-8 text-center bg-white">
+                      <Upload className="w-12 h-12 mx-auto mb-3 text-[#666]" />
+                      <p className="font-handwritten text-lg text-[#666] mb-3">
+                        {uploading ? "Uploading..." : "Click to upload photos"}
+                      </p>
+                      <Input
+                        type="file"
+                        accept="image/*"
+                        multiple
+                        onChange={handlePhotoUpload}
+                        disabled={uploading}
+                        className="hidden"
+                        id="photo-upload"
+                      />
+                      <label htmlFor="photo-upload">
+                        <Button
+                          variant="outline"
+                          className="font-handwritten border-2 border-[#1a1a1a] bg-white hover:bg-[#dc3545] hover:text-white hover:border-[#dc3545] transition-all shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:shadow-none"
+                          disabled={uploading}
+                          asChild
+                        >
+                          <span className="cursor-pointer">Choose Photos</span>
+                        </Button>
+                      </label>
+                    </div>
                   </div>
                 </div>
               )}
 
-              {/* Uploaded Photos Carousel - Always visible if exists */}
-              {photoUrls.length > 0 && (
+              {/* Unified Media Carousel - Shows both video and photos */}
+              {(embedUrl || photoUrls.length > 0) && (
                 <div className="relative px-12">
                   <Carousel className="w-full">
                     <CarouselContent>
+                      {/* Video Slide - if video exists */}
+                      {embedUrl && (
+                        <CarouselItem>
+                          <div className="relative w-full pt-[56.25%] border-2 border-[#1a1a1a] rounded-lg overflow-hidden">
+                            <iframe
+                              src={embedUrl}
+                              className="absolute top-0 left-0 w-full h-full"
+                              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                              allowFullScreen
+                              title="Project video"
+                            />
+                          </div>
+                        </CarouselItem>
+                      )}
+                      
+                      {/* Photo Slides */}
                       {photoUrls.map((url, index) => (
-                        <CarouselItem key={index}>
+                        <CarouselItem key={`photo-${index}`}>
                           <div className="relative group flex justify-center">
                             <img
                               src={url}
