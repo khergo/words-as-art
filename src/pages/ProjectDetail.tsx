@@ -372,7 +372,7 @@ const ProjectDetail = () => {
                   src={project.icon_url}
                   alt={project.title}
                   onSave={(url) => updateProject('icon_url', url)}
-                  className="w-full max-w-3xl h-auto max-h-[70vh] object-contain rounded-lg shadow-xl"
+                  className="w-full max-w-6xl h-auto max-h-[85vh] object-contain rounded-lg shadow-xl"
                   folder={`project-${projectId}`}
                 />
               </div>
@@ -491,11 +491,11 @@ const ProjectDetail = () => {
                       {/* Photo Slides - shown first */}
                        {photoUrls.map((url, index) => (
                         <CarouselItem key={`photo-${index}`}>
-                          <div className="relative group flex justify-center items-center bg-white p-6 rounded-lg min-h-[400px]">
+                          <div className="relative group flex justify-center items-center bg-white p-6 rounded-lg min-h-[500px]">
                             <img
                               src={url}
                               alt={`Project photo ${index + 1}`}
-                              className="w-full max-w-4xl h-auto max-h-[65vh] object-contain rounded-lg shadow-xl border-2 border-[#1a1a1a]"
+                              className="w-full max-w-6xl h-auto max-h-[80vh] object-contain rounded-lg shadow-xl border-2 border-[#1a1a1a]"
                               loading="lazy"
                             />
                             {editMode && (
