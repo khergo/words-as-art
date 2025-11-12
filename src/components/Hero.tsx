@@ -1,9 +1,5 @@
 import { ArrowDown } from "lucide-react";
 import { Link } from "react-router-dom";
-import doodleBeer from "@/assets/doodle-beer.png";
-import doodleShoelaces from "@/assets/doodle-shoelaces.png";
-import doodleSneakers from "@/assets/doodle-sneakers.png";
-
 const Hero = () => {
   return <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#f6f6f6]">
       {/* Notebook paper texture and lines */}
@@ -18,23 +14,6 @@ const Hero = () => {
 
       {/* Red vertical margin line */}
       <div className="absolute left-[40px] md:left-[80px] top-0 bottom-0 w-[2px] bg-[#dc3545] opacity-60" />
-
-      {/* Decorative scribbles */}
-      <img 
-        src={doodleBeer} 
-        alt="" 
-        className="absolute bottom-12 left-12 w-24 h-24 opacity-30 rotate-12 hidden md:block pointer-events-none"
-      />
-      <img 
-        src={doodleShoelaces} 
-        alt="" 
-        className="absolute top-20 right-16 w-32 h-32 opacity-25 -rotate-6 hidden lg:block pointer-events-none"
-      />
-      <img 
-        src={doodleSneakers} 
-        alt="" 
-        className="absolute top-1/3 left-20 w-28 h-28 opacity-20 rotate-[-15deg] hidden md:block pointer-events-none"
-      />
 
       <div className="container mx-auto px-4 md:px-6 relative z-10">
         <div className="max-w-5xl mx-auto text-left pl-8 md:pl-12">
