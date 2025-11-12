@@ -9,6 +9,7 @@ import { useEdit } from "@/contexts/EditContext";
 import { Button } from "@/components/ui/button";
 import { toast } from "@/hooks/use-toast";
 import { useState } from "react";
+import profileSticker from "@/assets/profile-sticker.png";
 
 const About = () => {
   const { editMode } = useEdit();
@@ -128,6 +129,16 @@ const About = () => {
   return (
     <div className="min-h-screen relative">
       <Navigation />
+      
+      {/* Profile Sticker */}
+      <img 
+        src={profileSticker}
+        alt="Profile sticker"
+        className="fixed top-32 right-8 w-64 h-auto z-20 rotate-6 hover:rotate-12 transition-transform duration-300 shadow-[0_8px_16px_rgba(0,0,0,0.15),0_2px_4px_rgba(0,0,0,0.1)] border-4 border-white"
+        style={{
+          filter: 'drop-shadow(0 4px 6px rgba(0,0,0,0.1))',
+        }}
+      />
 
       <main className="pt-24 relative z-10">
         <section className="py-16">
