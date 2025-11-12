@@ -45,7 +45,7 @@ const WorkPreview = () => {
   return (
     <section id="work-preview" className="py-24 relative bg-[#f6f6f6] overflow-hidden">
       {/* Notebook paper texture and lines */}
-      <div className="absolute inset-0 opacity-40" style={{
+      <div className="absolute inset-0 opacity-20" style={{
         backgroundImage: `
           linear-gradient(transparent 0px, transparent 39px, #d4a574 39px, #d4a574 40px),
           linear-gradient(90deg, #e8c5a0 1px, transparent 1px)
