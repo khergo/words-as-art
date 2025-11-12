@@ -109,6 +109,7 @@ All colors MUST be HSL.
 
   body {
     @apply bg-[#f6f6f6] text-foreground;
+    font-family: 'Khergo', 'Inter', sans-serif;
     background-image:
       linear-gradient(transparent 0px, transparent 39px, hsla(32, 47%, 65%, 0.3) 39px, hsla(32, 47%, 65%, 0.3) 40px),
       linear-gradient(90deg, hsla(32, 53%, 77%, 0.35) 1px, transparent 1px);
