@@ -422,6 +422,10 @@ const ProjectDetail = () => {
             </div>
 
             <div className="bg-white/80 backdrop-blur-sm rounded-lg p-8 mb-8 border-2 border-[#1a1a1a] shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transform rotate-1">
+              <h2 className="font-handwritten text-4xl font-bold mb-6 text-center text-[#1a1a1a]">
+                Project Media
+              </h2>
+              
               {/* Video and Photo Upload Section - Only visible in edit mode */}
               {editMode && (
                 <div className="space-y-6 mb-6">
@@ -487,11 +491,11 @@ const ProjectDetail = () => {
                       {/* Photo Slides - shown first */}
                        {photoUrls.map((url, index) => (
                         <CarouselItem key={`photo-${index}`}>
-                          <div className="relative group flex justify-center items-center bg-white rounded-lg min-h-[600px]">
+                          <div className="relative group flex justify-center items-center bg-white p-6 rounded-lg min-h-[500px]">
                             <img
                               src={url}
                               alt={`Project photo ${index + 1}`}
-                              className="w-full h-full max-h-[90vh] object-contain rounded-lg"
+                              className="w-full max-w-5xl h-auto max-h-[85vh] object-contain rounded-lg shadow-xl border-2 border-[#1a1a1a]"
                               loading="lazy"
                             />
                             {editMode && (
@@ -510,10 +514,10 @@ const ProjectDetail = () => {
                       {/* Video Slide - shown last if video exists */}
                       {embedUrl && (
                         <CarouselItem>
-                          <div className="relative w-full h-[80vh] max-h-[900px] flex items-center justify-center bg-white rounded-lg overflow-hidden">
+                          <div className="relative w-full pt-[56.25%] border-2 border-[#1a1a1a] rounded-lg overflow-hidden">
                             <iframe
                               src={embedUrl}
-                              className="w-full h-full"
+                              className="absolute top-0 left-0 w-full h-full"
                               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                               allowFullScreen
                               title="Project video"
