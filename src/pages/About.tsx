@@ -9,6 +9,7 @@ import { useEdit } from "@/contexts/EditContext";
 import { Button } from "@/components/ui/button";
 import { toast } from "@/hooks/use-toast";
 import { useState } from "react";
+import profileGif from "@/assets/profile.gif";
 
 const About = () => {
   const { editMode } = useEdit();
@@ -130,6 +131,17 @@ const About = () => {
       <Navigation />
 
       <main className="pt-24 relative z-10">
+        {/* GIF Sticker - positioned like it's stuck on the notepad */}
+        <div className="absolute top-32 right-8 md:right-16 z-20 animate-fade-in">
+          <img 
+            src={profileGif} 
+            alt="Sticker" 
+            className="w-32 h-32 md:w-40 md:h-40 object-cover rounded-lg transform rotate-6 shadow-[0_8px_16px_rgba(0,0,0,0.15),0_2px_4px_rgba(0,0,0,0.1)] border-4 border-white/90 hover:rotate-12 transition-transform duration-300"
+            style={{
+              filter: 'drop-shadow(0 4px 8px rgba(0,0,0,0.1))'
+            }}
+          />
+        </div>
         <section className="py-16">
           <div className="container mx-auto px-6">
             <div className="max-w-4xl mx-auto pl-6">
