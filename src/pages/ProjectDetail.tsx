@@ -367,12 +367,12 @@ const ProjectDetail = () => {
             </div>
 
             <div className="text-center mb-12">
-              <div className="flex items-center justify-center mb-12">
+              <div className="flex items-center justify-center mb-8">
                 <EditableImage
                   src={project.icon_url}
                   alt={project.title}
                   onSave={(url) => updateProject('icon_url', url)}
-                  className="w-full max-w-4xl object-contain rounded-lg shadow-xl"
+                  className="w-full max-w-3xl h-auto max-h-[70vh] object-contain rounded-lg shadow-xl"
                   folder={`project-${projectId}`}
                 />
               </div>
@@ -421,8 +421,8 @@ const ProjectDetail = () => {
               />
             </div>
 
-            <div className="bg-white/80 backdrop-blur-sm rounded-lg p-10 mb-8 border-2 border-[#1a1a1a] shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transform rotate-1">
-              <h2 className="font-handwritten text-4xl font-bold mb-8 text-center text-[#1a1a1a]">
+            <div className="bg-white/80 backdrop-blur-sm rounded-lg p-8 mb-8 border-2 border-[#1a1a1a] shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transform rotate-1">
+              <h2 className="font-handwritten text-4xl font-bold mb-6 text-center text-[#1a1a1a]">
                 Project Media
               </h2>
               
@@ -491,11 +491,11 @@ const ProjectDetail = () => {
                       {/* Photo Slides - shown first */}
                        {photoUrls.map((url, index) => (
                         <CarouselItem key={`photo-${index}`}>
-                          <div className="relative group flex justify-center bg-white p-4 rounded-lg">
+                          <div className="relative group flex justify-center items-center bg-white p-6 rounded-lg min-h-[400px]">
                             <img
                               src={url}
                               alt={`Project photo ${index + 1}`}
-                              className="w-full max-w-5xl h-auto object-contain rounded-lg shadow-2xl border-2 border-[#1a1a1a]"
+                              className="w-full max-w-4xl h-auto max-h-[65vh] object-contain rounded-lg shadow-xl border-2 border-[#1a1a1a]"
                               loading="lazy"
                             />
                             {editMode && (
