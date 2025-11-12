@@ -247,7 +247,7 @@ const About = () => {
                     value={getContent('paragraph_1')}
                     onSave={(value) => updateContent('paragraph_1', value)}
                     as="p"
-                    className="text-xl font-handwritten leading-relaxed text-[#1a1a1a] transform rotate-1 whitespace-pre-line"
+                    className="text-2xl font-handwritten leading-relaxed text-[#1a1a1a] transform rotate-1 whitespace-pre-line"
                     multiline
                   />
 
@@ -255,7 +255,7 @@ const About = () => {
                     value={getContent('paragraph_2')}
                     onSave={(value) => updateContent('paragraph_2', value)}
                     as="p"
-                    className="text-xl font-handwritten leading-relaxed text-[#1a1a1a] transform -rotate-1 whitespace-pre-line"
+                    className="text-2xl font-handwritten leading-relaxed text-[#1a1a1a] transform -rotate-1 whitespace-pre-line"
                     multiline
                   />
 
@@ -263,7 +263,7 @@ const About = () => {
                     value={getContent('paragraph_3')}
                     onSave={(value) => updateContent('paragraph_3', value)}
                     as="p"
-                    className="text-xl font-handwritten leading-relaxed text-[#1a1a1a] transform rotate-1 whitespace-pre-line"
+                    className="text-2xl font-handwritten leading-relaxed text-[#1a1a1a] transform rotate-1 whitespace-pre-line"
                     multiline
                   />
                 </div>
@@ -290,20 +290,20 @@ const About = () => {
                         value={award.year}
                         onSave={(value) => updateAward(award.id, 'year', value)}
                         as="span"
-                        className="text-base font-handwritten font-medium text-[#dc3545] min-w-[60px] transform rotate-1"
+                        className="text-xl font-handwritten font-medium text-[#dc3545] min-w-[70px] transform rotate-1"
                       />
                       <div className="flex-1">
                         <EditableText
                           value={award.title}
                           onSave={(value) => updateAward(award.id, 'title', value)}
                           as="h3"
-                          className="text-2xl font-handwritten font-semibold mb-1 text-[#1a1a1a] transform -rotate-1"
+                          className="text-3xl font-handwritten font-semibold mb-1 text-[#1a1a1a] transform -rotate-1"
                         />
                         <EditableText
                           value={award.category}
                           onSave={(value) => updateAward(award.id, 'category', value)}
                           as="p"
-                          className="text-lg font-handwritten text-[#666] transform rotate-1"
+                          className="text-xl font-handwritten text-[#666] transform rotate-1"
                         />
                       </div>
                     </div>

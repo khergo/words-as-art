@@ -178,17 +178,17 @@ const Contact = () => {
                   value={getContent('direct_contact_text')}
                   onSave={(value) => updateContent('direct_contact_text', value)}
                   as="p"
-                  className="text-base font-handwritten text-[#666] mb-2 transform rotate-1"
+                  className="text-lg font-handwritten text-[#666] mb-2 transform rotate-1"
                 />
                 <a
                   href={`mailto:${getContent('email')}`}
-                  className="text-xl font-handwritten font-medium text-[#dc3545] hover:underline transform -rotate-1 inline-block"
+                  className="text-2xl font-handwritten font-medium text-[#dc3545] hover:underline transform -rotate-1 inline-block"
                 >
                   <EditableText
                     value={getContent('email')}
                     onSave={(value) => updateContent('email', value)}
                     as="span"
-                    className="text-xl font-handwritten font-medium text-[#dc3545]"
+                    className="text-2xl font-handwritten font-medium text-[#dc3545]"
                   />
                 </a>
               </div>

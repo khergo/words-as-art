@@ -357,14 +357,14 @@ const ProjectDetail = () => {
                 <EditableText
                   value={project.category}
                   onSave={(value) => updateProject('category', value)}
-                  className="text-sm font-handwritten font-medium text-[#dc3545] uppercase tracking-wider"
+                  className="text-base font-handwritten font-medium text-[#dc3545] uppercase tracking-wider"
                   as="p"
                 />
-                <span className="text-sm font-handwritten text-[#666]">•</span>
+                <span className="text-base font-handwritten text-[#666]">•</span>
                 <EditableText
                   value={project.year}
                   onSave={(value) => updateProject('year', value)}
-                  className="text-sm font-handwritten text-[#666]"
+                  className="text-base font-handwritten text-[#666]"
                   as="p"
                 />
               </div>
@@ -379,33 +379,33 @@ const ProjectDetail = () => {
               <EditableText
                 value={project.description}
                 onSave={(value) => updateProject('description', value)}
-                className="text-xl font-handwritten text-[#666] mb-8 transform rotate-1"
+                className="text-2xl font-handwritten text-[#666] mb-8 transform rotate-1"
                 as="p"
               />
             </div>
 
             <div className="bg-white/60 backdrop-blur-sm rounded-lg p-8 mb-8 border-2 border-[#1a1a1a] shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transform -rotate-1">
-              <h2 className="font-handwritten text-3xl font-bold mb-4 text-[#1a1a1a]">
+              <h2 className="font-handwritten text-4xl font-bold mb-4 text-[#1a1a1a]">
                 About This Project
               </h2>
               <EditableText
                 value={project.full_description}
                 onSave={(value) => updateProject('full_description', value)}
-                className="font-handwritten text-lg text-[#333] leading-relaxed"
+                className="font-handwritten text-xl text-[#333] leading-relaxed"
                 as="p"
                 multiline
               />
             </div>
 
             <div className="bg-white/60 backdrop-blur-sm rounded-lg p-8 mb-8 border-2 border-[#1a1a1a] shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transform rotate-1">
-              <h2 className="font-handwritten text-3xl font-bold mb-6 text-[#1a1a1a]">
+              <h2 className="font-handwritten text-4xl font-bold mb-6 text-[#1a1a1a]">
                 Project Media
               </h2>
               
               {/* Video Editor Section - Only visible in edit mode */}
               {editMode && (
                 <div className="mb-6 p-4 bg-yellow-50 border-2 border-yellow-300 rounded-lg">
-                  <label className="font-handwritten text-lg font-medium text-[#1a1a1a] mb-2 block">
+                  <label className="font-handwritten text-xl font-medium text-[#1a1a1a] mb-2 block">
                     Embed Video (YouTube, Vimeo, or Google Drive)
                   </label>
                   <div className="flex gap-2">
@@ -444,12 +444,12 @@ const ProjectDetail = () => {
               {/* Photo Upload Section - Only visible in edit mode */}
               {editMode && (
                 <div className="mb-6 p-4 bg-yellow-50 border-2 border-yellow-300 rounded-lg">
-                  <label className="font-handwritten text-lg font-medium text-[#1a1a1a] mb-2 block">
+                  <label className="font-handwritten text-xl font-medium text-[#1a1a1a] mb-2 block">
                     Upload Photos
                   </label>
                   <div className="border-2 border-dashed border-[#666] rounded-lg p-8 text-center bg-white">
                     <Upload className="w-12 h-12 mx-auto mb-3 text-[#666]" />
-                    <p className="font-handwritten text-base text-[#666] mb-3">
+                    <p className="font-handwritten text-lg text-[#666] mb-3">
                       {uploading ? "Uploading..." : "Click to upload photos"}
                     </p>
                     <Input
@@ -517,7 +517,7 @@ const ProjectDetail = () => {
 
             {editMode && (
               <div className="bg-white/60 backdrop-blur-sm rounded-lg p-8 border-2 border-[#1a1a1a] shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transform -rotate-1">
-                <h2 className="font-handwritten text-3xl font-bold mb-6 text-[#1a1a1a]">
+                <h2 className="font-handwritten text-4xl font-bold mb-6 text-[#1a1a1a]">
                   Additional Notes (Editor Only)
                 </h2>
                 <textarea

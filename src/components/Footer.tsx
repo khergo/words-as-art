@@ -9,10 +9,10 @@ const Footer = () => {
         <div className="max-w-6xl mx-auto pl-6">
           <div className="flex flex-col md:flex-row justify-between items-center gap-8">
             <div>
-              <h3 className="font-handwritten text-3xl font-bold mb-2 transform -rotate-2">
+              <h3 className="font-handwritten text-4xl font-bold mb-2 transform -rotate-2">
                 Giorgi Khergiani
               </h3>
-              <p className="text-base font-handwritten opacity-80 transform rotate-1">
+              <p className="text-lg font-handwritten opacity-80 transform rotate-1">
                 Creative Copywriter & Strategist
               </p>
             </div>
@@ -55,7 +55,7 @@ const Footer = () => {
             </div>
           </div>
 
-          <div className="mt-8 pt-8 border-t border-white/20 text-center text-base font-handwritten opacity-60 transform rotate-1">
+          <div className="mt-8 pt-8 border-t border-white/20 text-center text-lg font-handwritten opacity-60 transform rotate-1">
             © {currentYear} Giorgi Khergiani. All rights reserved.
           </div>
         </div>

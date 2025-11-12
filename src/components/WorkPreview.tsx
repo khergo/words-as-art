@@ -36,7 +36,7 @@ const WorkPreview = () => {
     return (
       <section id="work-preview" className="py-24 relative bg-[#f6f6f6] overflow-hidden">
         <div className="container mx-auto px-6 text-center">
-          <p className="font-handwritten text-xl">Loading...</p>
+          <p className="font-handwritten text-2xl">Loading...</p>
         </div>
       </section>
     );
@@ -71,12 +71,12 @@ const WorkPreview = () => {
       <div className="container mx-auto px-6 relative z-10">
         <div className="max-w-6xl mx-auto pl-6">
           <div className="flex items-end justify-between mb-16">
-            <h2 className="font-handwritten text-5xl md:text-6xl font-bold text-[#1a1a1a] transform -rotate-1">
+            <h2 className="font-handwritten text-6xl md:text-7xl font-bold text-[#1a1a1a] transform -rotate-1">
               Selected Work
             </h2>
             <Link
               to="/work"
-              className="hidden md:flex items-center gap-2 text-lg font-handwritten font-medium text-[#666] hover:text-[#1a1a1a] transition-colors group transform rotate-1"
+              className="hidden md:flex items-center gap-2 text-xl font-handwritten font-medium text-[#666] hover:text-[#1a1a1a] transition-colors group transform rotate-1"
             >
               View All Projects
               <ArrowRight
@@ -104,13 +104,13 @@ const WorkPreview = () => {
                   />
                 </div>
                 <div className="flex flex-col items-center gap-3">
-                  <p className="text-sm font-handwritten font-medium text-[#dc3545] uppercase tracking-wider">
+                  <p className="text-base font-handwritten font-medium text-[#dc3545] uppercase tracking-wider">
                     {project.category}
                   </p>
-                  <h3 className="font-handwritten text-3xl font-semibold text-[#1a1a1a] group-hover:text-[#dc3545] transition-colors">
+                  <h3 className="font-handwritten text-4xl font-semibold text-[#1a1a1a] group-hover:text-[#dc3545] transition-colors">
                     {project.title}
                   </h3>
-                  <p className="text-base font-handwritten text-[#666]">
+                  <p className="text-lg font-handwritten text-[#666]">
                     {project.description}
                   </p>
                 </div>
@@ -120,7 +120,7 @@ const WorkPreview = () => {
 
           <Link
             to="/work"
-            className="md:hidden flex items-center justify-center gap-2 text-lg font-handwritten font-medium text-[#666] hover:text-[#1a1a1a] transition-colors group mt-12 transform rotate-1"
+            className="md:hidden flex items-center justify-center gap-2 text-xl font-handwritten font-medium text-[#666] hover:text-[#1a1a1a] transition-colors group mt-12 transform rotate-1"
           >
             View All Projects
             <ArrowRight

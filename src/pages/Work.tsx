@@ -75,7 +75,7 @@ const Work = () => {
               <h1 className="font-handwritten text-6xl md:text-8xl font-bold mb-6 animate-fade-in text-[#1a1a1a] transform -rotate-2">
                 Selected Work
               </h1>
-              <p className="text-2xl font-handwritten text-[#333] max-w-2xl animate-fade-in-delay transform rotate-1">
+              <p className="text-3xl font-handwritten text-[#333] max-w-2xl animate-fade-in-delay transform rotate-1">
                 A collection of campaigns, brand stories, and ideas that made
                 people stop, think, and feel something.
               </p>
@@ -110,14 +110,14 @@ const Work = () => {
                         <EditableText
                           value={project.category}
                           onSave={(value) => updateProject(project.id, 'category', value)}
-                          className="text-sm font-handwritten font-medium text-[#dc3545] uppercase tracking-wider"
+                          className="text-base font-handwritten font-medium text-[#dc3545] uppercase tracking-wider"
                           as="p"
                         />
-                        <span className="text-sm font-handwritten text-[#666]">•</span>
+                        <span className="text-base font-handwritten text-[#666]">•</span>
                         <EditableText
                           value={project.year}
                           onSave={(value) => updateProject(project.id, 'year', value)}
-                          className="text-sm font-handwritten text-[#666]"
+                          className="text-base font-handwritten text-[#666]"
                           as="p"
                         />
                       </div>
@@ -130,7 +130,7 @@ const Work = () => {
                       <EditableText
                         value={project.description}
                         onSave={(value) => updateProject(project.id, 'description', value)}
-                        className="text-lg font-handwritten text-[#666]"
+                        className="text-xl font-handwritten text-[#666]"
                         as="p"
                       />
                     </div>
