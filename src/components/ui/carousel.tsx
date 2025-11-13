@@ -166,72 +166,56 @@ const CarouselItem = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLD
 CarouselItem.displayName = "CarouselItem";
 
 const CarouselPrevious = React.forwardRef<HTMLButtonElement, React.ComponentProps<typeof Button>>(
-  ({ className, ...props }, ref) => {
+  ({ className, variant = "outline", size = "icon", ...props }, ref) => {
     const { orientation, scrollPrev, canScrollPrev } = useCarousel();
 
     return (
-      <button
+      <Button
         ref={ref}
+        variant={variant}
+        size={size}
         className={cn(
-          "absolute z-10 p-2 bg-transparent border-0 cursor-pointer disabled:opacity-30 disabled:cursor-not-allowed transition-opacity hover:opacity-70",
+          "absolute h-8 w-8 rounded-full",
           orientation === "horizontal"
-            ? "left-4 top-1/2 -translate-y-1/2"
-            : "top-4 left-1/2 -translate-x-1/2 rotate-90",
+            ? "-left-12 top-1/2 -translate-y-1/2"
+            : "-top-12 left-1/2 -translate-x-1/2 rotate-90",
           className,
         )}
         disabled={!canScrollPrev}
         onClick={scrollPrev}
         {...props}
       >
-        <svg 
-          viewBox="0 0 40 40" 
-          fill="none" 
-          stroke="currentColor" 
-          strokeWidth="2.5"
-          strokeLinecap="round" 
-          strokeLinejoin="round"
-          className="w-12 h-12 text-foreground"
-        >
-          <path d="M25 10 L15 20 L25 30" />
-        </svg>
+        <ArrowLeft className="h-4 w-4" />
         <span className="sr-only">Previous slide</span>
-      </button>
+      </Button>
     );
   },
 );
 CarouselPrevious.displayName = "CarouselPrevious";
 
 const CarouselNext = React.forwardRef<HTMLButtonElement, React.ComponentProps<typeof Button>>(
-  ({ className, ...props }, ref) => {
+  ({ className, variant = "outline", size = "icon", ...props }, ref) => {
     const { orientation, scrollNext, canScrollNext } = useCarousel();
 
     return (
-      <button
+      <Button
         ref={ref}
+        variant={variant}
+        size={size}
         className={cn(
-          "absolute z-10 p-2 bg-transparent border-0 cursor-pointer disabled:opacity-30 disabled:cursor-not-allowed transition-opacity hover:opacity-70",
+          "absolute h-8 w-8 rounded-full",
           orientation === "horizontal"
-            ? "right-4 top-1/2 -translate-y-1/2"
-            : "bottom-4 left-1/2 -translate-x-1/2 rotate-90",
+            ? "-right-12 top-1/2 -translate-y-1/2"
+            : "-bottom-12 left-1/2 -translate-x-1/2 rotate-90",
           className,
         )}
         disabled={!canScrollNext}
         onClick={scrollNext}
         {...props}
       >
-        <svg 
-          viewBox="0 0 40 40" 
-          fill="none" 
-          stroke="currentColor" 
-          strokeWidth="2.5"
-          strokeLinecap="round" 
-          strokeLinejoin="round"
-          className="w-12 h-12 text-foreground"
-        >
-          <path d="M15 10 L25 20 L15 30" />
-        </svg>
+        <ArrowRight className="h-4 w-4" />
         <span className="sr-only">Next slide</span>
-      </button>
+      </Button>
     );
   },
 );
