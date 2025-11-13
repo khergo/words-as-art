@@ -481,7 +481,7 @@ const ProjectDetail = () => {
 
               {/* Unified Media Carousel - Shows both video and photos */}
               {(embedUrl || photoUrls.length > 0) && (
-                <div className="relative px-12">
+                <div className="relative">
                   <Carousel className="w-full">
                     <CarouselContent>
                       {/* Photo Slides - shown first */}
@@ -524,8 +524,8 @@ const ProjectDetail = () => {
                     </CarouselContent>
                     {(photoUrls.length + (embedUrl ? 1 : 0)) > 1 && (
                       <>
-                        <CarouselPrevious className="font-handwritten border-2 border-[#1a1a1a] bg-white hover:bg-[#dc3545] hover:text-white shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] -left-2" />
-                        <CarouselNext className="font-handwritten border-2 border-[#1a1a1a] bg-white hover:bg-[#dc3545] hover:text-white shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] -right-2" />
+                        <CarouselPrevious />
+                        <CarouselNext />
                       </>
                     )}
                   </Carousel>

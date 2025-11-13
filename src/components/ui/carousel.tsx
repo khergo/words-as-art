@@ -166,19 +166,17 @@ const CarouselItem = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLD
 CarouselItem.displayName = "CarouselItem";
 
 const CarouselPrevious = React.forwardRef<HTMLButtonElement, React.ComponentProps<typeof Button>>(
-  ({ className, variant = "outline", size = "icon", ...props }, ref) => {
+  ({ className, ...props }, ref) => {
     const { orientation, scrollPrev, canScrollPrev } = useCarousel();
 
     return (
-      <Button
+      <button
         ref={ref}
-        variant={variant}
-        size={size}
         className={cn(
-          "absolute h-16 w-16 rounded-full p-0",
+          "absolute z-10 p-2 bg-transparent border-0 cursor-pointer disabled:opacity-30 disabled:cursor-not-allowed transition-opacity hover:opacity-70",
           orientation === "horizontal"
-            ? "-left-12 top-1/2 -translate-y-1/2"
-            : "-top-12 left-1/2 -translate-x-1/2 rotate-90",
+            ? "left-4 top-1/2 -translate-y-1/2"
+            : "top-4 left-1/2 -translate-x-1/2 rotate-90",
           className,
         )}
         disabled={!canScrollPrev}
@@ -186,40 +184,35 @@ const CarouselPrevious = React.forwardRef<HTMLButtonElement, React.ComponentProp
         {...props}
       >
         <svg 
-          viewBox="0 0 24 24" 
+          viewBox="0 0 40 40" 
           fill="none" 
           stroke="currentColor" 
           strokeWidth="2.5"
           strokeLinecap="round" 
           strokeLinejoin="round"
-          className="w-10 h-10"
-          style={{
-            filter: 'drop-shadow(1px 1px 0px rgba(0,0,0,0.2))',
-          }}
+          className="w-12 h-12 text-foreground"
         >
-          <path d="M19 12H5M12 19l-7-7 7-7" />
+          <path d="M25 10 L15 20 L25 30" />
         </svg>
         <span className="sr-only">Previous slide</span>
-      </Button>
+      </button>
     );
   },
 );
 CarouselPrevious.displayName = "CarouselPrevious";
 
 const CarouselNext = React.forwardRef<HTMLButtonElement, React.ComponentProps<typeof Button>>(
-  ({ className, variant = "outline", size = "icon", ...props }, ref) => {
+  ({ className, ...props }, ref) => {
     const { orientation, scrollNext, canScrollNext } = useCarousel();
 
     return (
-      <Button
+      <button
         ref={ref}
-        variant={variant}
-        size={size}
         className={cn(
-          "absolute h-16 w-16 rounded-full p-0",
+          "absolute z-10 p-2 bg-transparent border-0 cursor-pointer disabled:opacity-30 disabled:cursor-not-allowed transition-opacity hover:opacity-70",
           orientation === "horizontal"
-            ? "-right-12 top-1/2 -translate-y-1/2"
-            : "-bottom-12 left-1/2 -translate-x-1/2 rotate-90",
+            ? "right-4 top-1/2 -translate-y-1/2"
+            : "bottom-4 left-1/2 -translate-x-1/2 rotate-90",
           className,
         )}
         disabled={!canScrollNext}
@@ -227,21 +220,18 @@ const CarouselNext = React.forwardRef<HTMLButtonElement, React.ComponentProps<ty
         {...props}
       >
         <svg 
-          viewBox="0 0 24 24" 
+          viewBox="0 0 40 40" 
           fill="none" 
           stroke="currentColor" 
           strokeWidth="2.5"
           strokeLinecap="round" 
           strokeLinejoin="round"
-          className="w-10 h-10"
-          style={{
-            filter: 'drop-shadow(1px 1px 0px rgba(0,0,0,0.2))',
-          }}
+          className="w-12 h-12 text-foreground"
         >
-          <path d="M5 12h14M12 5l7 7-7 7" />
+          <path d="M15 10 L25 20 L15 30" />
         </svg>
         <span className="sr-only">Next slide</span>
-      </Button>
+      </button>
     );
   },
 );
