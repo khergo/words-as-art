@@ -158,10 +158,10 @@ const About = () => {
                       <div className="absolute top-full left-1/2 -translate-x-1/2 w-0.5 h-3 bg-gray-400"></div>
                     </div>
                     
-                    {/* Sticker wrapper with shadow and rotation */}
+                    {/* Sticker wrapper with rotation */}
                     <div className="relative transform rotate-2 transition-transform hover:rotate-0 hover:scale-105 duration-300">
                       {getContent('profile_image') ? (
-                        <div className="relative shadow-2xl">
+                        <div className="relative">
                           <EditableImage
                             src={getContent('profile_image')}
                             alt="Profile photo or GIF"
@@ -173,7 +173,7 @@ const About = () => {
                         </div>
                       ) : (
                         <div 
-                          className={`aspect-[3/4] bg-[#e8c5a0]/30 animate-fade-in border-2 border-[#d4a574] rounded-lg flex items-center justify-center shadow-2xl ${editMode ? 'cursor-pointer hover:bg-[#e8c5a0]/50' : ''}`}
+                          className={`aspect-[3/4] bg-[#e8c5a0]/30 animate-fade-in border-2 border-[#d4a574] rounded-lg flex items-center justify-center ${editMode ? 'cursor-pointer hover:bg-[#e8c5a0]/50' : ''}`}
                           onClick={() => editMode && document.getElementById('profile-upload')?.click()}
                         >
                           {editMode && (
