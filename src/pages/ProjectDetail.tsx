@@ -372,7 +372,7 @@ const ProjectDetail = () => {
                   src={project.icon_url}
                   alt={project.title}
                   onSave={(url) => updateProject('icon_url', url)}
-                  className="w-full max-w-5xl h-auto max-h-[90vh] object-contain rounded-lg shadow-xl"
+                  className="w-full max-w-5xl h-auto max-h-[90vh] object-contain rounded-lg"
                   folder={`project-${projectId}`}
                 />
               </div>
