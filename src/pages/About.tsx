@@ -148,52 +148,68 @@ const About = () => {
             <div className="max-w-4xl mx-auto pl-6">
               <div className="grid md:grid-cols-5 gap-12 mb-20">
                 <div className="md:col-span-2">
-                  {getContent('profile_image') ? (
-                    <EditableImage
-                      src={getContent('profile_image')}
-                      alt="Profile photo or GIF"
-                      onSave={(url) => updateContent('profile_image', url)}
-                      className="w-full h-auto object-contain animate-fade-in border-2 border-[#d4a574] rounded-lg"
-                      bucketName="project-photos"
-                      folder="about"
-                    />
-                  ) : (
-                    <div 
-                      className={`aspect-[3/4] bg-[#e8c5a0]/30 animate-fade-in border-2 border-[#d4a574] flex items-center justify-center ${editMode ? 'cursor-pointer hover:bg-[#e8c5a0]/50' : ''}`}
-                      onClick={() => editMode && document.getElementById('profile-upload')?.click()}
-                    >
-                      {editMode && (
-                        <>
-                          <span className="font-handwritten text-lg text-[#666]">Click to upload image or GIF</span>
-                          <input
-                            id="profile-upload"
-                            type="file"
-                            accept="image/*"
-                            className="hidden"
-                            onChange={async (e) => {
-                              const file = e.target.files?.[0];
-                              if (!file) return;
-                              
-                              const fileExt = file.name.split('.').pop();
-                              const fileName = `about/${Date.now()}_${Math.random()}.${fileExt}`;
-                              
-                              const { error: uploadError } = await supabase.storage
-                                .from('project-photos')
-                                .upload(fileName, file);
-                              
-                              if (uploadError) throw uploadError;
-                              
-                              const { data: { publicUrl } } = supabase.storage
-                                .from('project-photos')
-                                .getPublicUrl(fileName);
-                              
-                              await updateContent('profile_image', publicUrl);
-                            }}
+                  <div className="relative inline-block w-full">
+                    {/* Decorative pin */}
+                    <div className="absolute -top-4 left-1/2 -translate-x-1/2 z-20">
+                      <div className="w-6 h-6 rounded-full bg-gradient-to-br from-red-500 to-red-600 shadow-lg">
+                        <div className="absolute inset-1 rounded-full bg-gradient-to-br from-red-400 to-red-500"></div>
+                        <div className="absolute inset-2 rounded-full bg-red-600 opacity-50"></div>
+                      </div>
+                      <div className="absolute top-full left-1/2 -translate-x-1/2 w-0.5 h-3 bg-gray-400"></div>
+                    </div>
+                    
+                    {/* Sticker wrapper with shadow and rotation */}
+                    <div className="relative transform rotate-2 transition-transform hover:rotate-0 hover:scale-105 duration-300">
+                      {getContent('profile_image') ? (
+                        <div className="relative shadow-2xl">
+                          <EditableImage
+                            src={getContent('profile_image')}
+                            alt="Profile photo or GIF"
+                            onSave={(url) => updateContent('profile_image', url)}
+                            className="w-full h-auto object-contain animate-fade-in border-2 border-[#d4a574] rounded-lg"
+                            bucketName="project-photos"
+                            folder="about"
                           />
-                        </>
+                        </div>
+                      ) : (
+                        <div 
+                          className={`aspect-[3/4] bg-[#e8c5a0]/30 animate-fade-in border-2 border-[#d4a574] rounded-lg flex items-center justify-center shadow-2xl ${editMode ? 'cursor-pointer hover:bg-[#e8c5a0]/50' : ''}`}
+                          onClick={() => editMode && document.getElementById('profile-upload')?.click()}
+                        >
+                          {editMode && (
+                            <>
+                              <span className="font-handwritten text-lg text-[#666]">Click to upload image or GIF</span>
+                              <input
+                                id="profile-upload"
+                                type="file"
+                                accept="image/*"
+                                className="hidden"
+                                onChange={async (e) => {
+                                  const file = e.target.files?.[0];
+                                  if (!file) return;
+                                  
+                                  const fileExt = file.name.split('.').pop();
+                                  const fileName = `about/${Date.now()}_${Math.random()}.${fileExt}`;
+                                  
+                                  const { error: uploadError } = await supabase.storage
+                                    .from('project-photos')
+                                    .upload(fileName, file);
+                                  
+                                  if (uploadError) throw uploadError;
+                                  
+                                  const { data: { publicUrl } } = supabase.storage
+                                    .from('project-photos')
+                                    .getPublicUrl(fileName);
+                                  
+                                  await updateContent('profile_image', publicUrl);
+                                }}
+                              />
+                            </>
+                          )}
+                        </div>
                       )}
                     </div>
-                  )}
+                  </div>
                 </div>
 
                 <div className="md:col-span-3 space-y-6 animate-fade-in-delay">
