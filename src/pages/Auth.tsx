@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useAuth } from "@/contexts/AuthContext";
 import { useToast } from "@/hooks/use-toast";
+import { checkPasswordLeaked } from "@/utils/security";
 
 const Auth = () => {
   const [isLogin, setIsLogin] = useState(true);
@@ -34,9 +35,24 @@ const Auth = () => {
       return;
     }
 
-    const { error } = isLogin
-      ? await signIn(email, password)
-      : await signUp(email, password);
+    let authResult: { error: any } = { error: null };
+    if (isLogin) {
+      authResult = await signIn(email, password);
+    } else {
+      const { leaked } = await checkPasswordLeaked(password);
+      if (leaked) {
+        toast({
+          title: "Weak password detected",
+          description: "This password appears in known data breaches. Please choose a different password.",
+          variant: "destructive",
+        });
+        setLoading(false);
+        return;
+      }
+      authResult = await signUp(email, password);
+    }
+
+    const { error } = authResult;
 
     if (error) {
       toast({
