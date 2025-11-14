@@ -1,5 +1,6 @@
 import { ArrowDown } from "lucide-react";
 import { Link } from "react-router-dom";
+import scribbleDecor from "@/assets/scribble-decor.png";
 const Hero = () => {
   return <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#f6f6f6]">
       {/* Notebook paper texture and lines */}
@@ -49,6 +50,15 @@ const Hero = () => {
             </div>
           </div>
         </div>
+      </div>
+
+      {/* Scribble decoration in top right */}
+      <div className="absolute top-8 right-8 md:top-12 md:right-12 w-32 md:w-40 opacity-60 pointer-events-none">
+        <img 
+          src={scribbleDecor} 
+          alt="" 
+          className="w-full h-auto mix-blend-multiply"
+        />
       </div>
 
       <div className="absolute bottom-8 right-12 animate-bounce transform rotate-12">
