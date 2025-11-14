@@ -10,15 +10,13 @@ const Index = () => {
       <Navigation />
       <Hero />
       <WorkPreview />
-      <div className="relative">
-        <Footer />
-        <div className="absolute bottom-8 right-8 w-64 h-64 opacity-10 pointer-events-none z-0">
-          <img
-            src={doodleScribble}
-            alt=""
-            className="w-full h-full object-contain"
-          />
-        </div>
+      <Footer />
+      <div className="fixed bottom-8 right-8 w-64 h-64 opacity-10 pointer-events-none z-10">
+        <img
+          src={doodleScribble}
+          alt=""
+          className="w-full h-full object-contain"
+        />
       </div>
     </div>
   );
