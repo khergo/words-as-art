@@ -56,10 +56,18 @@ export const EditableText = ({
   };
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
-    if (e.key === 'Enter' && !multiline && !e.shiftKey) {
+    // Shift+Enter creates a new line in both modes
+    if (e.key === 'Enter' && e.shiftKey) {
+      // Allow default behavior for line break
+      return;
+    }
+    
+    // Enter without Shift saves
+    if (e.key === 'Enter' && !e.shiftKey) {
       e.preventDefault();
       handleSave();
     }
+    
     if (e.key === 'Escape') {
       setText(value);
       setIsEditing(false);
@@ -71,37 +79,25 @@ export const EditableText = ({
       <Component 
         className={`${className} ${editMode && isAdmin ? 'cursor-pointer hover:outline hover:outline-2 hover:outline-yellow-400 hover:outline-dashed transition-all' : ''}`}
         onClick={() => editMode && isAdmin && setIsEditing(true)}
+        style={{ whiteSpace: 'pre-wrap' }}
       >
         {text}
       </Component>
     );
   }
 
-  if (multiline) {
-    return (
-      <textarea
-        value={text}
-        onChange={(e) => setText(e.target.value)}
-        onBlur={handleSave}
-        onKeyDown={handleKeyDown}
-        disabled={isSaving}
-        className={`${className} border-2 border-yellow-400 bg-yellow-50 focus:outline-none focus:border-yellow-500 p-2 rounded resize-none`}
-        autoFocus
-        rows={4}
-      />
-    );
-  }
-
+  // Always use textarea when editing to support multi-line with Shift+Enter
   return (
-    <input
-      type="text"
+    <textarea
       value={text}
       onChange={(e) => setText(e.target.value)}
       onBlur={handleSave}
       onKeyDown={handleKeyDown}
       disabled={isSaving}
-      className={`${className} border-2 border-yellow-400 bg-yellow-50 focus:outline-none focus:border-yellow-500 p-2 rounded`}
+      className={`${className} border-2 border-yellow-400 bg-yellow-50 focus:outline-none focus:border-yellow-500 p-2 rounded resize-y min-h-[2.5rem]`}
       autoFocus
+      rows={multiline ? 4 : 1}
+      style={{ whiteSpace: 'pre-wrap' }}
     />
   );
 };
