@@ -1,8 +1,52 @@
 import { ArrowDown } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useState, useEffect, useRef } from "react";
 import scribbleDecor from "@/assets/scribble-decor.png";
+
 const Hero = () => {
-  return <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#f6f6f6]">
+  const [scribblePos, setScribblePos] = useState({ x: 0, y: 0 });
+  const scribbleRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      if (!scribbleRef.current || !containerRef.current) return;
+
+      const scribbleRect = scribbleRef.current.getBoundingClientRect();
+      const containerRect = containerRef.current.getBoundingClientRect();
+      
+      const scribbleCenterX = scribbleRect.left + scribbleRect.width / 2;
+      const scribbleCenterY = scribbleRect.top + scribbleRect.height / 2;
+      
+      const distanceX = e.clientX - scribbleCenterX;
+      const distanceY = e.clientY - scribbleCenterY;
+      const distance = Math.sqrt(distanceX * distanceX + distanceY * distanceY);
+      
+      const threshold = 150;
+      
+      if (distance < threshold) {
+        const angle = Math.atan2(distanceY, distanceX);
+        const force = (threshold - distance) / threshold;
+        const moveDistance = force * 80;
+        
+        let newX = scribblePos.x - Math.cos(angle) * moveDistance;
+        let newY = scribblePos.y - Math.sin(angle) * moveDistance;
+        
+        const maxX = containerRect.width - scribbleRect.width - 32;
+        const maxY = containerRect.height - scribbleRect.height - 32;
+        
+        newX = Math.max(0, Math.min(newX, maxX));
+        newY = Math.max(0, Math.min(newY, maxY));
+        
+        setScribblePos({ x: newX, y: newY });
+      }
+    };
+
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, [scribblePos]);
+
+  return <section ref={containerRef} className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#f6f6f6]">
       {/* Notebook paper texture and lines */}
       <div className="absolute inset-0 opacity-20" style={{
       backgroundImage: `
@@ -53,7 +97,14 @@ const Hero = () => {
       </div>
 
       {/* Scribble decoration in top right */}
-      <div className="absolute top-8 right-8 md:top-12 md:right-12 w-32 md:w-40 opacity-60 pointer-events-none">
+      <div 
+        ref={scribbleRef}
+        className="absolute w-48 md:w-56 opacity-60 pointer-events-none transition-all duration-700 ease-out"
+        style={{
+          top: `${80 + scribblePos.y}px`,
+          right: `${96 + scribblePos.x}px`,
+        }}
+      >
         <img 
           src={scribbleDecor} 
           alt="" 
