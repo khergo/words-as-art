@@ -1,6 +1,7 @@
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
-import { Award, FileDown, Upload } from "lucide-react";
+import { Award, Upload } from "lucide-react";
+import cvDownloadIcon from "@/assets/cv-download-icon.png";
 import { useQuery } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
 import { EditableText } from "@/components/EditableText";
@@ -250,13 +251,16 @@ const About = () => {
               <div className="mt-12 mb-16 flex justify-center animate-fade-in">
                 <div className="flex gap-3 items-center">
                   {getContent('cv_url') ? (
-                    <Button 
+                    <button 
                       onClick={() => window.open(getContent('cv_url'), '_blank')}
-                      className="bg-[#dc3545] hover:bg-[#c82333] text-white font-handwritten text-lg px-6 py-3 rounded-full shadow-lg hover:shadow-xl transition-all transform hover:scale-105"
+                      className="transition-all transform hover:scale-105"
                     >
-                      <FileDown className="mr-2" size={20} />
-                      Download CV
-                    </Button>
+                      <img 
+                        src={cvDownloadIcon} 
+                        alt="Download CV" 
+                        className="w-48 h-48 object-contain"
+                      />
+                    </button>
                   ) : (
                     !editMode && (
                       <p className="text-[#666] font-handwritten text-lg">No CV available</p>
