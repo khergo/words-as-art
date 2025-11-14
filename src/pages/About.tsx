@@ -253,12 +253,12 @@ const About = () => {
                   {getContent('cv_url') ? (
                     <button 
                       onClick={() => window.open(getContent('cv_url'), '_blank')}
-                      className="transition-all transform hover:scale-105"
+                      className="transition-all transform hover:scale-105 group"
                     >
                       <img 
                         src={cvDownloadIcon} 
                         alt="Download CV" 
-                        className="w-48 h-48 object-contain"
+                        className="w-48 h-48 object-contain grayscale group-hover:grayscale-0 group-focus:grayscale-0 transition-all duration-300"
                       />
                     </button>
                   ) : (
