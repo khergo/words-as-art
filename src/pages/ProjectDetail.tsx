@@ -432,7 +432,7 @@ const ProjectDetail = () => {
               />
             </div>
 
-            <div className="bg-white/80 backdrop-blur-sm p-4 sm:p-6 md:p-8 mb-8 transform rotate-1 relative" style={{
+            <div className="bg-white/80 backdrop-blur-sm p-4 sm:p-6 md:p-8 mb-8 transform rotate-1 relative overflow-hidden" style={{
               borderRadius: '10px 14px 9px 13px / 11px 9px 13px 11px',
               boxShadow: `
                 0 0 0 2px #1a1a1a,
@@ -444,9 +444,60 @@ const ProjectDetail = () => {
                 5px 4px 0 1px rgba(0,0,0,0.2)
               `
             }}>
+              {/* Decorative hand-drawn sketches background */}
+              <div className="absolute inset-0 pointer-events-none opacity-10" style={{ zIndex: 0 }}>
+                {projectId === '1' && (
+                  <svg className="w-full h-full" viewBox="0 0 800 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    {/* Alexa/Tech theme */}
+                    <path d="M50,50 Q60,45 70,50 T90,50" stroke="#1a1a1a" strokeWidth="2" fill="none" />
+                    <circle cx="100" cy="80" r="15" stroke="#1a1a1a" strokeWidth="2" fill="none" />
+                    <path d="M150,60 L170,80 L150,100" stroke="#1a1a1a" strokeWidth="2" fill="none" />
+                    <path d="M700,100 Q710,95 720,100 T740,100" stroke="#1a1a1a" strokeWidth="2" fill="none" />
+                    <circle cx="680" cy="150" r="12" stroke="#1a1a1a" strokeWidth="2" fill="none" />
+                    <path d="M50,500 L70,520 L50,540" stroke="#1a1a1a" strokeWidth="2" fill="none" />
+                    <path d="M720,500 Q730,495 740,500 T760,500" stroke="#1a1a1a" strokeWidth="2" fill="none" />
+                  </svg>
+                )}
+                {projectId === '2' && (
+                  <svg className="w-full h-full" viewBox="0 0 800 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    {/* McDonald's/Food theme */}
+                    <circle cx="60" cy="60" r="20" stroke="#1a1a1a" strokeWidth="2" fill="none" />
+                    <path d="M40,80 Q50,90 60,80 Q70,90 80,80" stroke="#1a1a1a" strokeWidth="2" fill="none" />
+                    <rect x="700" y="50" width="40" height="60" rx="5" stroke="#1a1a1a" strokeWidth="2" fill="none" />
+                    <path d="M705,80 L735,80 M705,90 L735,90" stroke="#1a1a1a" strokeWidth="2" />
+                    <path d="M100,500 Q120,480 140,500 T180,500" stroke="#1a1a1a" strokeWidth="2" fill="none" />
+                    <circle cx="700" cy="520" r="18" stroke="#1a1a1a" strokeWidth="2" fill="none" />
+                    <path d="M690,520 L710,520 M700,510 L700,530" stroke="#1a1a1a" strokeWidth="2" />
+                    <ellipse cx="150" cy="100" rx="25" ry="15" stroke="#1a1a1a" strokeWidth="2" fill="none" />
+                  </svg>
+                )}
+                {projectId === '3' && (
+                  <svg className="w-full h-full" viewBox="0 0 800 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    {/* NairNairi/Fashion theme */}
+                    <path d="M50,70 Q60,50 70,70 Q80,50 90,70" stroke="#1a1a1a" strokeWidth="2" fill="none" />
+                    <circle cx="700" cy="80" r="20" stroke="#1a1a1a" strokeWidth="2" fill="none" />
+                    <path d="M700,60 L700,100" stroke="#1a1a1a" strokeWidth="2" />
+                    <path d="M120,520 L140,500 L160,520 L140,540 Z" stroke="#1a1a1a" strokeWidth="2" fill="none" />
+                    <ellipse cx="680" cy="520" rx="30" ry="20" stroke="#1a1a1a" strokeWidth="2" fill="none" />
+                    <path d="M150,80 C150,60 170,60 170,80 C170,60 190,60 190,80" stroke="#1a1a1a" strokeWidth="2" fill="none" />
+                  </svg>
+                )}
+                {projectId === '4' && (
+                  <svg className="w-full h-full" viewBox="0 0 800 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    {/* Panda/Nature theme */}
+                    <circle cx="70" cy="70" r="25" stroke="#1a1a1a" strokeWidth="2" fill="none" />
+                    <circle cx="60" cy="65" r="5" fill="#1a1a1a" />
+                    <circle cx="80" cy="65" r="5" fill="#1a1a1a" />
+                    <path d="M700,80 L720,60 M720,80 L700,60" stroke="#1a1a1a" strokeWidth="2" />
+                    <path d="M50,500 Q70,480 90,500 L70,520 Z" stroke="#1a1a1a" strokeWidth="2" fill="none" />
+                    <path d="M700,520 Q720,500 740,520" stroke="#1a1a1a" strokeWidth="2" fill="none" />
+                    <circle cx="150" cy="100" r="15" stroke="#1a1a1a" strokeWidth="2" fill="none" />
+                  </svg>
+                )}
+              </div>
               {/* Video and Photo Upload Section - Only visible in edit mode */}
               {editMode && (
-                <div className="space-y-6 mb-6">
+                <div className="space-y-6 mb-6 relative" style={{ zIndex: 1 }}>
                   <div className="p-4 bg-yellow-50 border-2 border-yellow-300 rounded-lg">
                     <label className="font-handwritten text-xl font-medium text-[#1a1a1a] mb-2 block">
                       Embed Video (YouTube, Vimeo, or Google Drive)
@@ -503,7 +554,7 @@ const ProjectDetail = () => {
 
               {/* Unified Media Carousel - Shows both video and photos */}
               {(embedUrl || photoUrls.length > 0) && (
-                <div className="relative px-4 sm:px-8 md:px-12">
+                <div className="relative px-4 sm:px-8 md:px-12" style={{ zIndex: 1 }}>
                   <Carousel className="w-full">
                     <CarouselContent>
                      {/* Photo Slides - shown first */}
