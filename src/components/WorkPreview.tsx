@@ -100,7 +100,7 @@ const WorkPreview = () => {
                   <img 
                     src={project.icon_url} 
                     alt={project.title}
-                    className="w-96 h-96 object-contain grayscale group-hover:grayscale-0 transition-all duration-500 ease-in-out"
+                    className="w-48 h-48 sm:w-64 sm:h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 object-contain grayscale group-hover:grayscale-0 transition-all duration-500 ease-in-out"
                   />
                 </div>
                 <div className="flex flex-col items-center gap-3">

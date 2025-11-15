@@ -60,12 +60,12 @@ const Hero = () => {
       {/* Red vertical margin line */}
       <div className="absolute left-[40px] md:left-[80px] top-0 bottom-0 w-[2px] bg-[#dc3545] opacity-60" />
 
-      <div className="container mx-auto px-4 md:px-6 relative z-10">
-        <div className="max-w-5xl mx-auto text-left pl-8 md:pl-12">
+      <div className="container mx-auto px-4 sm:px-6 md:px-8 relative z-10">
+        <div className="max-w-5xl mx-auto text-left pl-4 sm:pl-6 md:pl-8 lg:pl-12">
           <div className="font-handwritten animate-fade-in text-[#1a1a1a]">
             {/* Crossed out "the" at the top */}
-            <div className="relative inline-block mb-2 ml-4">
-              <span className="text-3xl md:text-5xl opacity-70 relative">
+            <div className="relative inline-block mb-2 ml-2 sm:ml-4">
+              <span className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl opacity-70 relative">
                 the
                 <svg className="absolute top-1/2 left-0 w-full" height="3" viewBox="0 0 100 3" preserveAspectRatio="none">
                   <path d="M0,1.5 L100,1.5" stroke="#1a1a1a" strokeWidth="2" />
@@ -74,7 +74,7 @@ const Hero = () => {
             </div>
 
             {/* Main handwritten text */}
-            <div className="space-y-1 text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-relaxed">
+            <div className="space-y-1 text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl leading-relaxed">
               <div className="transform -rotate-1 ml-2">
                 The copywriter
               </div>
@@ -96,10 +96,10 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* Scribble decoration in top right */}
+      {/* Scribble decoration in top right - hidden on mobile */}
       <div 
         ref={scribbleRef}
-        className="absolute w-48 md:w-56 opacity-60 pointer-events-none transition-all duration-700 ease-out"
+        className="hidden md:block absolute w-48 md:w-56 opacity-60 pointer-events-none transition-all duration-700 ease-out"
         style={{
           top: `${80 + scribblePos.y}px`,
           right: `${96 + scribblePos.x}px`,
@@ -112,7 +112,7 @@ const Hero = () => {
         />
       </div>
 
-      <div className="absolute bottom-8 right-12 animate-bounce transform rotate-12">
+      <div className="absolute bottom-8 right-8 md:right-12 animate-bounce transform rotate-12">
         <ArrowDown size={24} className="text-[#666]" />
       </div>
     </section>;

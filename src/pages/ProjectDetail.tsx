@@ -324,7 +324,7 @@ const ProjectDetail = () => {
           {prevProjectId && (
             <button
               onClick={() => navigate(`/work/${prevProjectId}`)}
-              className="fixed left-4 top-1/2 -translate-y-1/2 z-20 group"
+              className="hidden md:block fixed left-4 top-1/2 -translate-y-1/2 z-20 group"
               aria-label="Previous project"
             >
               <ChevronLeft 
@@ -341,7 +341,7 @@ const ProjectDetail = () => {
           {nextProjectId && (
             <button
               onClick={() => navigate(`/work/${nextProjectId}`)}
-              className="fixed right-4 top-1/2 -translate-y-1/2 z-20 group"
+              className="hidden md:block fixed right-4 top-1/2 -translate-y-1/2 z-20 group"
               aria-label="Next project"
             >
               <ChevronRight 
@@ -355,11 +355,11 @@ const ProjectDetail = () => {
             </button>
           )}
 
-          <div className="max-w-4xl mx-auto pl-6">
+          <div className="max-w-4xl mx-auto px-4 md:px-6">
             <div className="mb-8">
               <Link
                 to="/work"
-                className="inline-flex items-center gap-2 text-xl font-handwritten text-[#666] hover:text-[#1a1a1a] transition-colors group"
+                className="inline-flex items-center gap-2 text-lg md:text-xl font-handwritten text-[#666] hover:text-[#1a1a1a] transition-colors group"
               >
                 <ArrowLeft size={20} className="transition-transform group-hover:-translate-x-1" />
                 Back to Work
@@ -372,7 +372,7 @@ const ProjectDetail = () => {
                   src={project.icon_url}
                   alt={project.title}
                   onSave={(url) => updateProject('icon_url', url)}
-                  className="w-full max-w-5xl h-auto max-h-[90vh] object-contain rounded-lg"
+                  className="w-full max-w-full md:max-w-3xl lg:max-w-5xl h-auto object-contain rounded-lg"
                   folder={`project-${projectId}`}
                 />
               </div>
@@ -396,32 +396,32 @@ const ProjectDetail = () => {
               <EditableText
                 value={project.title}
                 onSave={(value) => updateProject('title', value)}
-                className="font-handwritten text-5xl md:text-7xl font-bold mb-6 text-[#1a1a1a] transform -rotate-1"
+                className="font-handwritten text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold mb-6 text-[#1a1a1a] transform -rotate-1"
                 as="h1"
               />
 
               <EditableText
                 value={project.description}
                 onSave={(value) => updateProject('description', value)}
-                className="text-2xl font-handwritten text-[#666] mb-8 transform rotate-1"
+                className="text-lg sm:text-xl md:text-2xl font-handwritten text-[#666] mb-8 transform rotate-1"
                 as="p"
               />
             </div>
 
-            <div className="bg-white/60 backdrop-blur-sm rounded-lg p-8 mb-8 border-2 border-[#1a1a1a] shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transform -rotate-1">
-              <h2 className="font-handwritten text-4xl font-bold mb-4 text-[#1a1a1a]">
+            <div className="bg-white/60 backdrop-blur-sm rounded-lg p-4 sm:p-6 md:p-8 mb-8 border-2 border-[#1a1a1a] shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transform -rotate-1">
+              <h2 className="font-handwritten text-2xl sm:text-3xl md:text-4xl font-bold mb-4 text-[#1a1a1a]">
                 About This Project
               </h2>
               <EditableText
                 value={project.full_description}
                 onSave={(value) => updateProject('full_description', value)}
-                className="font-handwritten text-xl text-[#333] leading-relaxed"
+                className="font-handwritten text-base sm:text-lg md:text-xl text-[#333] leading-relaxed"
                 as="p"
                 multiline
               />
             </div>
 
-            <div className="bg-white/80 backdrop-blur-sm rounded-lg p-8 mb-8 border-2 border-[#1a1a1a] shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transform rotate-1">
+            <div className="bg-white/80 backdrop-blur-sm rounded-lg p-4 sm:p-6 md:p-8 mb-8 border-2 border-[#1a1a1a] shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transform rotate-1">
               {/* Video and Photo Upload Section - Only visible in edit mode */}
               {editMode && (
                 <div className="space-y-6 mb-6">
@@ -481,17 +481,17 @@ const ProjectDetail = () => {
 
               {/* Unified Media Carousel - Shows both video and photos */}
               {(embedUrl || photoUrls.length > 0) && (
-                <div className="relative px-12">
+                <div className="relative px-4 sm:px-8 md:px-12">
                   <Carousel className="w-full">
                     <CarouselContent>
                       {/* Photo Slides - shown first */}
                        {photoUrls.map((url, index) => (
                         <CarouselItem key={`photo-${index}`}>
-                          <div className="relative group flex justify-center items-center bg-white rounded-lg min-h-[600px]">
+                          <div className="relative group flex justify-center items-center bg-white rounded-lg min-h-[300px] sm:min-h-[400px] md:min-h-[500px] lg:min-h-[600px]">
                             <img
                               src={url}
                               alt={`Project photo ${index + 1}`}
-                              className="w-full h-full max-h-[90vh] object-contain rounded-lg"
+                              className="w-full h-full max-h-[60vh] sm:max-h-[70vh] md:max-h-[80vh] lg:max-h-[90vh] object-contain rounded-lg"
                               loading="lazy"
                             />
                             {editMode && (
@@ -510,10 +510,10 @@ const ProjectDetail = () => {
                       {/* Video Slide - shown last if video exists */}
                       {embedUrl && (
                         <CarouselItem>
-                          <div className="relative w-full h-[80vh] max-h-[900px] flex items-center justify-center bg-white rounded-lg overflow-hidden">
+                          <div className="relative w-full aspect-video max-h-[60vh] sm:max-h-[70vh] md:max-h-[80vh] flex items-center justify-center bg-white rounded-lg overflow-hidden">
                             <iframe
                               src={embedUrl}
-                              className="w-full h-full"
+                              className="absolute inset-0 w-full h-full"
                               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                               allowFullScreen
                               title="Project video"
@@ -524,8 +524,8 @@ const ProjectDetail = () => {
                     </CarouselContent>
                     {(photoUrls.length + (embedUrl ? 1 : 0)) > 1 && (
                       <>
-                        <CarouselPrevious className="font-handwritten border-2 border-[#1a1a1a] bg-white hover:bg-[#dc3545] hover:text-white shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] -left-2" />
-                        <CarouselNext className="font-handwritten border-2 border-[#1a1a1a] bg-white hover:bg-[#dc3545] hover:text-white shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] -right-2" />
+                        <CarouselPrevious className="font-handwritten border-2 border-[#1a1a1a] bg-white hover:bg-[#dc3545] hover:text-white shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] -left-1 md:-left-2" />
+                        <CarouselNext className="font-handwritten border-2 border-[#1a1a1a] bg-white hover:bg-[#dc3545] hover:text-white shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] -right-1 md:-right-2" />
                       </>
                     )}
                   </Carousel>
