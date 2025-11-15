@@ -444,54 +444,115 @@ const ProjectDetail = () => {
                 5px 4px 0 1px rgba(0,0,0,0.2)
               `
             }}>
-              {/* Decorative hand-drawn sketches background */}
-              <div className="absolute inset-0 pointer-events-none opacity-10" style={{ zIndex: 0 }}>
+              {/* Decorative hand-drawn pencil sketches background */}
+              <div className="absolute inset-0 pointer-events-none opacity-12" style={{ zIndex: 0 }}>
                 {projectId === '1' && (
                   <svg className="w-full h-full" viewBox="0 0 800 600" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    {/* Alexa/Tech theme */}
-                    <path d="M50,50 Q60,45 70,50 T90,50" stroke="#1a1a1a" strokeWidth="2" fill="none" />
-                    <circle cx="100" cy="80" r="15" stroke="#1a1a1a" strokeWidth="2" fill="none" />
-                    <path d="M150,60 L170,80 L150,100" stroke="#1a1a1a" strokeWidth="2" fill="none" />
-                    <path d="M700,100 Q710,95 720,100 T740,100" stroke="#1a1a1a" strokeWidth="2" fill="none" />
-                    <circle cx="680" cy="150" r="12" stroke="#1a1a1a" strokeWidth="2" fill="none" />
-                    <path d="M50,500 L70,520 L50,540" stroke="#1a1a1a" strokeWidth="2" fill="none" />
-                    <path d="M720,500 Q730,495 740,500 T760,500" stroke="#1a1a1a" strokeWidth="2" fill="none" />
+                    {/* Alexa/Tech theme - more sketches */}
+                    <path d="M50,50 Q60,45 70,50 T90,50" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+                    <circle cx="100" cy="80" r="15" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round" fill="none" />
+                    <path d="M150,60 L170,80 L150,100" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+                    <path d="M700,100 Q710,95 720,100 T740,100" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+                    <circle cx="680" cy="150" r="12" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round" fill="none" />
+                    <path d="M50,500 L70,520 L50,540" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+                    <path d="M720,500 Q730,495 740,500 T760,500" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+                    {/* Additional tech elements */}
+                    <rect x="200" y="70" width="30" height="25" rx="3" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round" fill="none" />
+                    <path d="M210,82 L220,82" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round" />
+                    <circle cx="600" cy="120" r="18" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round" fill="none" />
+                    <path d="M590,120 L610,120 M600,110 L600,130" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round" />
+                    <path d="M120,540 Q140,530 160,540" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+                    <path d="M650,530 L670,545 L680,530" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
                   </svg>
                 )}
                 {projectId === '2' && (
                   <svg className="w-full h-full" viewBox="0 0 800 600" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    {/* McDonald's/Food theme */}
-                    <circle cx="60" cy="60" r="20" stroke="#1a1a1a" strokeWidth="2" fill="none" />
-                    <path d="M40,80 Q50,90 60,80 Q70,90 80,80" stroke="#1a1a1a" strokeWidth="2" fill="none" />
-                    <rect x="700" y="50" width="40" height="60" rx="5" stroke="#1a1a1a" strokeWidth="2" fill="none" />
-                    <path d="M705,80 L735,80 M705,90 L735,90" stroke="#1a1a1a" strokeWidth="2" />
-                    <path d="M100,500 Q120,480 140,500 T180,500" stroke="#1a1a1a" strokeWidth="2" fill="none" />
-                    <circle cx="700" cy="520" r="18" stroke="#1a1a1a" strokeWidth="2" fill="none" />
-                    <path d="M690,520 L710,520 M700,510 L700,530" stroke="#1a1a1a" strokeWidth="2" />
-                    <ellipse cx="150" cy="100" rx="25" ry="15" stroke="#1a1a1a" strokeWidth="2" fill="none" />
+                    {/* McDonald's/Food theme - more sketches */}
+                    <circle cx="60" cy="60" r="20" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round" fill="none" />
+                    <path d="M40,80 Q50,90 60,80 Q70,90 80,80" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+                    <rect x="700" y="50" width="40" height="60" rx="5" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round" fill="none" />
+                    <path d="M705,80 L735,80 M705,90 L735,90" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round" />
+                    <path d="M100,500 Q120,480 140,500 T180,500" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+                    <circle cx="700" cy="520" r="18" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round" fill="none" />
+                    <path d="M690,520 L710,520 M700,510 L700,530" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round" />
+                    <ellipse cx="150" cy="100" rx="25" ry="15" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round" fill="none" />
+                    {/* Additional food elements */}
+                    <path d="M200,80 Q210,70 220,80 Q230,90 240,80" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+                    <circle cx="580" cy="100" r="22" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round" fill="none" />
+                    <path d="M560,100 Q570,95 580,100 Q590,105 600,100" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+                    <rect x="220" y="510" width="35" height="40" rx="4" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round" fill="none" />
+                    <path d="M600,540 L610,530 L620,540 L630,530" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
                   </svg>
                 )}
                 {projectId === '3' && (
                   <svg className="w-full h-full" viewBox="0 0 800 600" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    {/* NairNairi/Fashion theme */}
-                    <path d="M50,70 Q60,50 70,70 Q80,50 90,70" stroke="#1a1a1a" strokeWidth="2" fill="none" />
-                    <circle cx="700" cy="80" r="20" stroke="#1a1a1a" strokeWidth="2" fill="none" />
-                    <path d="M700,60 L700,100" stroke="#1a1a1a" strokeWidth="2" />
-                    <path d="M120,520 L140,500 L160,520 L140,540 Z" stroke="#1a1a1a" strokeWidth="2" fill="none" />
-                    <ellipse cx="680" cy="520" rx="30" ry="20" stroke="#1a1a1a" strokeWidth="2" fill="none" />
-                    <path d="M150,80 C150,60 170,60 170,80 C170,60 190,60 190,80" stroke="#1a1a1a" strokeWidth="2" fill="none" />
+                    {/* NairNairi/Fashion theme - more sketches */}
+                    <path d="M50,70 Q60,50 70,70 Q80,50 90,70" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+                    <circle cx="700" cy="80" r="20" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round" fill="none" />
+                    <path d="M700,60 L700,100" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round" />
+                    <path d="M120,520 L140,500 L160,520 L140,540 Z" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+                    <ellipse cx="680" cy="520" rx="30" ry="20" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round" fill="none" />
+                    <path d="M150,80 C150,60 170,60 170,80 C170,60 190,60 190,80" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+                    {/* Additional fashion elements */}
+                    <path d="M220,60 Q230,50 240,60 L235,70 L225,70 Z" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+                    <ellipse cx="600" cy="110" rx="25" ry="35" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round" fill="none" />
+                    <path d="M580,110 L600,85 L620,110" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+                    <circle cx="220" cy="530" r="16" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round" fill="none" />
+                    <path d="M220,514 L220,546" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round" />
+                    <path d="M580,540 Q590,530 600,540 Q610,530 620,540" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
                   </svg>
                 )}
                 {projectId === '4' && (
                   <svg className="w-full h-full" viewBox="0 0 800 600" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    {/* Panda/Nature theme */}
-                    <circle cx="70" cy="70" r="25" stroke="#1a1a1a" strokeWidth="2" fill="none" />
+                    {/* Panda/Nature theme - more sketches */}
+                    <circle cx="70" cy="70" r="25" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round" fill="none" />
                     <circle cx="60" cy="65" r="5" fill="#1a1a1a" />
                     <circle cx="80" cy="65" r="5" fill="#1a1a1a" />
-                    <path d="M700,80 L720,60 M720,80 L700,60" stroke="#1a1a1a" strokeWidth="2" />
-                    <path d="M50,500 Q70,480 90,500 L70,520 Z" stroke="#1a1a1a" strokeWidth="2" fill="none" />
-                    <path d="M700,520 Q720,500 740,520" stroke="#1a1a1a" strokeWidth="2" fill="none" />
-                    <circle cx="150" cy="100" r="15" stroke="#1a1a1a" strokeWidth="2" fill="none" />
+                    <path d="M700,80 L720,60 M720,80 L700,60" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round" />
+                    <path d="M50,500 Q70,480 90,500 L70,520 Z" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+                    <path d="M700,520 Q720,500 740,520" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+                    <circle cx="150" cy="100" r="15" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round" fill="none" />
+                    {/* Additional nature elements */}
+                    <path d="M200,70 Q210,60 220,70 L210,80 Z" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+                    <path d="M190,80 Q200,75 210,80" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+                    <circle cx="600" cy="120" r="20" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round" fill="none" />
+                    <path d="M585,120 L615,120 M600,105 L600,135" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round" />
+                    <path d="M150,530 Q160,520 170,530 L160,545 Z" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+                    <path d="M620,530 L630,520 L640,530 L650,520" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+                  </svg>
+                )}
+                {projectId === '5' && (
+                  <svg className="w-full h-full" viewBox="0 0 800 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    {/* Work 5 theme - generic creative sketches */}
+                    <circle cx="70" cy="70" r="22" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round" fill="none" />
+                    <path d="M50,100 L90,100" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round" />
+                    <path d="M700,80 Q720,70 740,80 Q760,90 780,80" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+                    <rect x="150" y="60" width="35" height="30" rx="4" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round" fill="none" />
+                    <path d="M160,75 L175,75" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round" />
+                    <ellipse cx="620" cy="130" rx="28" ry="20" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round" fill="none" />
+                    <path d="M80,520 Q100,510 120,520 T160,520" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+                    <circle cx="700" cy="530" r="20" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round" fill="none" />
+                    <path d="M690,530 L710,530 M700,520 L700,540" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round" />
+                    <path d="M220,80 L240,60 L260,80 L240,100 Z" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+                    <path d="M200,530 L220,515 L240,530" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+                    <circle cx="580" cy="540" r="15" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round" fill="none" />
+                  </svg>
+                )}
+                {projectId === '6' && (
+                  <svg className="w-full h-full" viewBox="0 0 800 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    {/* Work 6 theme - generic creative sketches */}
+                    <path d="M60,60 Q70,50 80,60 Q90,70 100,60" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+                    <circle cx="150" cy="80" r="18" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round" fill="none" />
+                    <rect x="700" y="60" width="38" height="35" rx="5" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round" fill="none" />
+                    <path d="M710,77 L728,77" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round" />
+                    <ellipse cx="220" cy="90" rx="30" ry="18" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round" fill="none" />
+                    <path d="M600,120 L620,100 L640,120 L620,140 Z" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+                    <path d="M60,510 Q80,500 100,510 Q120,520 140,510" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+                    <circle cx="180" cy="530" r="19" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round" fill="none" />
+                    <path d="M680,530 L700,515 L720,530 L700,545 Z" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+                    <path d="M620,545 Q630,535 640,545" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+                    <rect x="240" y="520" width="32" height="28" rx="4" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round" fill="none" />
+                    <circle cx="580" cy="110" r="16" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round" fill="none" />
                   </svg>
                 )}
               </div>
