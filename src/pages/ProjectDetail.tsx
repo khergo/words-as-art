@@ -408,7 +408,18 @@ const ProjectDetail = () => {
               />
             </div>
 
-            <div className="bg-white/60 backdrop-blur-sm rounded-lg p-4 sm:p-6 md:p-8 mb-8 border-2 border-[#1a1a1a] shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transform -rotate-1">
+            <div className="bg-white/60 backdrop-blur-sm p-4 sm:p-6 md:p-8 mb-8 transform -rotate-1 relative" style={{
+              borderRadius: '8px 12px 10px 14px / 12px 8px 14px 10px',
+              boxShadow: `
+                0 0 0 2px #1a1a1a,
+                1px 1px 0 2px #1a1a1a,
+                -1px 0 0 2px #1a1a1a,
+                0 -1px 0 2px #1a1a1a,
+                2px 2px 0 2px #1a1a1a,
+                3px 4px 0 1px rgba(0,0,0,0.3),
+                4px 5px 0 1px rgba(0,0,0,0.2)
+              `
+            }}>
               <h2 className="font-handwritten text-2xl sm:text-3xl md:text-4xl font-bold mb-4 text-[#1a1a1a]">
                 About This Project
               </h2>
@@ -421,7 +432,18 @@ const ProjectDetail = () => {
               />
             </div>
 
-            <div className="bg-white/80 backdrop-blur-sm rounded-lg p-4 sm:p-6 md:p-8 mb-8 border-2 border-[#1a1a1a] shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transform rotate-1">
+            <div className="bg-white/80 backdrop-blur-sm p-4 sm:p-6 md:p-8 mb-8 transform rotate-1 relative" style={{
+              borderRadius: '10px 14px 9px 13px / 11px 9px 13px 11px',
+              boxShadow: `
+                0 0 0 2px #1a1a1a,
+                1px 0 0 2px #1a1a1a,
+                0 1px 0 2px #1a1a1a,
+                -1px 1px 0 2px #1a1a1a,
+                2px 3px 0 2px #1a1a1a,
+                4px 3px 0 1px rgba(0,0,0,0.3),
+                5px 4px 0 1px rgba(0,0,0,0.2)
+              `
+            }}>
               {/* Video and Photo Upload Section - Only visible in edit mode */}
               {editMode && (
                 <div className="space-y-6 mb-6">
@@ -542,7 +564,18 @@ const ProjectDetail = () => {
             </div>
 
             {editMode && (
-              <div className="bg-white/60 backdrop-blur-sm rounded-lg p-8 border-2 border-[#1a1a1a] shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transform -rotate-1">
+              <div className="bg-white/60 backdrop-blur-sm p-8 transform -rotate-1 relative" style={{
+                borderRadius: '9px 13px 11px 12px / 13px 10px 12px 9px',
+                boxShadow: `
+                  0 0 0 2px #1a1a1a,
+                  1px 1px 0 2px #1a1a1a,
+                  -1px 0 0 2px #1a1a1a,
+                  0 -1px 0 2px #1a1a1a,
+                  2px 2px 0 2px #1a1a1a,
+                  3px 4px 0 1px rgba(0,0,0,0.3),
+                  4px 5px 0 1px rgba(0,0,0,0.2)
+                `
+              }}>
                 <h2 className="font-handwritten text-4xl font-bold mb-6 text-[#1a1a1a]">
                   Additional Notes (Editor Only)
                 </h2>
