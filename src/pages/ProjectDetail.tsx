@@ -487,27 +487,17 @@ const ProjectDetail = () => {
                      {/* Photo Slides - shown first */}
                        {photoUrls.map((url, index) => (
                         <CarouselItem key={`photo-${index}`}>
-                          <div className={`relative group flex justify-center items-center rounded-lg overflow-hidden
-                            ${project.id === 4 
-                              ? 'min-h-[400px] sm:min-h-[500px] md:min-h-[600px] lg:min-h-[700px] bg-white' 
-                              : 'min-h-[600px] sm:min-h-[750px] md:min-h-[900px] lg:min-h-[1050px] bg-[#f9f6f0] border-2 border-[#d4a574] shadow-[inset_0_0_30px_rgba(212,165,116,0.15)]'
-                            }
-                            ${project.id !== 4 && 'before:absolute before:inset-0 before:bg-[linear-gradient(transparent_0px,transparent_39px,rgba(212,165,116,0.2)_39px,rgba(212,165,116,0.2)_40px)] before:bg-[length:100%_40px] before:pointer-events-none'}`}>
+                          <div className="relative group flex justify-center items-center bg-white rounded-lg min-h-[400px] sm:min-h-[500px] md:min-h-[600px] lg:min-h-[700px]">
                             <img
                               src={url}
                               alt={`Project photo ${index + 1}`}
-                              className={`w-full h-full object-contain
-                                ${project.id === 4 
-                                  ? 'max-h-[70vh] sm:max-h-[75vh] md:max-h-[85vh] rounded-lg' 
-                                  : 'max-h-[90vh] sm:max-h-[92vh] md:max-h-[95vh] rounded-sm'
-                                }`}
+                              className="w-full h-full max-h-[70vh] sm:max-h-[75vh] md:max-h-[85vh] object-contain rounded-lg"
                               loading="lazy"
-                              style={{ filter: 'none', boxShadow: 'none' }}
                             />
                             {editMode && (
                               <button
                                 onClick={() => removePhoto(url)}
-                                className="absolute top-2 right-2 bg-[#dc3545] text-white p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity shadow-lg hover:bg-[#c82333] z-10"
+                                className="absolute top-2 right-2 bg-[#dc3545] text-white p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity shadow-lg hover:bg-[#c82333]"
                                 aria-label="Remove photo"
                               >
                                 <X size={20} />
@@ -520,24 +510,14 @@ const ProjectDetail = () => {
                       {/* Video Slide - shown last if video exists */}
                       {embedUrl && (
                         <CarouselItem>
-                          <div className={`relative flex justify-center items-center rounded-lg overflow-hidden
-                            ${project.id === 4 
-                              ? 'min-h-[400px] sm:min-h-[500px] md:min-h-[600px] lg:min-h-[700px] bg-white' 
-                              : 'min-h-[600px] sm:min-h-[750px] md:min-h-[900px] lg:min-h-[1050px] bg-[#f9f6f0] border-2 border-[#d4a574] shadow-[inset_0_0_30px_rgba(212,165,116,0.15)]'
-                            }
-                            ${project.id !== 4 && 'before:absolute before:inset-0 before:bg-[linear-gradient(transparent_0px,transparent_39px,rgba(212,165,116,0.2)_39px,rgba(212,165,116,0.2)_40px)] before:bg-[length:100%_40px] before:pointer-events-none before:z-[1]'}`}>
-                            <div className={`relative w-full aspect-video z-[2]
-                              ${project.id === 4 
-                                ? 'max-h-[70vh] sm:max-h-[75vh] md:max-h-[85vh]' 
-                                : 'max-h-[90vh] sm:max-h-[92vh] md:max-h-[95vh]'
-                              }`}>
+                          <div className="relative flex justify-center items-center bg-white rounded-lg min-h-[400px] sm:min-h-[500px] md:min-h-[600px] lg:min-h-[700px]">
+                            <div className="relative w-full aspect-video max-h-[70vh] sm:max-h-[75vh] md:max-h-[85vh]">
                               <iframe
                                 src={embedUrl}
-                                className={`absolute inset-0 w-full h-full ${project.id === 4 ? 'rounded-lg' : 'rounded-sm'}`}
+                                className="absolute inset-0 w-full h-full rounded-lg"
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                 allowFullScreen
                                 title="Project video"
-                                style={{ filter: 'none', boxShadow: 'none' }}
                               />
                             </div>
                           </div>
@@ -546,8 +526,8 @@ const ProjectDetail = () => {
                     </CarouselContent>
                     {(photoUrls.length + (embedUrl ? 1 : 0)) > 1 && (
                       <>
-                        <CarouselPrevious className="font-handwritten border-2 border-[#1a1a1a] bg-white hover:bg-[#dc3545] hover:text-white shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] -left-1 md:-left-2 z-20" />
-                        <CarouselNext className="font-handwritten border-2 border-[#1a1a1a] bg-white hover:bg-[#dc3545] hover:text-white shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] -right-1 md:-right-2 z-20" />
+                        <CarouselPrevious className="font-handwritten border-2 border-[#1a1a1a] bg-white hover:bg-[#dc3545] hover:text-white shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] -left-1 md:-left-2" />
+                        <CarouselNext className="font-handwritten border-2 border-[#1a1a1a] bg-white hover:bg-[#dc3545] hover:text-white shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] -right-1 md:-right-2" />
                       </>
                     )}
                   </Carousel>
