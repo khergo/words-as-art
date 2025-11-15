@@ -484,14 +484,14 @@ const ProjectDetail = () => {
                 <div className="relative px-4 sm:px-8 md:px-12">
                   <Carousel className="w-full">
                     <CarouselContent>
-                      {/* Photo Slides - shown first */}
+                     {/* Photo Slides - shown first */}
                        {photoUrls.map((url, index) => (
                         <CarouselItem key={`photo-${index}`}>
-                          <div className="relative group flex justify-center items-center bg-white rounded-lg min-h-[300px] sm:min-h-[400px] md:min-h-[500px] lg:min-h-[600px]">
+                          <div className="relative group flex justify-center items-center bg-white rounded-lg min-h-[400px] sm:min-h-[500px] md:min-h-[600px] lg:min-h-[700px]">
                             <img
                               src={url}
                               alt={`Project photo ${index + 1}`}
-                              className="w-full h-full max-h-[60vh] sm:max-h-[70vh] md:max-h-[80vh] lg:max-h-[90vh] object-contain rounded-lg"
+                              className="w-full h-full max-h-[70vh] sm:max-h-[75vh] md:max-h-[85vh] object-contain rounded-lg"
                               loading="lazy"
                             />
                             {editMode && (
@@ -510,14 +510,16 @@ const ProjectDetail = () => {
                       {/* Video Slide - shown last if video exists */}
                       {embedUrl && (
                         <CarouselItem>
-                          <div className="relative w-full aspect-video max-h-[60vh] sm:max-h-[70vh] md:max-h-[80vh] flex items-center justify-center bg-white rounded-lg overflow-hidden">
-                            <iframe
-                              src={embedUrl}
-                              className="absolute inset-0 w-full h-full"
-                              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                              allowFullScreen
-                              title="Project video"
-                            />
+                          <div className="relative flex justify-center items-center bg-white rounded-lg min-h-[400px] sm:min-h-[500px] md:min-h-[600px] lg:min-h-[700px]">
+                            <div className="relative w-full aspect-video max-h-[70vh] sm:max-h-[75vh] md:max-h-[85vh]">
+                              <iframe
+                                src={embedUrl}
+                                className="absolute inset-0 w-full h-full rounded-lg"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowFullScreen
+                                title="Project video"
+                              />
+                            </div>
                           </div>
                         </CarouselItem>
                       )}
