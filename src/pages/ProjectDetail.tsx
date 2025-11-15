@@ -444,115 +444,150 @@ const ProjectDetail = () => {
                 5px 4px 0 1px rgba(0,0,0,0.2)
               `
             }}>
-              {/* Decorative hand-drawn pencil sketches background */}
-              <div className="absolute inset-0 pointer-events-none opacity-12" style={{ zIndex: 0 }}>
+              {/* Decorative childlike pencil sketches - positioned around edges */}
+              <div className="absolute inset-0 pointer-events-none opacity-[0.15]" style={{ zIndex: 0 }}>
                 {projectId === '1' && (
                   <svg className="w-full h-full" viewBox="0 0 800 600" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    {/* Alexa/Tech theme - more sketches */}
-                    <path d="M50,50 Q60,45 70,50 T90,50" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
-                    <circle cx="100" cy="80" r="15" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round" fill="none" />
-                    <path d="M150,60 L170,80 L150,100" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
-                    <path d="M700,100 Q710,95 720,100 T740,100" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
-                    <circle cx="680" cy="150" r="12" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round" fill="none" />
-                    <path d="M50,500 L70,520 L50,540" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
-                    <path d="M720,500 Q730,495 740,500 T760,500" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
-                    {/* Additional tech elements */}
-                    <rect x="200" y="70" width="30" height="25" rx="3" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round" fill="none" />
-                    <path d="M210,82 L220,82" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round" />
-                    <circle cx="600" cy="120" r="18" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round" fill="none" />
-                    <path d="M590,120 L610,120 M600,110 L600,130" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round" />
-                    <path d="M120,540 Q140,530 160,540" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
-                    <path d="M650,530 L670,545 L680,530" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+                    {/* Alexa/Tech theme - childlike sketches around edges */}
+                    {/* Top left corner */}
+                    <path d="M30,35 Q42,33 55,38 T75,42" stroke="#2a2a2a" strokeWidth="1.2" strokeLinecap="round" strokeDasharray="1,1" fill="none" />
+                    <circle cx="95" cy="65" r="18" stroke="#2a2a2a" strokeWidth="1.3" strokeLinecap="round" strokeDasharray="2,1" fill="none" />
+                    <path d="M135,45 L152,68 L138,88" stroke="#2a2a2a" strokeWidth="1.1" strokeLinecap="round" strokeDasharray="1,1" fill="none" />
+                    <path d="M180,55 L195,48 L205,60 L192,72" stroke="#2a2a2a" strokeWidth="1.2" strokeLinecap="round" strokeDasharray="1,1" fill="none" />
+                    {/* Top right corner */}
+                    <path d="M680,40 Q695,37 710,43 T735,48" stroke="#2a2a2a" strokeWidth="1.2" strokeLinecap="round" strokeDasharray="1,1" fill="none" />
+                    <circle cx="665" cy="80" r="15" stroke="#2a2a2a" strokeWidth="1.1" strokeLinecap="round" strokeDasharray="2,1" fill="none" />
+                    <rect x="745" y="65" width="28" height="32" rx="3" stroke="#2a2a2a" strokeWidth="1.3" strokeLinecap="round" strokeDasharray="1,1" fill="none" />
+                    <path d="M630,110 L645,95 L660,108" stroke="#2a2a2a" strokeWidth="1.2" strokeLinecap="round" strokeDasharray="1,1" fill="none" />
+                    {/* Bottom left corner */}
+                    <path d="M35,520 L52,538 L42,558" stroke="#2a2a2a" strokeWidth="1.1" strokeLinecap="round" strokeDasharray="1,1" fill="none" />
+                    <circle cx="95" cy="545" r="16" stroke="#2a2a2a" strokeWidth="1.2" strokeLinecap="round" strokeDasharray="2,1" fill="none" />
+                    <path d="M140,535 Q158,528 175,538" stroke="#2a2a2a" strokeWidth="1.3" strokeLinecap="round" strokeDasharray="1,1" fill="none" />
+                    <path d="M195,555 L210,540 L220,558" stroke="#2a2a2a" strokeWidth="1.1" strokeLinecap="round" strokeDasharray="1,1" fill="none" />
+                    {/* Bottom right corner */}
+                    <path d="M700,535 Q715,530 730,538 T755,545" stroke="#2a2a2a" strokeWidth="1.2" strokeLinecap="round" strokeDasharray="1,1" fill="none" />
+                    <ellipse cx="665" cy="560" rx="20" ry="12" stroke="#2a2a2a" strokeWidth="1.1" strokeLinecap="round" strokeDasharray="1,1" fill="none" />
+                    <path d="M620,550 L638,538 L652,552 L640,568" stroke="#2a2a2a" strokeWidth="1.2" strokeLinecap="round" strokeDasharray="1,1" fill="none" />
                   </svg>
                 )}
                 {projectId === '2' && (
                   <svg className="w-full h-full" viewBox="0 0 800 600" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    {/* McDonald's/Food theme - more sketches */}
-                    <circle cx="60" cy="60" r="20" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round" fill="none" />
-                    <path d="M40,80 Q50,90 60,80 Q70,90 80,80" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
-                    <rect x="700" y="50" width="40" height="60" rx="5" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round" fill="none" />
-                    <path d="M705,80 L735,80 M705,90 L735,90" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round" />
-                    <path d="M100,500 Q120,480 140,500 T180,500" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
-                    <circle cx="700" cy="520" r="18" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round" fill="none" />
-                    <path d="M690,520 L710,520 M700,510 L700,530" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round" />
-                    <ellipse cx="150" cy="100" rx="25" ry="15" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round" fill="none" />
-                    {/* Additional food elements */}
-                    <path d="M200,80 Q210,70 220,80 Q230,90 240,80" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
-                    <circle cx="580" cy="100" r="22" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round" fill="none" />
-                    <path d="M560,100 Q570,95 580,100 Q590,105 600,100" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
-                    <rect x="220" y="510" width="35" height="40" rx="4" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round" fill="none" />
-                    <path d="M600,540 L610,530 L620,540 L630,530" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+                    {/* McDonald's/Food theme - childlike sketches around edges */}
+                    {/* Top left corner */}
+                    <circle cx="50" cy="50" r="22" stroke="#2a2a2a" strokeWidth="1.3" strokeLinecap="round" strokeDasharray="2,1" fill="none" />
+                    <path d="M28,75 Q40,85 50,75 Q60,85 72,75" stroke="#2a2a2a" strokeWidth="1.2" strokeLinecap="round" strokeDasharray="1,1" fill="none" />
+                    <ellipse cx="135" cy="65" rx="28" ry="18" stroke="#2a2a2a" strokeWidth="1.1" strokeLinecap="round" strokeDasharray="1,1" fill="none" />
+                    <path d="M185,55 Q198,48 210,58 Q222,48 235,58" stroke="#2a2a2a" strokeWidth="1.2" strokeLinecap="round" strokeDasharray="1,1" fill="none" />
+                    {/* Top right corner */}
+                    <rect x="690" y="40" width="42" height="58" rx="6" stroke="#2a2a2a" strokeWidth="1.3" strokeLinecap="round" strokeDasharray="1,1" fill="none" />
+                    <path d="M695,70 L727,70 M695,82 L727,82" stroke="#2a2a2a" strokeWidth="1.1" strokeLinecap="round" strokeDasharray="1,1" />
+                    <circle cx="655" cy="95" r="19" stroke="#2a2a2a" strokeWidth="1.2" strokeLinecap="round" strokeDasharray="2,1" fill="none" />
+                    <path d="M745,75 L760,62 L772,78" stroke="#2a2a2a" strokeWidth="1.1" strokeLinecap="round" strokeDasharray="1,1" fill="none" />
+                    {/* Bottom left corner */}
+                    <path d="M40,525 Q62,510 82,528 T122,535" stroke="#2a2a2a" strokeWidth="1.2" strokeLinecap="round" strokeDasharray="1,1" fill="none" />
+                    <rect x="145" y="535" width="38" height="42" rx="5" stroke="#2a2a2a" strokeWidth="1.3" strokeLinecap="round" strokeDasharray="1,1" fill="none" />
+                    <circle cx="205" cy="555" r="17" stroke="#2a2a2a" strokeWidth="1.1" strokeLinecap="round" strokeDasharray="2,1" fill="none" />
+                    {/* Bottom right corner */}
+                    <circle cx="685" cy="545" r="20" stroke="#2a2a2a" strokeWidth="1.2" strokeLinecap="round" strokeDasharray="2,1" fill="none" />
+                    <path d="M675,545 L695,545 M685,535 L685,555" stroke="#2a2a2a" strokeWidth="1.1" strokeLinecap="round" strokeDasharray="1,1" />
+                    <path d="M735,535 L748,525 L760,538 L752,553" stroke="#2a2a2a" strokeWidth="1.2" strokeLinecap="round" strokeDasharray="1,1" fill="none" />
+                    <ellipse cx="620" cy="560" rx="25" ry="15" stroke="#2a2a2a" strokeWidth="1.1" strokeLinecap="round" strokeDasharray="1,1" fill="none" />
                   </svg>
                 )}
                 {projectId === '3' && (
                   <svg className="w-full h-full" viewBox="0 0 800 600" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    {/* NairNairi/Fashion theme - more sketches */}
-                    <path d="M50,70 Q60,50 70,70 Q80,50 90,70" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
-                    <circle cx="700" cy="80" r="20" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round" fill="none" />
-                    <path d="M700,60 L700,100" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round" />
-                    <path d="M120,520 L140,500 L160,520 L140,540 Z" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
-                    <ellipse cx="680" cy="520" rx="30" ry="20" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round" fill="none" />
-                    <path d="M150,80 C150,60 170,60 170,80 C170,60 190,60 190,80" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
-                    {/* Additional fashion elements */}
-                    <path d="M220,60 Q230,50 240,60 L235,70 L225,70 Z" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
-                    <ellipse cx="600" cy="110" rx="25" ry="35" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round" fill="none" />
-                    <path d="M580,110 L600,85 L620,110" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
-                    <circle cx="220" cy="530" r="16" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round" fill="none" />
-                    <path d="M220,514 L220,546" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round" />
-                    <path d="M580,540 Q590,530 600,540 Q610,530 620,540" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+                    {/* NairNairi/Fashion theme - childlike sketches around edges */}
+                    {/* Top left corner */}
+                    <path d="M35,60 Q48,45 60,62 Q72,45 85,62" stroke="#2a2a2a" strokeWidth="1.2" strokeLinecap="round" strokeDasharray="1,1" fill="none" />
+                    <circle cx="130" cy="65" r="21" stroke="#2a2a2a" strokeWidth="1.3" strokeLinecap="round" strokeDasharray="2,1" fill="none" />
+                    <path d="M130,44 L130,86" stroke="#2a2a2a" strokeWidth="1.1" strokeLinecap="round" strokeDasharray="1,1" />
+                    <path d="M175,55 Q185,48 195,58 L190,72 L180,72 Z" stroke="#2a2a2a" strokeWidth="1.2" strokeLinecap="round" strokeDasharray="1,1" fill="none" />
+                    {/* Top right corner */}
+                    <ellipse cx="685" cy="70" rx="27" ry="38" stroke="#2a2a2a" strokeWidth="1.3" strokeLinecap="round" strokeDasharray="1,1" fill="none" />
+                    <path d="M665,70 L685,48 L705,70" stroke="#2a2a2a" strokeWidth="1.1" strokeLinecap="round" strokeDasharray="1,1" fill="none" />
+                    <circle cx="750" cy="85" r="18" stroke="#2a2a2a" strokeWidth="1.2" strokeLinecap="round" strokeDasharray="2,1" fill="none" />
+                    <path d="M630,95 Q642,88 655,98" stroke="#2a2a2a" strokeWidth="1.1" strokeLinecap="round" strokeDasharray="1,1" fill="none" />
+                    {/* Bottom left corner */}
+                    <path d="M40,540 L58,522 L75,542 L60,560 Z" stroke="#2a2a2a" strokeWidth="1.2" strokeLinecap="round" strokeDasharray="1,1" fill="none" />
+                    <circle cx="125" cy="550" r="18" stroke="#2a2a2a" strokeWidth="1.3" strokeLinecap="round" strokeDasharray="2,1" fill="none" />
+                    <path d="M125,532 L125,568" stroke="#2a2a2a" strokeWidth="1.1" strokeLinecap="round" strokeDasharray="1,1" />
+                    <path d="M165,545 Q175,535 185,545 Q195,555 205,545" stroke="#2a2a2a" strokeWidth="1.2" strokeLinecap="round" strokeDasharray="1,1" fill="none" />
+                    {/* Bottom right corner */}
+                    <ellipse cx="670" cy="550" rx="32" ry="22" stroke="#2a2a2a" strokeWidth="1.3" strokeLinecap="round" strokeDasharray="1,1" fill="none" />
+                    <path d="M725,540 Q735,532 745,542 Q755,532 765,542" stroke="#2a2a2a" strokeWidth="1.1" strokeLinecap="round" strokeDasharray="1,1" fill="none" />
+                    <circle cx="620" cy="565" r="16" stroke="#2a2a2a" strokeWidth="1.2" strokeLinecap="round" strokeDasharray="2,1" fill="none" />
                   </svg>
                 )}
                 {projectId === '4' && (
                   <svg className="w-full h-full" viewBox="0 0 800 600" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    {/* Panda/Nature theme - more sketches */}
-                    <circle cx="70" cy="70" r="25" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round" fill="none" />
-                    <circle cx="60" cy="65" r="5" fill="#1a1a1a" />
-                    <circle cx="80" cy="65" r="5" fill="#1a1a1a" />
-                    <path d="M700,80 L720,60 M720,80 L700,60" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round" />
-                    <path d="M50,500 Q70,480 90,500 L70,520 Z" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
-                    <path d="M700,520 Q720,500 740,520" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
-                    <circle cx="150" cy="100" r="15" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round" fill="none" />
-                    {/* Additional nature elements */}
-                    <path d="M200,70 Q210,60 220,70 L210,80 Z" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
-                    <path d="M190,80 Q200,75 210,80" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
-                    <circle cx="600" cy="120" r="20" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round" fill="none" />
-                    <path d="M585,120 L615,120 M600,105 L600,135" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round" />
-                    <path d="M150,530 Q160,520 170,530 L160,545 Z" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
-                    <path d="M620,530 L630,520 L640,530 L650,520" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+                    {/* Panda/Nature theme - childlike sketches around edges */}
+                    {/* Top left corner */}
+                    <circle cx="60" cy="60" r="27" stroke="#2a2a2a" strokeWidth="1.3" strokeLinecap="round" strokeDasharray="2,1" fill="none" />
+                    <circle cx="52" cy="56" r="6" fill="#2a2a2a" opacity="0.6" />
+                    <circle cx="68" cy="56" r="6" fill="#2a2a2a" opacity="0.6" />
+                    <path d="M135,55 Q148,48 160,58 L150,72 Z" stroke="#2a2a2a" strokeWidth="1.2" strokeLinecap="round" strokeDasharray="1,1" fill="none" />
+                    <path d="M125,72 Q135,68 145,72" stroke="#2a2a2a" strokeWidth="1.1" strokeLinecap="round" strokeDasharray="1,1" fill="none" />
+                    <circle cx="195" cy="75" r="17" stroke="#2a2a2a" strokeWidth="1.2" strokeLinecap="round" strokeDasharray="2,1" fill="none" />
+                    {/* Top right corner */}
+                    <path d="M685,70 L703,52 M703,70 L685,52" stroke="#2a2a2a" strokeWidth="1.3" strokeLinecap="round" strokeDasharray="1,1" />
+                    <circle cx="745" cy="80" r="21" stroke="#2a2a2a" strokeWidth="1.2" strokeLinecap="round" strokeDasharray="2,1" fill="none" />
+                    <path d="M730,80 L760,80 M745,65 L745,95" stroke="#2a2a2a" strokeWidth="1.1" strokeLinecap="round" strokeDasharray="1,1" />
+                    <path d="M640,100 L658,88 L672,102" stroke="#2a2a2a" strokeWidth="1.2" strokeLinecap="round" strokeDasharray="1,1" fill="none" />
+                    {/* Bottom left corner */}
+                    <path d="M35,530 Q55,515 75,532 L60,548 Z" stroke="#2a2a2a" strokeWidth="1.2" strokeLinecap="round" strokeDasharray="1,1" fill="none" />
+                    <circle cx="125" cy="545" r="19" stroke="#2a2a2a" strokeWidth="1.3" strokeLinecap="round" strokeDasharray="2,1" fill="none" />
+                    <path d="M165,540 Q178,532 190,542 L180,558 Z" stroke="#2a2a2a" strokeWidth="1.1" strokeLinecap="round" strokeDasharray="1,1" fill="none" />
+                    {/* Bottom right corner */}
+                    <path d="M685,540 Q705,525 725,542" stroke="#2a2a2a" strokeWidth="1.2" strokeLinecap="round" strokeDasharray="1,1" fill="none" />
+                    <path d="M745,535 L758,525 L770,538 L780,528" stroke="#2a2a2a" strokeWidth="1.1" strokeLinecap="round" strokeDasharray="1,1" fill="none" />
+                    <circle cx="640" cy="560" r="18" stroke="#2a2a2a" strokeWidth="1.3" strokeLinecap="round" strokeDasharray="2,1" fill="none" />
                   </svg>
                 )}
                 {projectId === '5' && (
                   <svg className="w-full h-full" viewBox="0 0 800 600" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    {/* Work 5 theme - generic creative sketches */}
-                    <circle cx="70" cy="70" r="22" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round" fill="none" />
-                    <path d="M50,100 L90,100" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round" />
-                    <path d="M700,80 Q720,70 740,80 Q760,90 780,80" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
-                    <rect x="150" y="60" width="35" height="30" rx="4" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round" fill="none" />
-                    <path d="M160,75 L175,75" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round" />
-                    <ellipse cx="620" cy="130" rx="28" ry="20" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round" fill="none" />
-                    <path d="M80,520 Q100,510 120,520 T160,520" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
-                    <circle cx="700" cy="530" r="20" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round" fill="none" />
-                    <path d="M690,530 L710,530 M700,520 L700,540" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round" />
-                    <path d="M220,80 L240,60 L260,80 L240,100 Z" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
-                    <path d="M200,530 L220,515 L240,530" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
-                    <circle cx="580" cy="540" r="15" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round" fill="none" />
+                    {/* Work 5 theme - childlike sketches around edges */}
+                    {/* Top left corner */}
+                    <circle cx="60" cy="60" r="24" stroke="#2a2a2a" strokeWidth="1.3" strokeLinecap="round" strokeDasharray="2,1" fill="none" />
+                    <path d="M40,90 L80,90" stroke="#2a2a2a" strokeWidth="1.2" strokeLinecap="round" strokeDasharray="1,1" />
+                    <rect x="135" y="50" width="38" height="32" rx="5" stroke="#2a2a2a" strokeWidth="1.2" strokeLinecap="round" strokeDasharray="1,1" fill="none" />
+                    <path d="M145,66 L163,66" stroke="#2a2a2a" strokeWidth="1.1" strokeLinecap="round" strokeDasharray="1,1" />
+                    <ellipse cx="205" cy="70" rx="26" ry="16" stroke="#2a2a2a" strokeWidth="1.3" strokeLinecap="round" strokeDasharray="1,1" fill="none" />
+                    {/* Top right corner */}
+                    <path d="M680,55 Q700,48 720,58 Q740,68 760,58" stroke="#2a2a2a" strokeWidth="1.2" strokeLinecap="round" strokeDasharray="1,1" fill="none" />
+                    <circle cx="650" cy="85" r="19" stroke="#2a2a2a" strokeWidth="1.3" strokeLinecap="round" strokeDasharray="2,1" fill="none" />
+                    <path d="M735,85 L752,68 L768,85 L755,102 Z" stroke="#2a2a2a" strokeWidth="1.1" strokeLinecap="round" strokeDasharray="1,1" fill="none" />
+                    {/* Bottom left corner */}
+                    <path d="M35,540 Q58,530 80,542 T125,548" stroke="#2a2a2a" strokeWidth="1.2" strokeLinecap="round" strokeDasharray="1,1" fill="none" />
+                    <circle cx="165" cy="555" r="18" stroke="#2a2a2a" strokeWidth="1.3" strokeLinecap="round" strokeDasharray="2,1" fill="none" />
+                    <path d="M155,555 L175,555 M165,545 L165,565" stroke="#2a2a2a" strokeWidth="1.1" strokeLinecap="round" strokeDasharray="1,1" />
+                    <path d="M205,545 L222,532 L238,548" stroke="#2a2a2a" strokeWidth="1.2" strokeLinecap="round" strokeDasharray="1,1" fill="none" />
+                    {/* Bottom right corner */}
+                    <circle cx="685" cy="550" r="22" stroke="#2a2a2a" strokeWidth="1.2" strokeLinecap="round" strokeDasharray="2,1" fill="none" />
+                    <path d="M675,550 L695,550 M685,540 L685,560" stroke="#2a2a2a" strokeWidth="1.3" strokeLinecap="round" strokeDasharray="1,1" />
+                    <ellipse cx="745" cy="555" rx="28" ry="18" stroke="#2a2a2a" strokeWidth="1.1" strokeLinecap="round" strokeDasharray="1,1" fill="none" />
+                    <circle cx="625" cy="565" r="16" stroke="#2a2a2a" strokeWidth="1.2" strokeLinecap="round" strokeDasharray="2,1" fill="none" />
                   </svg>
                 )}
                 {projectId === '6' && (
                   <svg className="w-full h-full" viewBox="0 0 800 600" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    {/* Work 6 theme - generic creative sketches */}
-                    <path d="M60,60 Q70,50 80,60 Q90,70 100,60" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
-                    <circle cx="150" cy="80" r="18" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round" fill="none" />
-                    <rect x="700" y="60" width="38" height="35" rx="5" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round" fill="none" />
-                    <path d="M710,77 L728,77" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round" />
-                    <ellipse cx="220" cy="90" rx="30" ry="18" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round" fill="none" />
-                    <path d="M600,120 L620,100 L640,120 L620,140 Z" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
-                    <path d="M60,510 Q80,500 100,510 Q120,520 140,510" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
-                    <circle cx="180" cy="530" r="19" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round" fill="none" />
-                    <path d="M680,530 L700,515 L720,530 L700,545 Z" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
-                    <path d="M620,545 Q630,535 640,545" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
-                    <rect x="240" y="520" width="32" height="28" rx="4" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round" fill="none" />
-                    <circle cx="580" cy="110" r="16" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round" fill="none" />
+                    {/* Work 6 theme - childlike sketches around edges */}
+                    {/* Top left corner */}
+                    <path d="M45,50 Q58,45 70,52 Q82,60 95,52" stroke="#2a2a2a" strokeWidth="1.2" strokeLinecap="round" strokeDasharray="1,1" fill="none" />
+                    <circle cx="140" cy="70" r="20" stroke="#2a2a2a" strokeWidth="1.3" strokeLinecap="round" strokeDasharray="2,1" fill="none" />
+                    <ellipse cx="200" cy="65" rx="32" ry="20" stroke="#2a2a2a" strokeWidth="1.1" strokeLinecap="round" strokeDasharray="1,1" fill="none" />
+                    {/* Top right corner */}
+                    <rect x="685" y="48" width="40" height="38" rx="6" stroke="#2a2a2a" strokeWidth="1.3" strokeLinecap="round" strokeDasharray="1,1" fill="none" />
+                    <path d="M695,67 L715,67" stroke="#2a2a2a" strokeWidth="1.1" strokeLinecap="round" strokeDasharray="1,1" />
+                    <path d="M745,65 L762,52 L775,68 L765,85 Z" stroke="#2a2a2a" strokeWidth="1.2" strokeLinecap="round" strokeDasharray="1,1" fill="none" />
+                    <circle cx="640" cy="95" r="17" stroke="#2a2a2a" strokeWidth="1.2" strokeLinecap="round" strokeDasharray="2,1" fill="none" />
+                    {/* Bottom left corner */}
+                    <path d="M40,535 Q62,525 82,538 Q102,548 122,538" stroke="#2a2a2a" strokeWidth="1.2" strokeLinecap="round" strokeDasharray="1,1" fill="none" />
+                    <circle cx="165" cy="550" r="21" stroke="#2a2a2a" strokeWidth="1.3" strokeLinecap="round" strokeDasharray="2,1" fill="none" />
+                    <rect x="215" y="540" width="34" height="30" rx="5" stroke="#2a2a2a" strokeWidth="1.1" strokeLinecap="round" strokeDasharray="1,1" fill="none" />
+                    {/* Bottom right corner */}
+                    <path d="M670,545 L688,532 L705,548 L692,565 Z" stroke="#2a2a2a" strokeWidth="1.2" strokeLinecap="round" strokeDasharray="1,1" fill="none" />
+                    <path d="M735,555 Q748,548 760,558" stroke="#2a2a2a" strokeWidth="1.3" strokeLinecap="round" strokeDasharray="1,1" fill="none" />
+                    <circle cx="625" cy="560" r="19" stroke="#2a2a2a" strokeWidth="1.1" strokeLinecap="round" strokeDasharray="2,1" fill="none" />
                   </svg>
                 )}
               </div>
