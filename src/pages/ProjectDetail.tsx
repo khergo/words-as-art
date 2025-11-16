@@ -487,12 +487,11 @@ const ProjectDetail = () => {
                      {/* Photo Slides - shown first */}
                        {photoUrls.map((url, index) => (
                         <CarouselItem key={`photo-${index}`}>
-                          <div className="relative group flex justify-center items-center rounded-lg min-h-[600px] sm:min-h-[750px] md:min-h-[900px] lg:min-h-[1050px]">
+                          <div className="relative group flex justify-center items-center rounded-lg min-h-[900px] sm:min-h-[1125px] md:min-h-[1350px] lg:min-h-[1575px]">
                             <img
                               src={url}
                               alt={`Project photo ${index + 1}`}
-                              className="w-full h-auto object-contain rounded-lg scale-150"
-                              style={{ maxHeight: 'none' }}
+                              className="w-full h-full object-contain rounded-lg"
                               loading="lazy"
                             />
                             {editMode && (
@@ -511,8 +510,8 @@ const ProjectDetail = () => {
                       {/* Video Slide - shown last if video exists */}
                       {embedUrl && (
                         <CarouselItem>
-                          <div className="relative flex justify-center items-center rounded-lg min-h-[600px] sm:min-h-[750px] md:min-h-[900px] lg:min-h-[1050px] overflow-hidden">
-                            <div className="relative w-full aspect-video scale-150" style={{ maxHeight: 'none' }}>
+                          <div className="relative flex justify-center items-center rounded-lg min-h-[900px] sm:min-h-[1125px] md:min-h-[1350px] lg:min-h-[1575px]">
+                            <div className="relative w-full aspect-video">
                               <iframe
                                 src={embedUrl}
                                 className="absolute inset-0 w-full h-full rounded-lg"
