@@ -14,9 +14,9 @@ export default {
     },
     extend: {
       fontFamily: {
-        serif: ['Playfair Display', 'serif'],
-        sans: ['Reb Sanse', 'Inter', 'sans-serif'],
-        handwritten: ['Caveat', 'cursive'],
+        serif: ['Reb Sanse', 'sans-serif'],
+        sans: ['Reb Sanse', 'sans-serif'],
+        handwritten: ['Reb Sanse', 'sans-serif'],
       },
       colors: {
         border: "hsl(var(--border))",
