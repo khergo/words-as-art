@@ -487,7 +487,7 @@ const ProjectDetail = () => {
                      {/* Photo Slides - shown first */}
                        {photoUrls.map((url, index) => (
                         <CarouselItem key={`photo-${index}`}>
-                          <div className="relative group flex justify-center items-center bg-white rounded-lg min-h-[400px] sm:min-h-[500px] md:min-h-[600px] lg:min-h-[700px]">
+                          <div className="relative group flex justify-center items-center rounded-lg min-h-[600px] sm:min-h-[750px] md:min-h-[900px] lg:min-h-[1050px]">
                             <img
                               src={url}
                               alt={`Project photo ${index + 1}`}
@@ -510,7 +510,7 @@ const ProjectDetail = () => {
                       {/* Video Slide - shown last if video exists */}
                       {embedUrl && (
                         <CarouselItem>
-                          <div className="relative flex justify-center items-center bg-white rounded-lg min-h-[400px] sm:min-h-[500px] md:min-h-[600px] lg:min-h-[700px]">
+                          <div className="relative flex justify-center items-center rounded-lg min-h-[600px] sm:min-h-[750px] md:min-h-[900px] lg:min-h-[1050px]">
                             <div className="relative w-full aspect-video max-h-[70vh] sm:max-h-[75vh] md:max-h-[85vh]">
                               <iframe
                                 src={embedUrl}
