@@ -491,7 +491,8 @@ const ProjectDetail = () => {
                             <img
                               src={url}
                               alt={`Project photo ${index + 1}`}
-                              className="w-full h-full max-h-[70vh] sm:max-h-[75vh] md:max-h-[85vh] object-contain rounded-lg"
+                              className="w-full h-auto object-contain rounded-lg scale-150"
+                              style={{ maxHeight: 'none' }}
                               loading="lazy"
                             />
                             {editMode && (
@@ -510,8 +511,8 @@ const ProjectDetail = () => {
                       {/* Video Slide - shown last if video exists */}
                       {embedUrl && (
                         <CarouselItem>
-                          <div className="relative flex justify-center items-center rounded-lg min-h-[600px] sm:min-h-[750px] md:min-h-[900px] lg:min-h-[1050px]">
-                            <div className="relative w-full aspect-video max-h-[70vh] sm:max-h-[75vh] md:max-h-[85vh]">
+                          <div className="relative flex justify-center items-center rounded-lg min-h-[600px] sm:min-h-[750px] md:min-h-[900px] lg:min-h-[1050px] overflow-hidden">
+                            <div className="relative w-full aspect-video scale-150" style={{ maxHeight: 'none' }}>
                               <iframe
                                 src={embedUrl}
                                 className="absolute inset-0 w-full h-full rounded-lg"
