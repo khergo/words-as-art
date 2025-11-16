@@ -481,23 +481,24 @@ const ProjectDetail = () => {
 
               {/* Unified Media Carousel - Shows both video and photos */}
               {(embedUrl || photoUrls.length > 0) && (
-                <div className="relative px-4 sm:px-8 md:px-12">
+                <div className="relative -mx-4 sm:-mx-6 md:-mx-8">
                   <Carousel className="w-full">
                     <CarouselContent>
                      {/* Photo Slides - shown first */}
                        {photoUrls.map((url, index) => (
                         <CarouselItem key={`photo-${index}`}>
-                          <div className="relative group flex justify-center items-center rounded-lg min-h-[900px] sm:min-h-[1125px] md:min-h-[1350px] lg:min-h-[1575px]">
+                          <div className="relative group flex justify-center items-center py-8 px-4 sm:px-8 md:px-12">
                             <img
                               src={url}
                               alt={`Project photo ${index + 1}`}
-                              className="w-full h-full object-contain rounded-lg"
+                              className="w-full max-w-6xl h-auto object-contain rounded-lg"
+                              style={{ maxHeight: '85vh' }}
                               loading="lazy"
                             />
                             {editMode && (
                               <button
                                 onClick={() => removePhoto(url)}
-                                className="absolute top-2 right-2 bg-[#dc3545] text-white p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity shadow-lg hover:bg-[#c82333]"
+                                className="absolute top-10 right-6 sm:right-10 md:right-14 bg-[#dc3545] text-white p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity shadow-lg hover:bg-[#c82333] z-10"
                                 aria-label="Remove photo"
                               >
                                 <X size={20} />
@@ -510,11 +511,11 @@ const ProjectDetail = () => {
                       {/* Video Slide - shown last if video exists */}
                       {embedUrl && (
                         <CarouselItem>
-                          <div className="relative flex justify-center items-center rounded-lg min-h-[900px] sm:min-h-[1125px] md:min-h-[1350px] lg:min-h-[1575px]">
-                            <div className="relative w-full aspect-video">
+                          <div className="relative flex justify-center items-center py-8 px-4 sm:px-8 md:px-12">
+                            <div className="w-full max-w-6xl aspect-video">
                               <iframe
                                 src={embedUrl}
-                                className="absolute inset-0 w-full h-full rounded-lg"
+                                className="w-full h-full rounded-lg"
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                 allowFullScreen
                                 title="Project video"
@@ -526,8 +527,8 @@ const ProjectDetail = () => {
                     </CarouselContent>
                     {(photoUrls.length + (embedUrl ? 1 : 0)) > 1 && (
                       <>
-                        <CarouselPrevious className="font-handwritten border-2 border-[#1a1a1a] bg-white hover:bg-[#dc3545] hover:text-white shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] -left-1 md:-left-2" />
-                        <CarouselNext className="font-handwritten border-2 border-[#1a1a1a] bg-white hover:bg-[#dc3545] hover:text-white shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] -right-1 md:-right-2" />
+                        <CarouselPrevious className="font-handwritten border-2 border-[#1a1a1a] bg-white hover:bg-[#dc3545] hover:text-white shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] left-2 md:left-4" />
+                        <CarouselNext className="font-handwritten border-2 border-[#1a1a1a] bg-white hover:bg-[#dc3545] hover:text-white shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] right-2 md:right-4" />
                       </>
                     )}
                   </Carousel>
