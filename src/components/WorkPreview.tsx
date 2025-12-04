@@ -2,8 +2,6 @@ import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import { useEffect, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
-import trophyClio from "@/assets/trophy-clio.png";
-import trophyAdce from "@/assets/trophy-adce.png";
 
 interface Project {
   id: number;
@@ -110,21 +108,6 @@ const WorkPreview = () => {
                     className="w-48 h-48 sm:w-64 sm:h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 object-contain grayscale group-hover:grayscale-0 transition-all duration-500 ease-in-out"
                   />
                 </div>
-                {/* Trophy icons for TALExa */}
-                {project.id === 6 && (
-                  <div className="flex items-center justify-center gap-4 mb-4">
-                    <img 
-                      src={trophyClio} 
-                      alt="Clio Award" 
-                      className="h-10 w-auto object-contain opacity-70 grayscale group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-300"
-                    />
-                    <img 
-                      src={trophyAdce} 
-                      alt="ADCE Award" 
-                      className="h-10 w-auto object-contain opacity-70 grayscale group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-300"
-                    />
-                  </div>
-                )}
                 <div className="flex flex-col items-center gap-3">
                   <p className="text-base font-handwritten font-medium text-[#dc3545] uppercase tracking-wider">
                     {project.category}
