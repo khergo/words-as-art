@@ -20,14 +20,19 @@ const WorkPreview = () => {
   }, []);
 
   const loadProjects = async () => {
+    // Fetch TALExa first, then next two projects
     const { data, error } = await supabase
       .from('projects')
       .select('id, title, category, description, icon_url')
-      .order('id')
-      .limit(3);
+      .in('id', [6, 2, 3]);
 
     if (!error && data) {
-      setFeaturedProjects(data);
+      // Sort to ensure TALExa (id=6) appears first
+      const sortedProjects = [...data].sort((a, b) => {
+        const order = [6, 2, 3];
+        return order.indexOf(a.id) - order.indexOf(b.id);
+      });
+      setFeaturedProjects(sortedProjects);
     }
     setLoading(false);
   };
