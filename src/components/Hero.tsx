@@ -76,7 +76,7 @@ const Hero = () => {
             {/* Main handwritten text */}
             <div className="space-y-1 text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl leading-relaxed">
               <div className="transform -rotate-1 ml-2">
-                The <a href="https://www.nairnairi.ge/" target="_blank" rel="noopener noreferrer" className="relative inline-block hover:opacity-80 transition-opacity">
+                The <a href="https://giorgi.rocks/work/5" target="_blank" rel="noopener noreferrer" className="relative inline-block hover:opacity-80 transition-opacity">
                   shoelace dealer
                   <svg className="absolute -bottom-2 left-0 w-full" height="10" viewBox="0 0 200 10" preserveAspectRatio="none">
                     <path d="M0,5 Q10,2 20,5 Q30,8 40,5 Q50,2 60,5 Q70,8 80,5 Q90,2 100,5 Q110,8 120,5 Q130,2 140,5 Q150,8 160,5 Q170,2 180,5 Q190,8 200,5" stroke="#dc3545" strokeWidth="3.5" fill="none" strokeLinecap="round" strokeLinejoin="round" />
