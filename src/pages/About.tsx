@@ -229,23 +229,49 @@ const About = () => {
                     className="text-2xl font-handwritten leading-relaxed text-[#1a1a1a] transform rotate-1 whitespace-pre-line"
                     multiline
                   />
-
-                  <EditableText
-                    value={getContent('paragraph_2')}
-                    onSave={(value) => updateContent('paragraph_2', value)}
-                    as="p"
-                    className="text-2xl font-handwritten leading-relaxed text-[#1a1a1a] transform -rotate-1 whitespace-pre-line"
-                    multiline
-                  />
-
-                  <EditableText
-                    value={getContent('paragraph_3')}
-                    onSave={(value) => updateContent('paragraph_3', value)}
-                    as="p"
-                    className="text-2xl font-handwritten leading-relaxed text-[#1a1a1a] transform rotate-1 whitespace-pre-line"
-                    multiline
-                  />
                 </div>
+              </div>
+
+              <div className="space-y-8 mb-12 animate-fade-in-delay">
+                <EditableText
+                  value={getContent('paragraph_2')}
+                  onSave={(value) => updateContent('paragraph_2', value)}
+                  as="p"
+                  className="text-2xl font-handwritten leading-relaxed text-[#1a1a1a] transform -rotate-1 whitespace-pre-line"
+                  multiline
+                />
+
+                <EditableText
+                  value={getContent('paragraph_3')}
+                  onSave={(value) => updateContent('paragraph_3', value)}
+                  as="p"
+                  className="text-2xl font-handwritten leading-relaxed text-[#1a1a1a] transform rotate-1 whitespace-pre-line"
+                  multiline
+                />
+
+                <EditableText
+                  value={getContent('paragraph_tv')}
+                  onSave={(value) => updateContent('paragraph_tv', value)}
+                  as="p"
+                  className="text-2xl font-handwritten leading-relaxed text-[#1a1a1a] transform -rotate-1 whitespace-pre-line"
+                  multiline
+                />
+
+                <EditableText
+                  value={getContent('paragraph_4')}
+                  onSave={(value) => updateContent('paragraph_4', value)}
+                  as="p"
+                  className="text-2xl font-handwritten leading-relaxed text-[#1a1a1a] transform rotate-1 whitespace-pre-line"
+                  multiline
+                />
+
+                <EditableText
+                  value={getContent('paragraph_5')}
+                  onSave={(value) => updateContent('paragraph_5', value)}
+                  as="p"
+                  className="text-2xl font-handwritten leading-relaxed text-[#1a1a1a] transform -rotate-1 whitespace-pre-line"
+                  multiline
+                />
               </div>
 
               <div className="mt-6 mb-8 flex justify-center animate-fade-in">
