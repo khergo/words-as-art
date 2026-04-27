@@ -289,8 +289,8 @@ const About = () => {
                 </div>
               </div>
 
-              <div className="border-t-2 border-[#d4a574] pt-16 animate-slide-up">
-                <div className="flex items-center gap-3 mb-12">
+              <div className="border-t-2 border-[#d4a574] pt-8 animate-slide-up">
+                <div className="flex items-center gap-3 mb-8">
                   <Award className="text-[#dc3545]" size={32} />
                   <EditableText
                     value={getContent('awards_title')}
