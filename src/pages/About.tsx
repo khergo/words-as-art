@@ -248,7 +248,7 @@ const About = () => {
                 </div>
               </div>
 
-              <div className="mt-12 mb-16 flex justify-center animate-fade-in">
+              <div className="mt-6 mb-8 flex justify-center animate-fade-in">
                 <div className="flex gap-3 items-center">
                   {getContent('cv_url') ? (
                     <button 
