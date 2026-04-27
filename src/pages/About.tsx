@@ -131,23 +131,23 @@ const About = () => {
       <Navigation />
 
       <main className="pt-24 relative z-10">
-        <section className="py-16">
+        <section className="pt-16 pb-4">
           <div className="container mx-auto px-6">
             <div className="max-w-4xl mx-auto pl-6">
               <EditableText
                 value={getContent('title')}
                 onSave={(value) => updateContent('title', value)}
                 as="h1"
-                className="font-handwritten text-6xl md:text-8xl font-bold mb-8 animate-fade-in text-[#1a1a1a] transform -rotate-2"
+                className="font-handwritten text-6xl md:text-8xl font-bold mb-4 animate-fade-in text-[#1a1a1a] transform -rotate-2"
               />
             </div>
           </div>
         </section>
 
-        <section className="py-24">
+        <section className="pt-4 pb-12">
           <div className="container mx-auto px-6">
             <div className="max-w-4xl mx-auto pl-6">
-              <div className="grid md:grid-cols-5 gap-12 mb-20">
+              <div className="grid md:grid-cols-5 gap-12 mb-8">
                 <div className="md:col-span-2">
                   <div className="relative inline-block w-full">
                     {/* Decorative pin */}
